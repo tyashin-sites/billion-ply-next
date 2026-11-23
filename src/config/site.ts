@@ -44,8 +44,8 @@ export const siteConfig = {
     instagram: 'https://www.instagram.com/billionply',
     linkedin: 'https://www.linkedin.com/company/billionply',
   },
-  /** Sister brand: the premium hybrid veneer range lives on Woodlark. */
-  sisterBrand: {
+  /** Woodlark: the premium hybrid veneer range lives at woodlarkveneer.com. */
+  woodlark: {
     name: 'Woodlark',
     product: 'Premium Hybrid Veneer',
     url: 'https://woodlarkveneer.com',

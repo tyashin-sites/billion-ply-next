@@ -3,7 +3,7 @@
 import type { ReactNode } from 'react';
 import { track } from '@/lib/track';
 
-/** An <a> that emits a tyashin:event on click (downloads, WhatsApp, sister brand). */
+/** An <a> that emits a tyashin:event on click (downloads, WhatsApp, Woodlark). */
 export function TrackedLink({
   href,
   event,

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowUpRight, Check, Download } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { getProduct, manufacturing, prelamFinishes, products, veneerRanges } from '@/data/products';
+import { getProduct, manufacturing, prelamFinishes, products, veneerFinishes, veneerRanges } from '@/data/products';
 import { catalogues } from '@/data/catalogues';
 import { certifications } from '@/data/company';
 import { pageMetadata } from '@/lib/seo';
@@ -164,9 +164,9 @@ export default async function ProductPage({ params }: Params) {
               })}
               <Reveal delay={210}>
                 <TrackedLink
-                  href={siteConfig.sisterBrand.url}
+                  href={siteConfig.woodlark.url}
                   external
-                  event="sister_brand_click"
+                  event="woodlark_click"
                   props={{ brand: 'woodlark', location: 'veneer-ranges' }}
                   className="card card-hover group flex h-full flex-col overflow-hidden bg-ink text-white"
                 >
@@ -175,15 +175,26 @@ export default async function ProductPage({ params }: Params) {
                     <img src="/images/veneers/hybrid-woodlark.jpg" alt="Hybrid veneer swatch" loading="lazy" className="h-full w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <div className="flex flex-1 flex-col p-5">
-                    <span className="text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-leaf-tint">Sister brand</span>
-                    <h3 className="mt-2 text-xl text-white">Premium Hybrid Veneer by Woodlark</h3>
-                    <p className="mt-2 flex-1 text-sm text-white/70">Our premium hybrid range lives on its own at Woodlark.</p>
+                    <h3 className="text-xl text-white">Premium Hybrid Veneer by Woodlark</h3>
+                    <p className="mt-2 flex-1 text-sm text-white/70">Explore the range at woodlarkveneer.com.</p>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white">
                       Visit woodlarkveneer.com <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                     </span>
                   </div>
                 </TrackedLink>
               </Reveal>
+            </div>
+            <div className="mt-12">
+              <h3 className="text-xl">More finishes</h3>
+              <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {veneerFinishes.map((f) => (
+                  <figure key={f.name}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={f.image} alt={`${f.name} by Billionply`} loading="lazy" className="aspect-square w-full rounded-md object-cover" />
+                    <figcaption className="mt-2 text-sm text-muted-foreground">{f.name}</figcaption>
+                  </figure>
+                ))}
+              </div>
             </div>
           </div>
         </section>

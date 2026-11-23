@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Quote } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { products, useGroups, manufacturing, veneerRanges, getProduct } from '@/data/products';
+import { products, useGroups, manufacturing, veneerRanges, veneerFinishes, getProduct } from '@/data/products';
 import { testimonials, events } from '@/data/company';
 import { pageMetadata } from '@/lib/seo';
 import { JsonLd } from '@/components/JsonLd';
@@ -23,7 +23,7 @@ export const metadata = pageMetadata({
 const faq = [
   {
     q: 'What products does Billionply offer?',
-    a: 'Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Flexible Plywood, Prelam Plywood and Flush Doors. The premium hybrid veneer range is made by our sister brand, Woodlark.',
+    a: 'Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Flexible Plywood, Prelam Plywood and Flush Doors. Premium Hybrid Veneer is made by Woodlark: explore the range at woodlarkveneer.com.',
   },
   {
     q: 'What technologies and standards does Billionply follow?',
@@ -39,7 +39,7 @@ const faq = [
   },
 ];
 
-const swatches = veneerRanges.map((v) => ({ name: v.name, image: v.image }));
+const swatches = [...veneerRanges.map((v) => ({ name: v.name, image: v.image })), ...veneerFinishes];
 
 export default function HomePage() {
   const event = events[0];
@@ -129,9 +129,9 @@ export default function HomePage() {
           </div>
           <Reveal>
             <TrackedLink
-              href={siteConfig.sisterBrand.url}
+              href={siteConfig.woodlark.url}
               external
-              event="sister_brand_click"
+              event="woodlark_click"
               props={{ brand: 'woodlark', location: 'home-range' }}
               className="card card-hover group mt-6 grid items-center overflow-hidden md:grid-cols-[0.6fr_1.4fr]"
             >
@@ -139,9 +139,8 @@ export default function HomePage() {
               <img src="/images/veneers/hybrid-woodlark.jpg" alt="Hybrid veneer surface" loading="lazy" className="h-40 w-full object-cover md:h-full" />
               <div className="flex flex-wrap items-center justify-between gap-4 p-6 md:p-8">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-oak-deep">Sister brand</p>
-                  <p className="mt-2 font-display text-2xl text-ink">Premium Hybrid Veneer by Woodlark</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Our premium hybrid veneer range has its own home at woodlarkveneer.com.</p>
+                                    <p className="font-display text-2xl text-ink">Premium Hybrid Veneer by Woodlark</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Explore the range at woodlarkveneer.com.</p>
                 </div>
                 <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-leaf-deep">
                   Visit Woodlark <ArrowUpRight className="h-4 w-4" aria-hidden="true" />

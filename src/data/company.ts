@@ -41,13 +41,9 @@ export const timeline: { year?: string; title: string; text: string }[] = [
     text: 'Decorative veneer, marine plywood, block board, prelam and flexible plywood, and flush doors, made with 4 Quad Press technology and Italian sanders.',
   },
   {
-    title: 'Across India',
-    text: '1000+ dealers across India, 500+ completed projects and 400+ veneer species.',
-  },
-  {
-    year: '2025',
-    title: 'Matecia 2025',
-    text: 'Billionply exhibits at Matecia 2025.',
+    year: 'Today',
+    title: 'Billionply today',
+    text: 'Three generations, 1000+ dealers across India, 400+ veneer species and 500+ completed projects.',
   },
 ];
 
@@ -108,9 +104,6 @@ export const events = [
   {
     slug: 'matecia-2025',
     name: 'Matecia 2025',
-    /** Dates and venue not on the current site: docs/ASSET-DEBT.md. */
-    dates: null as string | null,
-    venue: null as string | null,
     summary: 'The Billionply stand and team at Matecia 2025.',
     photos: [
       '2917', '2824', '3385', '2898', '2828', '3419', '3627', '3662',

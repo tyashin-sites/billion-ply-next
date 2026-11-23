@@ -31,15 +31,14 @@ export default function CataloguesPage() {
             </div>
           ))}
           <TrackedLink
-            href={siteConfig.sisterBrand.url}
+            href={siteConfig.woodlark.url}
             external
-            event="sister_brand_click"
+            event="woodlark_click"
             props={{ brand: 'woodlark', location: 'catalogues-page' }}
             className="card card-hover flex flex-col bg-ink p-7 text-white"
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-leaf-tint">Sister brand</span>
-            <span className="mt-4 font-display text-2xl">Premium Hybrid Veneer by Woodlark</span>
-            <span className="mt-2 flex-1 text-sm text-white/70">The hybrid veneer catalogue now lives on the Woodlark site.</span>
+            <span className="font-display text-2xl">Premium Hybrid Veneer by Woodlark</span>
+            <span className="mt-2 flex-1 text-sm text-white/70">Explore the range and its catalogue at woodlarkveneer.com.</span>
             <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold">Visit woodlarkveneer.com <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></span>
           </TrackedLink>
         </div>

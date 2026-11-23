@@ -18,7 +18,6 @@ export default function EventsPage() {
         <section key={e.slug} id={e.slug} className="section scroll-mt-24">
           <div className="container">
             <h2 className="display-lg">{e.name}</h2>
-            {(e.dates || e.venue) && <p className="mt-2 text-muted-foreground">{[e.dates, e.venue].filter(Boolean).join(' · ')}</p>}
             <p className="lead mt-3">{e.summary}</p>
             <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
               {e.photos.map((p, i) => (
