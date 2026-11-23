@@ -8,7 +8,7 @@ import { CatalogueButton } from '@/components/CatalogueButton';
 import { TrackedLink } from '@/components/TrackedLink';
 import { CtaBand } from '@/components/CtaBand';
 
-const description = 'Download Billion Ply catalogues: the natural veneer catalogue and the recon veneer catalogue (PDF).';
+const description = 'Download Billionply catalogues: the natural veneer catalogue and the recon veneer catalogue (PDF).';
 
 export const metadata = pageMetadata({ title: 'Catalogues', description, path: '/catalogues' });
 

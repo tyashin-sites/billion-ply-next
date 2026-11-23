@@ -11,7 +11,7 @@ export function CtaBand({ location, title = 'Planning a project?' }: { location:
       <div aria-hidden="true" className="pointer-events-none absolute -bottom-32 left-10 h-96 w-96 rounded-full bg-oak/20 blur-3xl" />
       <div className="container relative grid items-center gap-10 py-16 md:py-20 lg:grid-cols-[1.3fr_1fr]">
         <div>
-          <p className="eyebrow">Talk to Billion Ply</p>
+          <p className="eyebrow">Talk to Billionply</p>
           <h2 className="display-lg mt-4">{title}</h2>
           <p className="mt-5 max-w-xl text-white/75">
             Tell us what you are building. We will help you pick the right board, send samples to architects and designers, and point you to your nearest dealer.

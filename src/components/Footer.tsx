@@ -112,9 +112,9 @@ export async function Footer({ hasBlog = false }: { hasBlog?: boolean }) {
             {legal.pages.map((p) => (
               <Link key={p.slug} href={`/${p.slug}`} className="hover:text-white">{p.title}</Link>
             ))}
-            <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Billion Ply on Facebook" className="hover:text-white"><Facebook className="h-4 w-4" /></a>
-            <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Billion Ply on Instagram" className="hover:text-white"><Instagram className="h-4 w-4" /></a>
-            <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Billion Ply on LinkedIn" className="hover:text-white"><Linkedin className="h-4 w-4" /></a>
+            <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Billionply on Facebook" className="hover:text-white"><Facebook className="h-4 w-4" /></a>
+            <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Billionply on Instagram" className="hover:text-white"><Instagram className="h-4 w-4" /></a>
+            <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="Billionply on LinkedIn" className="hover:text-white"><Linkedin className="h-4 w-4" /></a>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@
  * hidden on the site until it exists.
  */
 export const siteConfig = {
-  name: 'Billion Ply',
+  name: 'Billionply',
   /** The wordmark as printed on the logo. */
   wordmark: 'Billionply',
   legalName: 'Jai Shiv Plywood Pvt. Ltd.',
@@ -16,7 +16,7 @@ export const siteConfig = {
   motto: 'Driven by the Purpose. Leading by Example.',
   logoLine: 'Infusing nature into interiors',
   description:
-    'Billion Ply makes decorative veneer, marine plywood, block board, prelam and flexible plywood and flush doors in Bahadurgarh, Haryana. In the industry since 1997, three generations of the Chhabra family, 1000+ dealers across India.',
+    'Billionply makes decorative veneer, marine plywood, block board, prelam and flexible plywood and flush doors in Bahadurgarh, Haryana. In the industry since 1997, three generations of the Chhabra family, 1000+ dealers across India.',
   foundedYear: 1997,
   copyrightHolder: 'Jai Shiv Plywood Pvt. Ltd.',
   contact: {

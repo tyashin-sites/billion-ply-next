@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowUpRight, Check, Download } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { getProduct, manufacturing, prelamFinishes, products, veneerFinishes, veneerRanges } from '@/data/products';
+import { getProduct, manufacturing, prelamFinishes, products, veneerRanges } from '@/data/products';
 import { catalogues } from '@/data/catalogues';
 import { certifications } from '@/data/company';
 import { pageMetadata } from '@/lib/seo';
@@ -67,12 +67,12 @@ export default async function ProductPage({ params }: Params) {
       />
 
       <PageHero
-        eyebrow={p.standard ? `${p.standard}${p.tenFoot ? ' · 10 ft sizes' : ''}` : p.tenFoot ? '10 ft sizes' : 'Billion Ply'}
+        eyebrow={p.standard ? `${p.standard}${p.tenFoot ? ' · 10 ft sizes' : ''}` : p.tenFoot ? '10 ft sizes' : 'Billionply'}
         title={p.name}
         lead={<p>{p.cardLine}</p>}
         crumbs={[{ name: 'Products', href: '/products' }, { name: p.name }]}
-        image={p.image}
-        imageAlt={p.imageAlt}
+        image={p.heroImage ?? p.image}
+        imageAlt={p.heroImage ? p.heroImageAlt : p.imageAlt}
       >
         <Link href={`/contact?product=${p.slug}`} className="btn-primary">Enquire</Link>
         {p.catalogue && <CatalogueButton catalogue={p.catalogue} location={`product-${p.slug}-hero`} label="Download catalogue" variant="ghost" />}
@@ -98,6 +98,12 @@ export default async function ProductPage({ params }: Params) {
                 <li key={u} className="rounded-full border bg-white px-4 py-2 text-sm text-ink">{u}</li>
               ))}
             </ul>
+            {p.heroImage && (
+              <figure className="mt-12 overflow-hidden rounded-lg border bg-white">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={p.image} alt={p.imageAlt} loading="lazy" className="aspect-[16/10] w-full object-cover" />
+              </figure>
+            )}
           </div>
           <aside className="card h-fit p-7">
             <h2 className="font-display text-2xl">Features</h2>
@@ -179,18 +185,6 @@ export default async function ProductPage({ params }: Params) {
                 </TrackedLink>
               </Reveal>
             </div>
-            <div className="mt-12">
-              <h3 className="text-xl">More finishes</h3>
-              <div className="mt-5 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {veneerFinishes.map((f) => (
-                  <figure key={f.name}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={f.image} alt={f.name} loading="lazy" className="aspect-square w-full rounded-md object-cover" />
-                    <figcaption className="mt-2 text-sm text-muted-foreground">{f.name}</figcaption>
-                  </figure>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
       )}
@@ -252,7 +246,7 @@ export default async function ProductPage({ params }: Params) {
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-oak-deep">BIS / Indian Standard</p>
                 <p className="mt-3 font-display text-4xl text-ink">{p.standard}</p>
                 <p className="mt-3 text-sm text-muted-foreground">
-                  {STANDARD_TEXT[p.standard]} Billion Ply {p.name.toLowerCase()} is made to {p.standard}.
+                  {STANDARD_TEXT[p.standard]} Billionply {p.name.toLowerCase()} is made to {p.standard}.
                 </p>
                 {licence?.licenceNumber && (
                   <p className="mt-3 text-sm text-ink">

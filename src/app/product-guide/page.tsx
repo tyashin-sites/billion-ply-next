@@ -8,7 +8,7 @@ import { Reveal } from '@/components/Reveal';
 import { CtaBand } from '@/components/CtaBand';
 
 const description =
-  'Which Billion Ply product for which job: interiors, doors, heavy-duty furniture and wet or harsh areas like kitchens, bathrooms and coastal homes.';
+  'Which Billionply product for which job: interiors, doors, heavy-duty furniture and wet or harsh areas like kitchens, bathrooms and coastal homes.';
 
 export const metadata = pageMetadata({ title: 'Which product for which job', description, path: '/product-guide' });
 
@@ -19,7 +19,7 @@ export default function ProductGuidePage() {
       <PageHero
         eyebrow="Product guide"
         title="Which product for which job"
-        lead="Start from what you are building. Each group lists the Billion Ply products that suit it, and why."
+        lead="Start from what you are building. Each group lists the Billionply products that suit it, and why."
         crumbs={[{ name: 'Product guide' }]}
       >
         {useGroups.map((g) => (

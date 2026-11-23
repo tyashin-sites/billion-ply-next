@@ -47,7 +47,7 @@ export const timeline: { year?: string; title: string; text: string }[] = [
   {
     year: '2025',
     title: 'Matecia 2025',
-    text: 'Billion Ply exhibits at Matecia 2025.',
+    text: 'Billionply exhibits at Matecia 2025.',
   },
 ];
 
@@ -81,14 +81,14 @@ export const testimonials = [
 
 /** Gallery from the current /gallery/ page: plant, warehouse and stock. */
 export const factoryGallery = [
-  { src: '/images/factory/factory-1.jpg', alt: 'Billion Ply warehouse with stacked boards' },
-  { src: '/images/factory/factory-2.jpg', alt: 'Inside the Billion Ply warehouse' },
-  { src: '/images/factory/factory-3.jpg', alt: 'Rows of plywood stock at Billion Ply' },
+  { src: '/images/factory/factory-1.jpg', alt: 'Billionply warehouse with stacked boards' },
+  { src: '/images/factory/factory-2.jpg', alt: 'Inside the Billionply warehouse' },
+  { src: '/images/factory/factory-3.jpg', alt: 'Rows of plywood stock at Billionply' },
   { src: '/images/factory/factory-4.jpg', alt: 'Stacks of finished boards in the warehouse' },
   { src: '/images/factory/factory-5.jpg', alt: 'Finished stock ready for dispatch' },
-  { src: '/images/factory/factory-6.jpg', alt: 'The Billion Ply plant yard' },
-  { src: '/images/factory/factory-7.jpg', alt: 'The Billion Ply office building' },
-  { src: '/images/factory/factory-8.jpg', alt: 'A stack of Billion Ply boards' },
+  { src: '/images/factory/factory-6.jpg', alt: 'The Billionply plant yard' },
+  { src: '/images/factory/factory-7.jpg', alt: 'The Billionply office building' },
+  { src: '/images/factory/factory-8.jpg', alt: 'A stack of Billionply boards' },
 ];
 
 /**
@@ -111,13 +111,13 @@ export const events = [
     /** Dates and venue not on the current site: docs/ASSET-DEBT.md. */
     dates: null as string | null,
     venue: null as string | null,
-    summary: 'The Billion Ply stand and team at Matecia 2025.',
+    summary: 'The Billionply stand and team at Matecia 2025.',
     photos: [
       '2917', '2824', '3385', '2898', '2828', '3419', '3627', '3662',
       '3702', '3709', '2924', '2983', '3010', '2637', '2861', '3023',
     ].map((n) => ({
       src: `/images/events/matecia-2025-${n}.jpg`,
-      alt: 'Billion Ply at Matecia 2025',
+      alt: 'Billionply at Matecia 2025',
       tall: ['2637', '2861', '3023'].includes(n),
     })),
   },

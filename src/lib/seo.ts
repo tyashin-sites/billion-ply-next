@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 // The site's canonical identity. `domain` is the ONLY thing that changes when
 // the customer's domain is cut over (update NEXT_PUBLIC_SITE_DOMAIN).
 export const SITE = {
-  name: 'Billion Ply',
+  name: 'Billionply',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'billionply.com',
   defaultOgImage: '/images/og-cover.jpg',
   locale: 'en_IN',
@@ -19,7 +19,7 @@ export function siteUrl(path = '/'): string {
 
 // Build a complete, absolute-URL Metadata object for one page.
 export function pageMetadata(opts: {
-  title?: string;
+  title?: string | { absolute: string };
   description: string;
   path: string;
   image?: string;
@@ -27,22 +27,25 @@ export function pageMetadata(opts: {
 }): Metadata {
   const url = siteUrl(opts.path);
   const image = opts.image || SITE.defaultOgImage;
+  const socialTitle = typeof opts.title === 'object' ? opts.title.absolute : opts.title || SITE.name;
   return {
-    title: opts.title,
+    // Omit when unset so the layout's default title applies (an explicit
+    // `title: undefined` blanks the <title> on the home page).
+    ...(opts.title ? { title: opts.title } : {}),
     description: opts.description,
     alternates: { canonical: url },
     openGraph: {
       type: opts.type || 'website',
       url,
       siteName: SITE.name,
-      title: opts.title || SITE.name,
+      title: socialTitle,
       description: opts.description,
       locale: SITE.locale,
       images: [{ url: image }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: opts.title || SITE.name,
+      title: socialTitle,
       description: opts.description,
       images: [image],
       ...(SITE.twitter ? { site: SITE.twitter, creator: SITE.twitter } : {}),

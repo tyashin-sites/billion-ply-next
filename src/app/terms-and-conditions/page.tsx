@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata = pageMetadata({
   title: 'Terms & Conditions',
-  description: 'Terms of use for the Billion Ply website.',
+  description: 'Terms of use for the Billionply website.',
   path: '/terms-and-conditions',
 });
 

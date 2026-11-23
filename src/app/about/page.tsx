@@ -10,21 +10,21 @@ import { Counter } from '@/components/Counter';
 import { CtaBand } from '@/components/CtaBand';
 
 const description =
-  'Billion Ply (Jai Shiv Plywood Pvt. Ltd.): three generations of the Chhabra family, in plywood and veneer since 1997. Our story, mission, vision and leadership team.';
+  'Billionply (Jai Shiv Plywood Pvt. Ltd.): three generations of the Chhabra family, in plywood and veneer since 1997. Our story, mission, vision and leadership team.';
 
 export const metadata = pageMetadata({ title: 'About us', description, path: '/about', image: '/images/team/about-hero.jpg' });
 
 export default function AboutPage() {
   return (
     <>
-      <JsonLd path="/about" title="About Billion Ply" description={description} breadcrumb={[{ name: 'About', path: '/about' }]} />
+      <JsonLd path="/about" title="About Billionply" description={description} breadcrumb={[{ name: 'About', path: '/about' }]} />
       <PageHero
         eyebrow={`Since ${siteConfig.foundedYear}`}
         title={siteConfig.motto}
-        lead="Billion Ply is more than a plywood and veneer maker. We are a legacy built on the expertise of three generations, setting new benchmarks in the wood industry."
+        lead="Billionply is more than a plywood and veneer maker. We are a legacy built on the expertise of three generations, setting new benchmarks in the wood industry."
         crumbs={[{ name: 'About' }]}
         image="/images/team/about-hero.jpg"
-        imageAlt="Billion Ply leadership in the company office"
+        imageAlt="Billionply leadership in the company office"
       />
 
       <section className="section">
@@ -35,7 +35,7 @@ export default function AboutPage() {
           </div>
           <div className="space-y-5 text-lg leading-relaxed text-ink/85">
             <p>
-              Our story began with a passion for excellence and a vision to make products that stand the test of time. Across our journey we have honed our craft and earned the trust and loyalty of our customers, making Billion Ply a name for quality and reliability.
+              Our story began with a passion for excellence and a vision to make products that stand the test of time. Across our journey we have honed our craft and earned the trust and loyalty of our customers, making Billionply a name for quality and reliability.
             </p>
             <p>
               Today we blend traditional craftsmanship with modern technology. Every product we make is a testament to our commitment to precision, durability and aesthetics.

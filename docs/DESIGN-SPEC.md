@@ -1,4 +1,4 @@
-# Design spec: Billion Ply
+# Design spec: Billionply
 
 **Thesis:** "Leaf and grain". A three-generation family maker, shown through
 real wood: warm ivory paper, forest ink, the logo's leaf green, oak warmth.
@@ -6,7 +6,7 @@ Calm, crafted, specifiable.
 
 **Anti-goals:** no stock-photo heroes, no invented proof, no gimmicks that
 hide content, no look borrowed from the Woodlark sister site (Woodlark is the
-premium hybrid brand; Billion Ply must not look like it sells Woodlark).
+premium hybrid brand; Billionply must not look like it sells Woodlark).
 
 ## Tokens (src/app/globals.css)
 - Ivory `#F8F5EF` background, forest ink `#14231B` text and dark sections,

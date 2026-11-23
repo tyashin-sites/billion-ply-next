@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata = pageMetadata({
   title: 'Privacy Policy',
-  description: 'How Billion Ply collects, uses and protects your information.',
+  description: 'How Billionply collects, uses and protects your information.',
   path: '/privacy-policy',
 });
 
