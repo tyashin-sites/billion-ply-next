@@ -39,10 +39,10 @@ export function Header({ hasBlog = false }: { hasBlog?: boolean }) {
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-3 focus:z-50 focus:rounded focus:bg-white focus:px-3 focus:py-2">
         Skip to content
       </a>
-      <div className="container flex h-[72px] items-center justify-between gap-6">
+      <div className="container flex h-[80px] items-center justify-between gap-6">
         <Link href="/" className="brand-logo flex shrink-0 items-center" aria-label={`${siteConfig.name} home`}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.jpg" alt={`${siteConfig.name} logo`} width={128} height={63} className="h-[46px] w-auto mix-blend-multiply" />
+          <img src="/images/logo-header.jpg" alt={`${siteConfig.name} logo`} width={690} height={364} className="h-[60px] w-auto mix-blend-multiply sm:h-[66px] lg:h-[70px]" />
         </Link>
 
         <nav className="hidden items-center gap-1 xl:flex" aria-label="Main">
@@ -73,9 +73,9 @@ export function Header({ hasBlog = false }: { hasBlog?: boolean }) {
                 ))}
                 <li className="mt-1 border-t pt-1">
                   <TrackedLink
-                    href={siteConfig.sisterBrand.url}
+                    href={siteConfig.woodlark.url}
                     external
-                    event="sister_brand_click"
+                    event="woodlark_click"
                     props={{ brand: 'woodlark', location: 'nav' }}
                     className="flex items-center justify-between rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-oak-tint"
                   >
@@ -118,7 +118,7 @@ export function Header({ hasBlog = false }: { hasBlog?: boolean }) {
       </div>
 
       {open && (
-        <div className="max-h-[calc(100vh-72px)] overflow-y-auto border-t bg-background xl:hidden">
+        <div className="max-h-[calc(100vh-80px)] overflow-y-auto border-t bg-background xl:hidden">
           <nav className="container flex flex-col py-4" aria-label="Mobile">
             <p className="px-2 pb-1 pt-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Products</p>
             {products.map((p) => (

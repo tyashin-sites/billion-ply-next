@@ -1,6 +1,6 @@
 /**
  * Billionply product range — current billionply.com minus Premium Hybrid
- * Veneer (now on the sister brand Woodlark).
+ * Veneer (now at Woodlark, woodlarkveneer.com).
  *
  * FACTS RULE: every sentence and spec value below is taken from the current
  * billionply.com product pages, home-page FAQ or the issue-100 brief. A spec
@@ -130,6 +130,9 @@ export const veneerRanges: VeneerRange[] = [
     blurb: 'Knots, character marks and warm tones for a lived-in look.',
   },
 ];
+
+/** Further finish shown in the current site's veneer carousel (client-confirmed). */
+export const veneerFinishes = [{ name: 'Dyed Veneer', image: '/images/veneers/dyed.jpg' }];
 
 export const prelamFinishes = [
   { image: '/images/prelam/finish-3221.jpg', alt: 'Prelam finish, dark walnut tone' },

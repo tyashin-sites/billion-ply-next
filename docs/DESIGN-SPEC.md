@@ -5,7 +5,7 @@ real wood: warm ivory paper, forest ink, the logo's leaf green, oak warmth.
 Calm, crafted, specifiable.
 
 **Anti-goals:** no stock-photo heroes, no invented proof, no gimmicks that
-hide content, no look borrowed from the Woodlark sister site (Woodlark is the
+hide content, no look borrowed from the Woodlark site (Woodlark is the
 premium hybrid brand; Billionply must not look like it sells Woodlark).
 
 ## Tokens (src/app/globals.css)
@@ -44,4 +44,4 @@ legal pages (admin-edited, hidden until configured).
 WhatsApp (header, floating, footer, every CTA band), enquiry form, separate
 dealer-application and sample-request forms (own lead `source`), catalogue
 downloads. Custom events on the Tyashin bus: `catalogue_download`,
-`whatsapp_click`, `generate_lead`, `sister_brand_click`.
+`whatsapp_click`, `generate_lead`, `woodlark_click`.

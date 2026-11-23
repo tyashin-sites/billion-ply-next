@@ -352,7 +352,7 @@
   transform-origin: left center;
 }
 .site-header.is-scrolled .brand-logo {
-  transform: scale(0.9);
+  transform: scale(0.88);
 }
 
 @media (prefers-reduced-motion: reduce) {

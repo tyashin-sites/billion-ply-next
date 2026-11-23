@@ -45,7 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="font-body bg-background text-foreground antialiased" style={{ backgroundColor: '#F8F5EF' }}>
         <div className="flex min-h-screen flex-col">
           <Header hasBlog={hasBlog} />
-          <main id="main" className="flex-1 overflow-x-clip pt-[72px]">
+          <main id="main" className="flex-1 overflow-x-clip pt-[80px]">
             {children}
           </main>
           <Footer hasBlog={hasBlog} />

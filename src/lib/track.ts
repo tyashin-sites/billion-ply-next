@@ -7,7 +7,7 @@
  *   catalogue_download { catalogue, location }
  *   whatsapp_click     { location }
  *   generate_lead      { form }        form = enquiry | dealer | sample
- *   sister_brand_click { brand }
+ *   woodlark_click { brand }
  */
 export function track(name: string, props: Record<string, string | number> = {}): void {
   if (typeof window === 'undefined') return;

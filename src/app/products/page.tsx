@@ -44,15 +44,15 @@ export default function ProductsPage() {
         </div>
         <div className="container mt-10">
           <TrackedLink
-            href={siteConfig.sisterBrand.url}
+            href={siteConfig.woodlark.url}
             external
-            event="sister_brand_click"
+            event="woodlark_click"
             props={{ brand: 'woodlark', location: 'products-index' }}
             className="card card-hover flex flex-wrap items-center justify-between gap-4 p-6"
           >
             <span>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-oak-deep">Sister brand</span>
-              <span className="mt-1 block font-display text-xl text-ink">Looking for premium hybrid veneer? See Woodlark.</span>
+              <span className="block font-display text-xl text-ink">Premium Hybrid Veneer by Woodlark</span>
+              <span className="mt-1 block text-sm text-muted-foreground">Explore the range at woodlarkveneer.com.</span>
             </span>
             <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-leaf-deep">woodlarkveneer.com <ArrowUpRight className="h-4 w-4" aria-hidden="true" /></span>
           </TrackedLink>

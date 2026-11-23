@@ -94,10 +94,10 @@ export async function Footer({ hasBlog = false }: { hasBlog?: boolean }) {
               </li>
             )
           )}
-          <li className="pt-3 text-white/55">Sister brand</li>
+          <li className="pt-3 text-white/55">Premium Hybrid Veneer</li>
           <li>
-            <TrackedLink href={siteConfig.sisterBrand.url} external event="sister_brand_click" props={{ brand: 'woodlark', location: 'footer' }} className="hover:text-white">
-              Woodlark: {siteConfig.sisterBrand.product} ↗
+            <TrackedLink href={siteConfig.woodlark.url} external event="woodlark_click" props={{ brand: 'woodlark', location: 'footer' }} className="hover:text-white">
+              Woodlark: woodlarkveneer.com ↗
             </TrackedLink>
           </li>
         </FooterCol>
