@@ -15,7 +15,7 @@ const ASK = <span className="text-muted-foreground">Ask us</span>;
 const rows: { label: string; get: (p: (typeof products)[number]) => React.ReactNode }[] = [
   { label: 'Water resistance', get: (p) => p.compare.water ?? ASK },
   { label: 'Typical uses', get: (p) => p.compare.uses },
-  { label: 'IS standard', get: (p) => p.compare.standard ?? <span className="text-muted-foreground">Not applicable</span> },
+  { label: 'IS standard', get: (p) => p.compare.standard ?? ASK },
   { label: 'Sizes', get: (p) => p.compare.sizes ?? ASK },
 ];
 

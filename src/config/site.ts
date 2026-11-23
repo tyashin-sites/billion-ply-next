@@ -51,7 +51,7 @@ export const siteConfig = {
     url: 'https://woodlarkveneer.com',
   },
   stats: [
-    { value: 1997, label: 'In the industry since', plain: true },
+    { value: 1997, label: 'Three generations of the Chhabra family', plain: true },
     { value: 1000, suffix: '+', label: 'Dealers across India' },
     { value: 500, suffix: '+', label: 'Completed projects' },
     { value: 400, suffix: '+', label: 'Veneer species' },

@@ -84,7 +84,7 @@ export default function HomePage() {
             <div key={s.label} className="flex flex-col-reverse px-4 py-10 text-center md:py-12">
               <dt className="mt-2 text-sm text-muted-foreground">{s.label}</dt>
               <dd className="font-display text-4xl text-ink md:text-5xl">
-                {'plain' in s && s.plain ? s.value : <Counter value={s.value} suffix={'suffix' in s ? s.suffix : ''} />}
+                {'plain' in s && s.plain ? `Since ${s.value}` : <Counter value={s.value} suffix={'suffix' in s ? s.suffix : ''} />}
               </dd>
             </div>
           ))}

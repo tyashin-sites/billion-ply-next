@@ -35,7 +35,8 @@ export function Counter({
         io.disconnect();
         const t0 = performance.now();
         const tick = (t: number) => {
-          const p = Math.min(1, (t - t0) / durationMs);
+          // rAF timestamps can be earlier than t0: clamp so the count never goes negative.
+          const p = Math.min(1, Math.max(0, (t - t0) / durationMs));
           // ease-out cubic
           const eased = 1 - Math.pow(1 - p, 3);
           setDisplay(Math.round(eased * value));
