@@ -7,7 +7,7 @@ import { Reveal } from '@/components/Reveal';
 import { CtaBand } from '@/components/CtaBand';
 
 const description =
-  'Billion Ply projects and gallery: 500+ completed projects, and a look inside our plant and warehouse in Bahadurgarh, Haryana.';
+  'Billionply projects and gallery: 500+ completed projects, and a look inside our plant and warehouse in Bahadurgarh, Haryana.';
 
 export const metadata = pageMetadata({ title: 'Projects and gallery', description, path: '/projects' });
 

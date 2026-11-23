@@ -6,7 +6,7 @@ import { PageHero } from '@/components/PageHero';
 import { CtaBand } from '@/components/CtaBand';
 
 const description =
-  'Compare Billion Ply marine plywood, block board, prelam and flexible plywood, decorative veneer and flush doors: water resistance, typical uses, IS standard and sizes.';
+  'Compare Billionply marine plywood, block board, prelam and flexible plywood, decorative veneer and flush doors: water resistance, typical uses, IS standard and sizes.';
 
 export const metadata = pageMetadata({ title: 'Compare products', description, path: '/compare' });
 
@@ -26,7 +26,7 @@ export default function ComparePage() {
       <PageHero
         eyebrow="Compare"
         title="Which board does what"
-        lead="A side-by-side view of the Billion Ply range. Where a value is not published yet, ask our team and we will confirm it for your project."
+        lead="A side-by-side view of the Billionply range. Where a value is not published yet, ask our team and we will confirm it for your project."
         crumbs={[{ name: 'Compare products' }]}
       >
         <Link href="/product-guide" className="btn-primary">Which product for which job?</Link>
@@ -37,7 +37,7 @@ export default function ComparePage() {
           {/* Desktop / tablet: one table */}
           <div className="hidden overflow-x-auto rounded-lg border bg-white shadow-rest md:block">
             <table className="w-full min-w-[960px] text-left text-sm">
-              <caption className="sr-only">Billion Ply product comparison</caption>
+              <caption className="sr-only">Billionply product comparison</caption>
               <thead className="bg-paper">
                 <tr>
                   <th scope="col" className="w-44 px-5 py-4 font-medium text-muted-foreground">Product</th>
@@ -78,7 +78,7 @@ export default function ComparePage() {
             ))}
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
-            All Billion Ply products are made with 4 Quad Press technology and Italian sanders, to E1 grade, with termite and borer protection.
+            All Billionply products are made with 4 Quad Press technology and Italian sanders, to E1 grade, with termite and borer protection.
           </p>
         </div>
       </section>

@@ -153,7 +153,7 @@ export default async function BlogPostPage({
                       </div>
                     ) : (
                       <div className="bg-leaf-tint text-primary flex aspect-[16/9] items-center justify-center font-display text-sm font-bold uppercase tracking-[0.2em]">
-                        Billion Ply
+                        Billionply
                       </div>
                     )}
                     <div className="p-6">

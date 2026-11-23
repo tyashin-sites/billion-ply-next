@@ -7,7 +7,7 @@ import { JsonLd } from '@/components/JsonLd';
 export const dynamic = 'force-dynamic';
 
 const description =
-  'Guides on plywood and veneer for interiors and furniture, from the Billion Ply team.';
+  'Guides on plywood and veneer for interiors and furniture, from the Billionply team.';
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({
@@ -78,7 +78,7 @@ export default async function BlogIndexPage({
                     />
                   </div>
                 ) : (
-                  <div className="bg-leaf-tint text-primary flex aspect-[16/9] items-center justify-center font-display text-sm font-bold uppercase tracking-[0.2em]">Billion Ply</div>
+                  <div className="bg-leaf-tint text-primary flex aspect-[16/9] items-center justify-center font-display text-sm font-bold uppercase tracking-[0.2em]">Billionply</div>
                 )}
                 <div className="p-6">
                   {post.pinned && (

@@ -5,7 +5,7 @@ import { PageHero } from '@/components/PageHero';
 import { Reveal } from '@/components/Reveal';
 import { CtaBand } from '@/components/CtaBand';
 
-const description = 'Billion Ply at Matecia 2025: photos of our stand and team.';
+const description = 'Billionply at Matecia 2025: photos of our stand and team.';
 
 export const metadata = pageMetadata({ title: 'Events', description, path: '/events', image: '/images/events/matecia-2025-2917.jpg' });
 
@@ -13,7 +13,7 @@ export default function EventsPage() {
   return (
     <>
       <JsonLd path="/events" title="Events" description={description} breadcrumb={[{ name: 'Events', path: '/events' }]} />
-      <PageHero eyebrow="Events" title="Where to meet us" lead="Trade shows and exhibitions where the Billion Ply team shows the range in person." crumbs={[{ name: 'Events' }]} />
+      <PageHero eyebrow="Events" title="Where to meet us" lead="Trade shows and exhibitions where the Billionply team shows the range in person." crumbs={[{ name: 'Events' }]} />
       {events.map((e) => (
         <section key={e.slug} id={e.slug} className="section scroll-mt-24">
           <div className="container">

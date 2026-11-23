@@ -5,7 +5,7 @@ import { LeadForm } from '@/components/LeadForm';
 import { CatalogueButton } from '@/components/CatalogueButton';
 
 const description =
-  'Architects and interior designers: request Billion Ply samples of decorative veneer, prelam, plywood, block board and flush doors for your project.';
+  'Architects and interior designers: request Billionply samples of decorative veneer, prelam, plywood, block board and flush doors for your project.';
 
 export const metadata = pageMetadata({ title: 'Request samples', description, path: '/sample-request' });
 

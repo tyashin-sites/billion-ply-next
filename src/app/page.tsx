@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Quote } from 'lucide-react';
 import { siteConfig } from '@/config/site';
-import { products, useGroups, manufacturing, veneerRanges, veneerFinishes, getProduct } from '@/data/products';
+import { products, useGroups, manufacturing, veneerRanges, getProduct } from '@/data/products';
 import { testimonials, events } from '@/data/company';
 import { pageMetadata } from '@/lib/seo';
 import { JsonLd } from '@/components/JsonLd';
-import { LeafFan } from '@/components/LeafFan';
 import { Counter } from '@/components/Counter';
 import { ProductCard } from '@/components/ProductCard';
 import { Reveal } from '@/components/Reveal';
@@ -15,34 +14,32 @@ import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 import { CtaBand } from '@/components/CtaBand';
 
 export const metadata = pageMetadata({
+  title: { absolute: 'Billionply | Decorative Veneer, Plywood & Flush Doors Since 1997' },
   description:
-    'Billion Ply: decorative veneer, marine plywood, block board, prelam and flexible plywood and flush doors. In the industry since 1997, 1000+ dealers across India.',
+    'Billionply: decorative veneer, marine plywood, block board, prelam and flexible plywood and flush doors. In the industry since 1997, 1000+ dealers across India.',
   path: '/',
 });
 
 const faq = [
   {
-    q: 'What products does Billion Ply offer?',
+    q: 'What products does Billionply offer?',
     a: 'Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Flexible Plywood, Prelam Plywood and Flush Doors. The premium hybrid veneer range is made by our sister brand, Woodlark.',
   },
   {
-    q: 'What technologies and standards does Billion Ply follow?',
+    q: 'What technologies and standards does Billionply follow?',
     a: '4 Quad Press technology for strength and durability, E1 grade for eco-friendliness and safe indoor use, Italian sanders for a smooth, refined finish, and termite and borer protection for long life.',
   },
   {
-    q: 'How long has Billion Ply been in the industry?',
-    a: 'Since 1997. Billion Ply is run by three generations of the Chhabra family and works with 1000+ dealers across India.',
+    q: 'How long has Billionply been in the industry?',
+    a: 'Since 1997. Billionply is run by three generations of the Chhabra family and works with 1000+ dealers across India.',
   },
   {
-    q: 'How can I contact Billion Ply?',
+    q: 'How can I contact Billionply?',
     a: `Email ${siteConfig.contact.email}, call ${siteConfig.contact.phone} or ${siteConfig.contact.phone2}, or message us on WhatsApp. Our plant is at ${siteConfig.address.oneLine}.`,
   },
 ];
 
-const swatches = [
-  ...veneerRanges.map((v) => ({ name: v.name, image: v.image })),
-  ...veneerFinishes,
-];
+const swatches = veneerRanges.map((v) => ({ name: v.name, image: v.image }));
 
 export default function HomePage() {
   const event = events[0];
@@ -73,7 +70,28 @@ export default function HomePage() {
               </TrackedLink>
             </div>
           </div>
-          <LeafFan />
+          <div className="relative">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-hover lg:aspect-[5/6]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/mood/living-room.jpg"
+                alt="A calm living room with a teak-veneered sideboard and wooden chair"
+                fetchPriority="high"
+                className="h-full w-full object-cover object-[50%_60%]"
+              />
+            </div>
+            <Link
+              href="/products/decorative-veneer"
+              className="card card-hover absolute -bottom-6 left-4 flex items-center gap-3 p-3 pr-5 sm:left-[-1.5rem]"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/veneers/teak.jpg" alt="" className="h-12 w-12 rounded object-cover" />
+              <span>
+                <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-oak-deep">Decorative veneer</span>
+                <span className="block font-display text-lg text-ink">7 ranges, up to 10 ft</span>
+              </span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -199,7 +217,7 @@ export default function HomePage() {
             <p className="eyebrow">Specification support</p>
             <h2 className="display-lg mt-4">Made to Indian Standards</h2>
             <p className="mt-5 max-w-lg text-white/75">
-              Architects and project teams can specify Billion Ply with confidence: decorative veneer to IS 1328, marine plywood to IS 710 and block board to IS 1659, each with a full spec block on its product page.
+              Architects and project teams can specify Billionply with confidence: decorative veneer to IS 1328, marine plywood to IS 710 and block board to IS 1659, each with a full spec block on its product page.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link href="/certifications" className="btn-ghost">Certifications</Link>
@@ -234,7 +252,7 @@ export default function HomePage() {
           <Reveal className="relative">
             <div className="overflow-hidden rounded-lg shadow-hover">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/team/leadership-group.jpg" alt="Jitender, Rahul and Rishabh Chhabra of Billion Ply" loading="lazy" className="aspect-[16/9] w-full object-cover" />
+              <img src="/images/team/leadership-group.jpg" alt="Jitender, Rahul and Rishabh Chhabra of Billionply" loading="lazy" className="aspect-[16/9] w-full object-cover" />
             </div>
             <div className="absolute -bottom-6 left-6 rounded-lg bg-white px-5 py-4 shadow-hover">
               <p className="font-display text-3xl text-leaf-deep">3</p>
@@ -245,7 +263,7 @@ export default function HomePage() {
             <p className="eyebrow">Our legacy</p>
             <h2 className="display-lg mt-4">{siteConfig.motto}</h2>
             <p className="lead mt-5">
-              Billion Ply is more than a plywood and veneer maker. It is a legacy built on the expertise of three generations, blending traditional craftsmanship with modern technology.
+              Billionply is more than a plywood and veneer maker. It is a legacy built on the expertise of three generations, blending traditional craftsmanship with modern technology.
             </p>
             <Link href="/about" className="btn-ghost mt-8">Our story and team</Link>
           </div>
@@ -313,10 +331,10 @@ export default function HomePage() {
           </div>
           <div className="card relative overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/factory/factory-3.jpg" alt="Billion Ply warehouse stock" loading="lazy" className="h-56 w-full object-cover" />
+            <img src="/images/factory/factory-3.jpg" alt="Billionply warehouse stock" loading="lazy" className="h-56 w-full object-cover" />
             <div className="p-8">
               <p className="eyebrow">Dealers and distributors</p>
-              <h2 className="display-md mt-3">Grow with Billion Ply</h2>
+              <h2 className="display-md mt-3">Grow with Billionply</h2>
               <p className="mt-3 text-muted-foreground">Join a network of 1000+ dealers across India. Tell us about your firm and the brands you carry.</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/become-a-dealer" className="btn-primary">Become a dealer</Link>

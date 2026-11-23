@@ -9,7 +9,7 @@
  *    until then it still points at the WordPress original, which BLOCKS the
  *    WordPress shutdown.
  *  - Recon veneer: re-hosted inside this site (public/catalogues/).
- *  - The old "Hybrid Veneers" tile (Woodlark e-catalogue) is NOT a Billion Ply
+ *  - The old "Hybrid Veneers" tile (Woodlark e-catalogue) is NOT a Billionply
  *    catalogue any more: it is the Woodlark sister-brand card.
  *
  * Downloads emit a `catalogue_download` event on the Tyashin events bus.

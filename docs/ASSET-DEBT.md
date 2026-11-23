@@ -1,4 +1,4 @@
-# Asset debt: Billion Ply
+# Asset debt: Billionply
 
 Everything the site still needs from the client or the platform. Each slot is
 built and **hidden while empty**: no placeholder text is shown publicly. Only a
@@ -24,13 +24,13 @@ real input clears a row.
   current billionply.com uploads (the client's own material).
 - `public/images/mood/*` (living room, kitchen): lifestyle images from the
   current site's home page and blog. Used for mood only, never captioned as a
-  Billion Ply project.
+  Billionply project.
 - The three portrait photos next to the testimonials on the old home page carry
   different names from the testimonials (stock-looking). They are **not used**.
 
 ## Platform setup (requester side)
 
-- Tyashin project for Billion Ply, `/adopt` of `tyashin-sites/billion-ply-next`.
+- Tyashin project for Billionply, `/adopt` of `tyashin-sites/billion-ply-next`.
 - Plugins: SEO Co-Pilot (phone +91 8344444635), Contact Form & Lead Capture,
   Blog, Media Library + Image Optimization, YOM analytics (custom events:
   `catalogue_download`, `whatsapp_click`, `generate_lead`, `sister_brand_click`).

@@ -1,5 +1,5 @@
 /**
- * Billion Ply product range — current billionply.com minus Premium Hybrid
+ * Billionply product range — current billionply.com minus Premium Hybrid
  * Veneer (now on the sister brand Woodlark).
  *
  * FACTS RULE: every sentence and spec value below is taken from the current
@@ -33,6 +33,13 @@ export interface Product {
   standard: string | null;
   image: string;
   imageAlt: string;
+  /**
+   * In-use (lifestyle) shot for the page hero. Mood only: never captioned or
+   * described as a Billionply project. When set, the product shot (`image`)
+   * moves lower down the page.
+   */
+  heroImage?: string;
+  heroImageAlt?: string;
   /** One line for cards (from the current home page). */
   cardLine: string;
   /** Meta description (≤160 chars). */
@@ -124,12 +131,6 @@ export const veneerRanges: VeneerRange[] = [
   },
 ];
 
-/** Additional finishes shown in the current site's veneer carousel. */
-export const veneerFinishes = [
-  { name: 'Dyed Veneer', image: '/images/veneers/dyed.jpg' },
-  { name: 'Fluted Veneer', image: '/images/veneers/fluted.jpg' },
-];
-
 export const prelamFinishes = [
   { image: '/images/prelam/finish-3221.jpg', alt: 'Prelam finish, dark walnut tone' },
   { image: '/images/prelam/finish-3224.jpg', alt: 'Prelam finish, solid grey' },
@@ -145,12 +146,14 @@ export const products: Product[] = [
     short: 'Decorative Veneer',
     standard: 'IS 1328',
     image: '/images/products/decorative-veneer.jpg',
-    imageAlt: 'Fan of Billion Ply decorative veneer leaves in light and dark woods',
+    imageAlt: 'Fan of Billionply decorative veneer leaves in light and dark woods',
+    heroImage: '/images/mood/living-room-2.jpg',
+    heroImageAlt: 'A warm living room with wood-veneered furniture and panelling',
     cardLine: 'Natural wood veneers for furniture, walls and doors, up to 10 ft tall.',
     metaDescription:
-      'Billion Ply decorative veneer (IS 1328): natural, recon, teak, exotic, metallic, open-grain and rustic ranges, with a 10 ft height option. Download the catalogue.',
+      'Billionply decorative veneer (IS 1328): natural, recon, teak, exotic, metallic, open-grain and rustic ranges, with a 10 ft height option. Download the catalogue.',
     intro: [
-      'Crafted from high-quality natural wood, Billion Ply decorative veneer brings the beauty of real timber to furniture, walls and doors. Every sheet carries its own grain, so no two designs are alike.',
+      'Crafted from high-quality natural wood, Billionply decorative veneer brings the beauty of real timber to furniture, walls and doors. Every sheet carries its own grain, so no two designs are alike.',
       'It can be polished, stained or coated to match your design, and it is lightweight and easy to apply for seamless, high-end interiors. Sourced responsibly, it is a choice that does not trade sustainability for style.',
       'For modern architecture it comes in several sizes, including an extended 10 ft height for grand doors and high walls.',
     ],
@@ -187,12 +190,14 @@ export const products: Product[] = [
     short: 'Marine Plywood',
     standard: 'IS 710',
     image: '/images/products/marine-plywood.jpg',
-    imageAlt: 'Billion Ply marine plywood sheet with IS 710 face stamps',
+    imageAlt: 'Billionply marine plywood sheet with IS 710 face stamps',
+    heroImage: '/images/mood/kitchen.jpg',
+    heroImageAlt: 'A modern kitchen with wood-finish cabinets and a dining table',
     cardLine: 'BWP-bonded hardwood plywood for kitchens, bathrooms and coastal areas.',
     metaDescription:
-      'Billion Ply marine plywood (IS 710): hardwood core bonded with BWP resin, resistant to water, warping, delamination and fungus. Available in 10 ft sizes.',
+      'Billionply marine plywood (IS 710): hardwood core bonded with BWP resin, resistant to water, warping, delamination and fungus. Available in 10 ft sizes.',
     intro: [
-      'Manufactured from high-quality hardwood and bonded with boiling water-proof (BWP) grade resin, Billion Ply marine plywood is built to endure extreme conditions without losing strength or performance.',
+      'Manufactured from high-quality hardwood and bonded with boiling water-proof (BWP) grade resin, Billionply marine plywood is built to endure extreme conditions without losing strength or performance.',
       'It is highly resistant to water and resists warping, delamination and fungal attack, so structures stay sturdy for years. It goes through rigorous quality testing to meet IS 710.',
       'It is also available in 10 ft sizes for tall doors, high-end furniture and commercial setups.',
     ],
@@ -228,12 +233,12 @@ export const products: Product[] = [
     short: 'Block Board',
     standard: 'IS 1659',
     image: '/images/products/block-board.jpg',
-    imageAlt: 'Stacked Billion Ply block boards showing the edge',
+    imageAlt: 'Stacked Billionply block boards showing the edge',
     cardLine: 'Strong, stable boards for furniture, doors and partitions.',
     metaDescription:
-      'Billion Ply block board (IS 1659): strong, moisture-resistant and dimensionally stable for furniture, doors, partitions and panelling. 10 ft sizes for fewer joints.',
+      'Billionply block board (IS 1659): strong, moisture-resistant and dimensionally stable for furniture, doors, partitions and panelling. 10 ft sizes for fewer joints.',
     intro: [
-      'Billion Ply block board is made for strength, durability and stability, which makes it a natural choice for furniture, doors, partitions and panelling.',
+      'Billionply block board is made for strength, durability and stability, which makes it a natural choice for furniture, doors, partitions and panelling.',
       'It is moisture-resistant and dimensionally stable, so it holds up to daily use even in challenging environments, with a smooth surface that is easy to work.',
       'It also comes in 10 ft sizes for seamless applications with minimal joints.',
     ],
@@ -268,12 +273,14 @@ export const products: Product[] = [
     short: 'Prelam Plywood',
     standard: null,
     image: '/images/products/prelam-plywood.jpg',
-    imageAlt: 'Stack of Billion Ply prelam plywood sheets in wood and solid finishes',
+    imageAlt: 'Stack of Billionply prelam plywood sheets in wood and solid finishes',
+    heroImage: '/images/mood/study-desk.jpg',
+    heroImageAlt: 'A polished wood-finish desk in a study',
     cardLine: 'Factory-pressed melamine finish, ready to use for modular interiors.',
     metaDescription:
-      'Billion Ply prelam plywood: factory-pressed melamine finish, no extra surface work. For furniture, partitions, cabinets, wall panels and modular interiors.',
+      'Billionply prelam plywood: factory-pressed melamine finish, no extra surface work. For furniture, partitions, cabinets, wall panels and modular interiors.',
     intro: [
-      'Billion Ply prelam plywood comes with factory-pressed melamine paper, so it needs no further surface finishing.',
+      'Billionply prelam plywood comes with factory-pressed melamine paper, so it needs no further surface finishing.',
       'That makes it ideal for furniture, partitions, cabinets, wall panelling and modular interiors, with a seamless, finished look from day one.',
       'It is available in a range of colours, textures and finishes, so you can create customised spaces with ready-to-use surfaces.',
     ],
@@ -307,10 +314,10 @@ export const products: Product[] = [
     short: 'Flexible Plywood',
     standard: null,
     image: '/images/products/flexible-plywood.jpg',
-    imageAlt: 'A curved sheet of Billion Ply flexible plywood',
+    imageAlt: 'A curved sheet of Billionply flexible plywood',
     cardLine: 'Bendy ply for curved furniture, shopfitting and set design.',
     metaDescription:
-      'Billion Ply flexible plywood (bendy ply): bends and curves without cracking. For curved furniture, architectural elements, shopfitting and stage and set design.',
+      'Billionply flexible plywood (bendy ply): bends and curves without cracking. For curved furniture, architectural elements, shopfitting and stage and set design.',
     intro: [
       'Flexible plywood, also called bendy ply or flexi-ply, is designed to bend and curve without cracking or breaking, for projects that need curved shapes and smooth, flowing lines.',
       'It is made from thin layers of veneer with the grain running parallel through a high-quality core, which lets it bend easily while staying durable.',
@@ -344,12 +351,12 @@ export const products: Product[] = [
     short: 'Flush Door',
     standard: null,
     image: '/images/products/flush-door.jpg',
-    imageAlt: 'A Billion Ply flush door with a smooth wood face',
+    imageAlt: 'A Billionply flush door with a smooth wood face',
     cardLine: 'Solid-core doors that resist warping and swelling, up to 10 ft.',
     metaDescription:
-      'Billion Ply flush doors: solid core, sound insulation, resist warping, cracking and swelling. Smooth face ready for paint or polish, in a 10 ft size.',
+      'Billionply flush doors: solid core, sound insulation, resist warping, cracking and swelling. Smooth face ready for paint or polish, in a 10 ft size.',
     intro: [
-      'Billion Ply flush doors combine strength, function and style. They are made with precision from high-quality materials for a solid, smooth surface that looks good and lasts.',
+      'Billionply flush doors combine strength, function and style. They are made with precision from high-quality materials for a solid, smooth surface that looks good and lasts.',
       'They resist warping, cracking and swelling from changes in humidity, so they suit every climate. The solid core gives excellent sound insulation and a sturdy feel.',
       'The smooth face is a ready base for paint or polish, and a 10 ft size is available for larger frames.',
     ],

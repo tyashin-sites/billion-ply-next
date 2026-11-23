@@ -8,7 +8,7 @@ import { LeadForm } from '@/components/LeadForm';
 import { TrackedLink } from '@/components/TrackedLink';
 import { WhatsAppIcon } from '@/components/WhatsAppIcon';
 
-const description = `Contact Billion Ply: call ${siteConfig.contact.phone}, email ${siteConfig.contact.email}, WhatsApp us or send an enquiry. Plant at Bahadurgarh, Haryana.`;
+const description = `Contact Billionply: call ${siteConfig.contact.phone}, email ${siteConfig.contact.email}, WhatsApp us or send an enquiry. Plant at Bahadurgarh, Haryana.`;
 
 export const metadata = pageMetadata({ title: 'Contact us', description, path: '/contact' });
 

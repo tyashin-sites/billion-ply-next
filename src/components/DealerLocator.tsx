@@ -69,7 +69,7 @@ export function DealerLocator({ dealers }: { dealers: Dealer[] }) {
         )}
         <button type="submit" className="btn-primary mt-6 w-full">Find dealers</button>
         <p className="mt-4 text-xs text-muted-foreground">
-          Billion Ply works with 1000+ dealers across India.
+          Billionply works with 1000+ dealers across India.
         </p>
       </form>
 
@@ -77,7 +77,7 @@ export function DealerLocator({ dealers }: { dealers: Dealer[] }) {
         {!asked && (
           <div className="flex h-full min-h-64 flex-col justify-center rounded-lg border border-dashed p-8 text-muted-foreground">
             <MapPin className="h-8 w-8 text-leaf" aria-hidden="true" />
-            <p className="mt-4 max-w-md">Enter your city, pincode or state to see Billion Ply dealers near you.</p>
+            <p className="mt-4 max-w-md">Enter your city, pincode or state to see Billionply dealers near you.</p>
           </div>
         )}
 
@@ -104,7 +104,7 @@ export function DealerLocator({ dealers }: { dealers: Dealer[] }) {
           <div className="card p-8">
             <p className="font-display text-2xl text-ink">Contact us for your nearest dealer</p>
             <p className="mt-3 text-muted-foreground">
-              Tell us your city and we will connect you with the Billion Ply dealer who serves your area.
+              Tell us your city and we will connect you with the Billionply dealer who serves your area.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <TrackedLink href={siteConfig.contact.whatsappHref} external event="whatsapp_click" props={{ location: 'dealer-locator' }} className="btn-whatsapp">

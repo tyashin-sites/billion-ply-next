@@ -7,7 +7,7 @@ import { PageHero } from '@/components/PageHero';
 import { CtaBand } from '@/components/CtaBand';
 
 const description =
-  'Billion Ply standards and certifications: decorative veneer to IS 1328, marine plywood to IS 710, block board to IS 1659, E1 grade, termite and borer protection.';
+  'Billionply standards and certifications: decorative veneer to IS 1328, marine plywood to IS 710, block board to IS 1659, E1 grade, termite and borer protection.';
 
 export const metadata = pageMetadata({ title: 'Certifications and standards', description, path: '/certifications' });
 

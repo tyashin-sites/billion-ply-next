@@ -11,7 +11,7 @@ import { TrackedLink } from '@/components/TrackedLink';
 import { CtaBand } from '@/components/CtaBand';
 
 const description =
-  'The Billion Ply range: decorative veneer (IS 1328), marine plywood (IS 710), block board (IS 1659), prelam plywood, flexible plywood and flush doors.';
+  'The Billionply range: decorative veneer (IS 1328), marine plywood (IS 710), block board (IS 1659), prelam plywood, flexible plywood and flush doors.';
 
 export const metadata = pageMetadata({ title: 'Products', description, path: '/products' });
 
