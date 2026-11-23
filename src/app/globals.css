@@ -1,0 +1,375 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Billion Ply — "leaf and grain". Warm ivory paper, deep forest ink, the logo's
+ * leaf green as the accent and a warm oak as the second voice. Raw HSL
+ * triples; Tailwind wraps them (tailwind.config.ts). See docs/DESIGN-SPEC.md.
+ */
+@layer base {
+  :root {
+    --background: 40 33% 96%; /* #F8F5EF ivory */
+    --foreground: 146 27% 11%; /* #14231B forest ink */
+    --card: 0 0% 100%;
+    --primary: 105 56% 27%; /* #2F6B1E leaf-deep (AA on ivory) */
+    --primary-foreground: 0 0% 100%;
+    --muted: 40 24% 91%;
+    --muted-foreground: 135 5% 36%;
+    --border: 39 25% 85%;
+    --ring: 103 54% 39%;
+
+    --ink: 146 27% 11%;
+    --leaf: 103 54% 39%; /* #4E9A2E logo green */
+    --leaf-deep: 105 56% 27%;
+    --leaf-tint: 100 40% 93%;
+    --oak: 30 44% 48%; /* #B07A45 */
+    --oak-deep: 30 52% 33%;
+    --oak-tint: 33 45% 92%;
+    --paper: 40 33% 96%;
+
+    --radius: 0.375rem;
+    --radius-lg: 0.875rem;
+
+    /* Motion: one curve for CSS and JS. */
+    --ease-brand: cubic-bezier(0.22, 0.8, 0.24, 1);
+    --dur-micro: 160ms;
+    --dur-ui: 280ms;
+    --dur-reveal: 800ms;
+
+    /* Shadows tinted by the forest ink, never grey. */
+    --shadow-rest: 0 1px 2px hsl(146 27% 11% / 0.06), 0 8px 24px -12px hsl(146 27% 11% / 0.14);
+    --shadow-hover: 0 2px 4px hsl(146 27% 11% / 0.08), 0 22px 44px -18px hsl(105 56% 20% / 0.32);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display text-ink;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    line-height: 1.08;
+    font-optical-sizing: auto;
+  }
+  ::selection {
+    background: hsl(var(--leaf) / 0.25);
+    color: hsl(var(--ink));
+  }
+}
+
+/* Focus ring stays unlayered so no utility can remove it. */
+:focus-visible {
+  outline: 2px solid hsl(var(--leaf));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+@layer components {
+  .section {
+    padding-block: clamp(4rem, 9vw, 7.5rem);
+  }
+  .display-xl {
+    font-size: clamp(2.6rem, 6.4vw, 5.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+  }
+  .display-lg {
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    letter-spacing: -0.025em;
+  }
+  .display-md {
+    font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  }
+  .lead {
+    @apply text-muted-foreground;
+    font-size: clamp(1.05rem, 1.4vw, 1.22rem);
+    line-height: 1.65;
+  }
+  /* Eyebrow: small caps with a grain hairline dash. */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[0.72rem] font-semibold uppercase text-leaf-deep;
+    letter-spacing: 0.22em;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 2.25rem;
+    height: 1px;
+    background: linear-gradient(90deg, hsl(var(--oak)), hsl(var(--leaf)));
+  }
+  .on-dark .eyebrow,
+  .eyebrow.on-dark {
+    color: hsl(var(--leaf-tint));
+  }
+
+  /* Buttons */
+  .btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-semibold transition-all;
+    transition-duration: var(--dur-ui);
+    transition-timing-function: var(--ease-brand);
+  }
+  .btn-primary {
+    @apply btn bg-leaf-deep text-white;
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.18), var(--shadow-rest);
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, hsl(0 0% 100% / 0.22) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 700ms var(--ease-brand);
+  }
+  .btn-primary:hover {
+    @apply bg-ink;
+    transform: translateY(-1px);
+    box-shadow: inset 0 1px 0 hsl(0 0% 100% / 0.14), var(--shadow-hover);
+  }
+  .btn-primary:hover::after {
+    transform: translateX(120%);
+  }
+  .btn-ghost {
+    @apply btn border text-ink;
+    border-color: color-mix(in srgb, hsl(var(--ink)) 22%, transparent);
+  }
+  .btn-ghost:hover {
+    @apply bg-ink text-white;
+    border-color: hsl(var(--ink));
+  }
+  .on-dark .btn-ghost {
+    @apply text-white;
+    border-color: hsl(0 0% 100% / 0.35);
+  }
+  .on-dark .btn-ghost:hover {
+    @apply bg-white text-ink;
+  }
+  .btn-whatsapp {
+    @apply btn text-white;
+    background: #1f8f4e;
+  }
+  .btn-whatsapp:hover {
+    background: #17713d;
+    transform: translateY(-1px);
+  }
+
+  /* Cards with a layered shadow and a gradient hairline on hover. */
+  .card {
+    @apply relative rounded-lg bg-card;
+    box-shadow: var(--shadow-rest);
+    transition:
+      transform var(--dur-ui) var(--ease-brand),
+      box-shadow var(--dur-ui) var(--ease-brand);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(140deg, hsl(var(--oak) / 0.7), hsl(var(--leaf) / 0.7));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity var(--dur-ui) var(--ease-brand);
+    pointer-events: none;
+  }
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+  }
+  .card-hover:hover::before {
+    opacity: 1;
+  }
+
+  /* Dark "showroom" sections: forest ink with film grain. */
+  .ink-section {
+    @apply relative bg-ink text-white;
+    isolation: isolate;
+  }
+  .ink-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .ink-section h1,
+  .ink-section h2,
+  .ink-section h3 {
+    color: #fff;
+  }
+
+  /* Wood-grain hairline: thin rule drawn in oak to leaf. */
+  .grain-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--oak) / 0.6), hsl(var(--leaf) / 0.6), transparent);
+  }
+
+  /* Spec table */
+  .spec-table th {
+    @apply py-3 pr-6 text-left align-top text-sm font-medium text-muted-foreground;
+    width: 38%;
+  }
+  .spec-table td {
+    @apply py-3 text-sm text-ink;
+  }
+  .spec-table tr + tr {
+    @apply border-t;
+  }
+
+  /* Form fields */
+  .field {
+    @apply block w-full rounded-md border bg-white px-4 py-3 text-sm text-ink placeholder:text-muted-foreground/70;
+    transition: border-color var(--dur-micro), box-shadow var(--dur-micro);
+  }
+  .field:focus {
+    outline: none;
+    border-color: hsl(var(--leaf));
+    box-shadow: 0 0 0 3px hsl(var(--leaf) / 0.18);
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink;
+  }
+
+  .prose-blog {
+    @apply leading-relaxed text-ink/90;
+  }
+  .prose-blog h2 {
+    @apply mt-10 mb-3 text-2xl;
+  }
+  .prose-blog h3 {
+    @apply mt-8 mb-2 text-xl;
+  }
+  .prose-blog p,
+  .prose-blog ul,
+  .prose-blog ol {
+    @apply mb-4;
+  }
+  .prose-blog ul {
+    @apply ml-6 list-disc;
+  }
+  .prose-blog ol {
+    @apply ml-6 list-decimal;
+  }
+  .prose-blog a {
+    @apply text-leaf-deep underline;
+  }
+  .prose-blog img {
+    @apply my-6 rounded-lg;
+  }
+}
+
+/* ---------- Motion ---------- */
+
+/* Reveal: hidden ONLY after JS marks the element (Reveal.tsx), so SSR,
+   no-JS and reduced-motion visitors always see the content. */
+.reveal-armed {
+  opacity: 0;
+  transform: translateY(22px);
+  filter: blur(3px);
+}
+.reveal-armed.in-view {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition:
+    opacity var(--dur-reveal) var(--ease-brand),
+    transform var(--dur-reveal) var(--ease-brand),
+    filter var(--dur-reveal) var(--ease-brand);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Signature 1 — veneer leaves fan out in the hero (transform-only, LCP-safe). */
+.leaf-fan > * {
+  transition: transform 1200ms var(--ease-brand);
+}
+[data-open='true'] > .leaf-fan > :nth-child(1) {
+  transform: rotate(-9deg) translate(-14%, 3%);
+}
+[data-open='true'] > .leaf-fan > :nth-child(2) {
+  transform: rotate(-2deg) translate(-2%, -2%);
+}
+[data-open='true'] > .leaf-fan > :nth-child(3) {
+  transform: rotate(6deg) translate(12%, 2%);
+}
+
+/* Signature 2 — grain marquee: swatches wake from grey to colour on hover. */
+.grain-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 60s linear infinite;
+}
+.grain-marquee:hover {
+  animation-play-state: paused;
+}
+.grain-marquee img {
+  filter: grayscale(0.55) saturate(0.8);
+  transition: filter 600ms var(--ease-brand), transform 600ms var(--ease-brand);
+}
+.grain-marquee figure:hover img {
+  filter: none;
+  transform: scale(1.04);
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Signature 3 — timeline line draws as you scroll (scaleY, transform-only). */
+.timeline-line {
+  transform-origin: top;
+  transform: scaleY(var(--progress, 1));
+}
+
+/* Header: shadow + logo scale on scroll, never a height change (CLS law). */
+.site-header {
+  transition: box-shadow var(--dur-ui) var(--ease-brand), background-color var(--dur-ui);
+}
+.site-header.is-scrolled {
+  box-shadow: 0 10px 30px -20px hsl(146 27% 11% / 0.35);
+  background-color: hsl(var(--background) / 0.94);
+}
+.site-header .brand-logo {
+  transition: transform var(--dur-ui) var(--ease-brand);
+  transform-origin: left center;
+}
+.site-header.is-scrolled .brand-logo {
+  transform: scale(0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-armed {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .grain-marquee {
+    animation: none;
+  }
+}

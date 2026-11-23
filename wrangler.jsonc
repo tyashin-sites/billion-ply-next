@@ -1,0 +1,28 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "site-billion-ply-next",
+  "main": ".open-next/worker.js",
+  "tail_consumers": [{ "service": "aapastech-security-log-tail" }],
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [
+    { "binding": "NEXT_INC_CACHE_KV", "id": "8623f0daa95d436895ae4dc6cb837b45" }
+  ],
+  // ISR revalidation queue (open-next.config.ts `queue: doQueue`). Without it
+  // stale pages are never regenerated — tyashin-platform CLAUDE.md §12c-bis.
+  "services": [{ "binding": "WORKER_SELF_REFERENCE", "service": "site-billion-ply-next" }],
+  "durable_objects": {
+    "bindings": [{ "name": "NEXT_CACHE_DO_QUEUE", "class_name": "DOQueueHandler" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["DOQueueHandler"] }],
+  "vars": {
+    "TYASHIN_API_URL": "https://website-api.tyashin.com",
+    "NEXT_PUBLIC_SITE_DOMAIN": "billionply.com",
+    // Preview: stays "true" until the client approves go-live.
+    "ROBOTS_NOINDEX": "true"
+  }
+}
