@@ -23,7 +23,7 @@ export default function Page() {
         "blocks": [
           {
             "paragraphs": [
-              "Every board is made at our Bahadurgarh plant with 4 Quad Press technology and Italian sanders, to E1 grade, with termite and borer protection."
+              "Decorative veneer, plywood, block board and flush doors for interiors, furniture and doors, from a family in plywood and veneer since 1997."
             ]
           }
         ],

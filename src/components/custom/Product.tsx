@@ -3,7 +3,6 @@ import { ArrowUpRight, Check, Download } from 'lucide-react';
 import { BRAND, WHATSAPP_URL } from '@/config/site';
 import {
   getProduct,
-  manufacturing,
   prelamFinishes,
   products,
   veneerFinishes,
@@ -12,7 +11,7 @@ import {
 } from '@/data/products';
 import { catalogues } from '@/data/catalogues';
 import { certifications } from '@/data/company';
-import { SectionHeading } from '@/components/kit';
+import { Hero, SectionHeading } from '@/components/kit';
 import { TrackedLink } from './TrackedLink';
 
 const STANDARD_TEXT: Record<string, string> = {
@@ -65,18 +64,6 @@ export function ProductSpec({ slug }: { slug: string }) {
                   <td className="py-3">{s.value}</td>
                 </tr>
               ))}
-              <tr>
-                <th scope="row" className="text-muted py-3 pr-6 text-left align-top font-medium">Emission grade</th>
-                <td className="py-3">E1</td>
-              </tr>
-              <tr>
-                <th scope="row" className="text-muted py-3 pr-6 text-left align-top font-medium">Protection</th>
-                <td className="py-3">Termite and borer protection</td>
-              </tr>
-              <tr>
-                <th scope="row" className="text-muted py-3 pr-6 text-left align-top font-medium">Pressing and finishing</th>
-                <td className="py-3">4 Quad Press technology, Italian sanders</td>
-              </tr>
             </tbody>
           </table>
           <h3 className="tt-3 mt-12">Features</h3>
@@ -108,23 +95,13 @@ export function ProductSpec({ slug }: { slug: string }) {
               </Link>
             </div>
           ) : null}
-          <div className="card p-7" data-fx="rise">
-            <p className="eyebrow">How it is made</p>
-            <ul className="mt-2 grid gap-4 sm:grid-cols-2">
-              {manufacturing.map((m) => (
-                <li key={m.title}>
-                  <p className="font-semibold">{m.title}</p>
-                  <p className="text-muted mt-1 text-sm">{m.text}</p>
-                </li>
-              ))}
-              {p.tenFoot ? (
-                <li>
-                  <p className="font-semibold">10 ft sizes</p>
-                  <p className="text-muted mt-1 text-sm">For tall doors and high walls with fewer joints.</p>
-                </li>
-              ) : null}
-            </ul>
-          </div>
+          {p.tenFoot ? (
+            <div className="card p-7" data-fx="rise">
+              <p className="eyebrow">Sizes</p>
+              <p className="font-semibold">10 ft sizes</p>
+              <p className="text-muted mt-1 text-sm">For tall doors and high walls with fewer joints.</p>
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
@@ -151,7 +128,7 @@ export function VeneerRanges() {
                 <img src={v.image} alt={`${v.name} swatch`} width={900} height={675} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
                 <div className="p-5">
                   <h3 className="tt-3">{v.name}</h3>
-                  <p className="text-muted mt-2 text-sm">{v.blurb}</p>
+                  {v.blurb ? <p className="text-muted mt-2 text-sm">{v.blurb}</p> : null}
                   {cat ? (
                     <TrackedLink href={cat.href} event="catalogue_download" props={{ catalogue: cat.key, location: `veneer-range-${v.slug}` }} className="text-primary mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
                       <Download className="h-4 w-4" aria-hidden /> {cat.title}
@@ -288,5 +265,44 @@ export function WoodlarkCard({ location }: { location: string }) {
         </span>
       </span>
     </TrackedLink>
+  );
+}
+
+/**
+ * Product page hero: the title beside an in-use (lifestyle) photo, or the
+ * product shot where no in-use photo exists yet. Mood photos are never
+ * captioned as Billionply projects.
+ */
+export function ProductHero({ slug, title, eyebrow }: { slug: string; title: string; eyebrow?: string }) {
+  const p = getProduct(slug);
+  if (!p) return null;
+  const src = p.heroImage ?? p.image;
+  const alt = p.heroImage ? (p.heroImageAlt ?? p.imageAlt) : p.imageAlt;
+  return (
+    <Hero
+      variant="split"
+      eyebrow={eyebrow}
+      headline={title}
+      sub={p.cardLine}
+      image={{ src, alt, brief: alt, aspect: src.endsWith('flexible-plywood.jpg') ? 'square' : 'landscape' }}
+    />
+  );
+}
+
+/** Home "The range": the six products as photo cards. */
+export function ProductRange({ eyebrow, title }: { eyebrow?: string; title: string }) {
+  return (
+    <section className="section">
+      <div className="container-x">
+        <SectionHeading eyebrow={eyebrow} title={title} className="max-w-3xl" />
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-fx="stagger">
+          {products.map((p) => (
+            <li key={p.slug}>
+              <ProductCard p={p} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   );
 }

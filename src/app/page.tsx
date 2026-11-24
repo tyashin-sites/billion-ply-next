@@ -1,7 +1,8 @@
 import { GrainStrip, HomeWoodlark, Audiences } from '@/components/custom/Home';
+import { ProductRange } from '@/components/custom/Product';
 import { pageMetadata } from '@/lib/seo';
-import { CtaBand, Faq, Features, Hero, JsonLd, Stats, Story, Testimonials } from '@/components/kit';
-import type { CtaBandProps, FaqProps, FeaturesProps, HeroProps, StatsProps, StoryProps, TestimonialsProps } from '@/components/kit';
+import { CtaBand, Faq, Hero, JsonLd, Stats, Story, Testimonials } from '@/components/kit';
+import type { CtaBandProps, FaqProps, HeroProps, StatsProps, StoryProps, TestimonialsProps } from '@/components/kit';
 import { organizationLd, websiteLd, faqLd } from '@/lib/schema';
 
 const META = pageMetadata({
@@ -15,7 +16,7 @@ export const metadata = { ...META, title: { absolute: META.title as string } };
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), faqLd([{"q":"What products does Billionply make?","a":"Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Prelam Plywood, Flexible Plywood and Flush Doors."},{"q":"Which standards and technology do you use?","a":"4 Quad Press technology for strength, E1 grade for safe indoor use, Italian sanders for a smooth finish, and termite and borer protection."},{"q":"How long has Billionply been in the industry?","a":"Since 1997. Three generations of the Chhabra family run the company, with 1000+ dealers across India."},{"q":"Where can I buy Billionply products?","a":"Through our dealers across India. Use Find a dealer, or message us on WhatsApp and we will connect you with the nearest one."}])]} />
+      <JsonLd nodes={[organizationLd("LocalBusiness"), websiteLd(), faqLd([{"q":"What products does Billionply make?","a":"Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Prelam Plywood, Flexible Plywood and Flush Doors."},{"q":"Which standards and technology do you use?","a":"4 Quad Press technology for strength, E1 grade for safe indoor use, Italian sanders for a smooth finish, and termite and borer protection."},{"q":"How long has Billionply been in the industry?","a":"Since 1997. Three generations of the Chhabra family run the company, with 1000+ dealers across India."},{"q":"Where can I buy Billionply products?","a":"Through our dealers across India. Use Find a dealer, or message us on WhatsApp and we will connect you with the nearest one."}])]} />
       <Hero {...({
         "variant": "split",
         "eyebrow": "In the industry since 1997",
@@ -61,50 +62,7 @@ export default function Page() {
           }
         ]
       } satisfies StatsProps)} />
-      <Features {...({
-        "variant": "grid",
-        "eyebrow": "The range",
-        "headline": "Six products, made at our own plant",
-        "items": [
-          {
-            "title": "Decorative Veneer",
-            "body": "IS 1328. Natural wood veneers for furniture, walls and doors, up to 10 ft tall.",
-            "icon": "Layers",
-            "href": "/products/decorative-veneer"
-          },
-          {
-            "title": "Marine Plywood",
-            "body": "IS 710. BWP-bonded hardwood plywood for kitchens, bathrooms and coastal homes.",
-            "icon": "Waves",
-            "href": "/products/marine-plywood"
-          },
-          {
-            "title": "Block Board",
-            "body": "IS 1659. Strong, stable boards for furniture, doors and partitions.",
-            "icon": "Package",
-            "href": "/products/block-board"
-          },
-          {
-            "title": "Prelam Plywood",
-            "body": "A factory-pressed melamine finish, ready for modular interiors.",
-            "icon": "Paintbrush",
-            "href": "/products/prelam-plywood"
-          },
-          {
-            "title": "Flexible Plywood",
-            "body": "Bendy ply for curved furniture, shopfitting and set design.",
-            "icon": "Feather",
-            "href": "/products/flexible-plywood"
-          },
-          {
-            "title": "Flush Doors",
-            "body": "Solid-core doors that resist warping and swelling, up to 10 ft.",
-            "icon": "Home",
-            "href": "/products/flush-door"
-          }
-        ],
-        "columns": 3
-      } satisfies FeaturesProps)} />
+      <ProductRange eyebrow="The range" title="Six products for interiors, furniture and doors" />
       <HomeWoodlark />
       <GrainStrip />
       <Story {...({

@@ -23,7 +23,7 @@ export default function Page() {
         "blocks": [
           {
             "paragraphs": [
-              "Photos from our plant and warehouse. Named case studies will be added here."
+              "A look at Billionply boards and the people who make them."
             ]
           }
         ],

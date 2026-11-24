@@ -73,6 +73,7 @@ export async function Footer({ blurb, columns }: FooterProps) {
                   <li key={l.href + l.label}>
                     <Link
                       href={l.href}
+                      {...(/^https?:/.test(l.href) ? { target: '_blank', rel: 'noopener' } : {})}
                       className="text-paper/80 hover:text-paper underline-offset-4 hover:underline"
                     >
                       {l.label}

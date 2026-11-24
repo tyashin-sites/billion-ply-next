@@ -1,8 +1,10 @@
-import { ProductActions, ProductSpec, RelatedProducts } from '@/components/custom/Product';
+import { ProductActions, ProductHero, ProductSpec, RelatedProducts } from '@/components/custom/Product';
 import { pageMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { getProduct } from '@/data/products';
+import { SITE_URL } from '@/lib/seo';
 
 export const metadata = pageMetadata({
   title: "Flush Doors",
@@ -15,28 +17,17 @@ const CRUMBS = [{"name":"Home","path":"/"},{"name":"Flush Door","path":"/product
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS)]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("flush-door")!.name}`, description: getProduct("flush-door")!.metaDescription, path: "/products/flush-door", images: [`${SITE_URL}${getProduct("flush-door")!.image}`] })]} />
       <Breadcrumbs items={CRUMBS} />
-      <section className="section pb-0">
-        <div className="container-x max-w-3xl">
-          <h1 className="tt-display reveal">Flush Doors</h1>
-        </div>
-      </section>
+      <ProductHero slug="flush-door" title="Flush Doors" eyebrow="Solid core · 10 ft size" />
       <Story {...({
-        "variant": "split",
-        "eyebrow": "Solid core · 10 ft size",
-        "headline": "What flush door is",
+        "variant": "stacked",
+        "headline": "What a flush door is",
         "paragraphs": [
           "Billionply flush doors are made with precision from high-quality materials for a solid, smooth surface that looks good and lasts.",
           "They resist warping, cracking and swelling from changes in humidity. The solid core gives sound insulation, and the face is ready for paint or polish."
         ],
-        "image": {
-          "src": "/images/products/flush-door.jpg",
-          "alt": "A Billionply flush door with a smooth wood face",
-          "brief": "A Billionply flush door with a smooth wood face",
-          "aspect": "portrait"
-        },
-        "imageSide": "right"
+        "eyebrow": "What it is"
       } satisfies StoryProps)} />
       <ProductActions slug="flush-door" />
       <Features {...({
@@ -45,20 +36,16 @@ export default function Page() {
         "headline": "Where flush door is used",
         "items": [
           {
-            "title": "Homes",
-            "body": "Billionply flush door for homes."
+            "title": "Homes"
           },
           {
-            "title": "Offices",
-            "body": "Billionply flush door for offices."
+            "title": "Offices"
           },
           {
-            "title": "Commercial spaces",
-            "body": "Billionply flush door for commercial spaces."
+            "title": "Commercial spaces"
           },
           {
-            "title": "Large 10 ft door frames",
-            "body": "Billionply flush door for large 10 ft door frames."
+            "title": "Large 10 ft door frames"
           }
         ]
       } satisfies FeaturesProps)} />

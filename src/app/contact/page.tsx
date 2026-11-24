@@ -14,7 +14,7 @@ const CRUMBS = [{"name":"Home","path":"/"},{"name":"Contact","path":"/contact"}]
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS)]} />
+      <JsonLd nodes={[organizationLd("LocalBusiness"), websiteLd(), breadcrumbLd(CRUMBS)]} />
       <Breadcrumbs items={CRUMBS} />
       <Contact {...({
         "eyebrow": "Contact",

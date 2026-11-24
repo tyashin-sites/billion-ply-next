@@ -5,7 +5,8 @@ import { SectionHeading } from './SectionHeading';
 
 export interface FeatureItem {
   title: string;
-  body: string;
+  /** Optional: a row with nothing to add beyond its title shows the title only. */
+  body?: string;
   icon?: IconName;
   /** Optional site route the card links to (e.g. a service page). */
   href?: string;
@@ -60,7 +61,7 @@ export function Features({
                     </span>
                   ) : null}
                   <h3 className="tt-3 mt-5">{it.title}</h3>
-                  <p className="text-muted mt-2 text-[15.5px] leading-relaxed">{it.body}</p>
+                  {it.body ? <p className="text-muted mt-2 text-[15.5px] leading-relaxed">{it.body}</p> : null}
                   {it.href ? (
                     <span className="text-primary mt-4 inline-flex items-center gap-1 text-sm font-semibold">
                       Learn more <ArrowRight className="h-4 w-4" aria-hidden />
@@ -97,7 +98,7 @@ export function Features({
                     it.title
                   )}
                 </h3>
-                <p className="text-muted text-[15.5px] leading-relaxed md:col-span-7">{it.body}</p>
+                {it.body ? <p className="text-muted text-[15.5px] leading-relaxed md:col-span-7">{it.body}</p> : null}
               </li>
             ))}
           </ol>
@@ -119,7 +120,7 @@ export function Features({
                     <Icon name={it.icon} className="text-primary h-6 w-6" strokeWidth={1.75} />
                   ) : null}
                   <h3 className="tt-2 mt-4">{it.title}</h3>
-                  <p className="lead mt-4">{it.body}</p>
+                  {it.body ? <p className="lead mt-4">{it.body}</p> : null}
                   {it.href ? (
                     <Link
                       href={it.href}

@@ -28,10 +28,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: "#F8F5EF" },
-    { media: '(prefers-color-scheme: dark)', color: "#14231B" },
-  ],
+  // Light only: the client's logo is a JPG on white, which shows as a white
+  // box on a dark header. Re-enable the dark scheme (drop data-theme="light"
+  // on <html>) once a transparent logo is in the Brand Kit.
+  themeColor: "#F8F5EF",
 };
 
 // First-frame ground: html/body take the page background before the CSS
@@ -141,7 +141,7 @@ const FOOTER = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${bodyFont.variable} ${headingFont.variable} ${monoFont.variable}`}>
+    <html lang="en" data-theme="light" className={`${bodyFont.variable} ${headingFont.variable} ${monoFont.variable}`}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: FIRST_FRAME_CSS }} />
         {/* Brand kit first: the customer's Tyashin colours over this palette. */}

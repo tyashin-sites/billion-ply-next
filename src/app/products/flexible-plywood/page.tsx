@@ -1,8 +1,10 @@
-import { ProductActions, ProductSpec, RelatedProducts } from '@/components/custom/Product';
+import { ProductActions, ProductHero, ProductSpec, RelatedProducts } from '@/components/custom/Product';
 import { pageMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { getProduct } from '@/data/products';
+import { SITE_URL } from '@/lib/seo';
 
 export const metadata = pageMetadata({
   title: "Flexible Plywood (bendy ply)",
@@ -15,28 +17,17 @@ const CRUMBS = [{"name":"Home","path":"/"},{"name":"Flexible Plywood","path":"/p
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS)]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("flexible-plywood")!.name}`, description: getProduct("flexible-plywood")!.metaDescription, path: "/products/flexible-plywood", images: [`${SITE_URL}${getProduct("flexible-plywood")!.image}`] })]} />
       <Breadcrumbs items={CRUMBS} />
-      <section className="section pb-0">
-        <div className="container-x max-w-3xl">
-          <h1 className="tt-display reveal">Flexible Plywood</h1>
-        </div>
-      </section>
+      <ProductHero slug="flexible-plywood" title="Flexible Plywood" eyebrow="Bendy ply" />
       <Story {...({
-        "variant": "split",
-        "eyebrow": "Bendy ply",
+        "variant": "stacked",
         "headline": "What flexible plywood is",
         "paragraphs": [
           "Flexible plywood, also called bendy ply or flexi-ply, bends and curves without cracking or breaking, for shapes and smooth, flowing lines.",
           "Thin layers of veneer with the grain running parallel let it bend easily while staying durable once formed."
         ],
-        "image": {
-          "src": "/images/products/flexible-plywood.jpg",
-          "alt": "A curved sheet of Billionply flexible plywood",
-          "brief": "A curved sheet of Billionply flexible plywood",
-          "aspect": "square"
-        },
-        "imageSide": "right"
+        "eyebrow": "What it is"
       } satisfies StoryProps)} />
       <ProductActions slug="flexible-plywood" />
       <Features {...({
@@ -45,20 +36,16 @@ export default function Page() {
         "headline": "Where flexible plywood is used",
         "items": [
           {
-            "title": "Curved furniture",
-            "body": "Billionply flexible plywood for curved furniture."
+            "title": "Curved furniture"
           },
           {
-            "title": "Architectural elements",
-            "body": "Billionply flexible plywood for architectural elements."
+            "title": "Architectural elements"
           },
           {
-            "title": "Custom interiors",
-            "body": "Billionply flexible plywood for custom interiors."
+            "title": "Custom interiors"
           },
           {
-            "title": "Shopfitting",
-            "body": "Billionply flexible plywood for shopfitting."
+            "title": "Shopfitting"
           }
         ]
       } satisfies FeaturesProps)} />

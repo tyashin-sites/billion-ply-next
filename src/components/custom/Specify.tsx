@@ -58,9 +58,6 @@ export function CompareTable() {
             </li>
           ))}
         </ul>
-        <p className="text-muted mt-6 text-sm">
-          All Billionply products are made with 4 Quad Press technology and Italian sanders, to E1 grade, with termite and borer protection.
-        </p>
       </div>
     </section>
   );
