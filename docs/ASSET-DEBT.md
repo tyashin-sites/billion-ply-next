@@ -7,7 +7,7 @@ empty**; nothing shows a placeholder publicly. Only a real input clears a row.
 |---|------|---------------|--------|
 | 1 | **Official logo** (SVG or transparent PNG). The brand kit holds the JPG from the old site (light logo). Upload the new file in the Tyashin admin → Brand Kit; the site picks it up within 5 minutes, no rebuild. A dark-background version goes in the "Dark" slot (the footer shows the wordmark until then). | Tyashin Brand Kit | Quality only |
 | 2 | **Thickness, size and grade tables per product; warranty terms** | `spec` rows with `value: null` in `src/data/products.ts` | Spec completeness |
-| 3 | **BIS licence (CM/L) numbers and certificate images** for IS 1328, IS 710, IS 1659 | `certifications` in `src/data/company.ts` | Certifications detail |
+| 3 | **BIS licences**: IS 1328 is CM/L-9693005 (from the catalogue, shown on the site). Still needed: IS 710 and IS 1659 numbers, validity dates and certificate images | `certifications` in `src/data/company.ts` | Certifications detail |
 | 4 | **Dealer list** (firm, city, state; optional address, pincode, phone) | `src/data/dealers.json` (format in `src/lib/dealer-search.ts`) | Locator results ("Contact us for your nearest dealer" until then) |
 | 5 | **Named projects / case studies** with photos | `caseStudies` in `src/data/company.ts` | Projects case-study grid |
 | 6 | **Dated legacy milestones** | `timeline` in `src/data/company.ts` | About timeline |
