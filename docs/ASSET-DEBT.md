@@ -14,6 +14,8 @@ empty**; nothing shows a placeholder publicly. Only a real input clears a row.
 | 7 | **Confirm E1, 4 Quad Press, Italian sanders and termite/borer protection apply to every product** (the old site states them company-wide) | product spec block | Spec accuracy |
 | 8 | **Any IS standard for prelam, flexible ply and flush doors** | `standard` in `src/data/products.ts` | Compare table shows "Ask us" |
 | 9 | **In-use photos for Block Board, Flexible Plywood and Flush Doors** (their pages use product shots). Alternative: AI scenes, ≈ $0.34 total, needs Aditya's approval on the coder machine (cost gate). | `image.src` on those pages | Lifestyle look |
+| 10 | **Confirm the QR codes printed on boards** open `billionply.com/billionply-product-verification/`. The new site serves that page at the same URL (do not move or remove it). | `src/app/billionply-product-verification` | Product verification after cutover |
+| 11 | **billionveneers.com** (QR on the back of the natural veneer catalogue) has no DNS and leads nowhere. Point it at Tyashin and 301 it to www.billionply.com, or reprint. | DNS (client, GoDaddy) | Catalogue QR |
 
 ## Done (24 Nov 2026)
 - Tyashin project "Billionply" `6aff44f34a248d00ad16dc21`, owned by sales@billionply.com; repo adopted, deploys on push to `main`.

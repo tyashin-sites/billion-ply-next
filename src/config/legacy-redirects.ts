@@ -17,6 +17,9 @@ export const legacyRedirects: Record<string, string> = {
   '/gallery': '/projects',
   '/contact-us': '/contact',
   '/event-photos': '/events',
+  // Unlinked WordPress pages found in its page list (wp-json, 24 Nov 2026).
+  '/digital-card': '/contact',
+  '/home-new': '/',
   // Legal pages of the first build moved to the kit paths.
   '/privacy-policy': '/privacy',
   '/terms-and-conditions': '/terms',
