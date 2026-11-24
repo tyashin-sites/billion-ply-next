@@ -6,7 +6,7 @@ real input clears a row.
 
 | # | Item | Where it goes | Blocks |
 |---|------|---------------|--------|
-| 1 | **Natural veneer catalogue on Tyashin storage.** The original PDF is 60 MB, over Cloudflare's 25 MiB per-file limit, so it cannot ship inside the Worker. Upload it to the project's Media Library and set `NEXT_PUBLIC_NATURAL_CATALOGUE_URL` (or edit `src/data/catalogues.ts`). Until then every "Download catalogue" button links to the WordPress original. | `src/data/catalogues.ts` | WordPress shutdown |
+| 1 | ~~Natural veneer catalogue on Tyashin storage~~ **Done 2026-11-24**: in R2 bucket `billionply-site-assets`, served at `/downloads/billionply-natural-veneer-catalogue.pdf`. | `src/data/catalogues.ts` | — |
 | 2 | **Official logo file** (SVG or transparent PNG). The site uses the 768x379 JPG from the current site (the header uses a whitespace-trimmed crop, `logo-header.jpg`). | `public/images/logo.*`, Header, Footer, schema | Quality only |
 | 3 | **Thickness, size and grade tables per product** | `spec` rows with `value: null` in `src/data/products.ts` | Spec completeness |
 | 4 | **Warranty terms** per product | `spec` "Warranty" rows | Spec completeness |
@@ -27,10 +27,9 @@ real input clears a row.
 - The three portrait photos next to the testimonials on the old home page carry
   different names from the testimonials (stock-looking). They are **not used**.
 
-## Platform setup (requester side)
+## Platform setup (done 2026-11-24)
 
-- Tyashin project for Billionply, `/adopt` of `tyashin-sites/billion-ply-next`.
-- Plugins: SEO Co-Pilot (phone +91 8344444635), Contact Form & Lead Capture,
-  Blog, Media Library + Image Optimization, YOM analytics (custom events:
-  `catalogue_download`, `whatsapp_click`, `generate_lead`, `woodlark_click`).
-- Blog: publish the two posts in `docs/blog-migration/posts.json`.
+- Tyashin project: "Billionply" `6aff44f34a248d00ad16dc21`, owned by sales@billionply.com (team `6aff44f24741cde615e868b1`), slug `varun-website-mwnwnuc6`. Repo adopted, deploys on push to `main`.
+- Plugins installed: Contact Form & Lead Capture, Blog (auto-publish and AI suggestions off), YOM analytics (lead tracking on). Custom events: `catalogue_download`, `whatsapp_click`, `generate_lead`, `woodlark_click`.
+- Blog: both posts from `docs/blog-migration/posts.json` published with their original dates.
+- Domain: `www.billionply.com` registered (pending validation). At go-live the client sets, at Hostinger: CNAME `www` → `sites.tyashin.com`, the TXT `_cf-custom-hostname.www` record shown in the project's Domains tab, and a 301 from `billionply.com` to `https://www.billionply.com/`. Then flip `src/config/launch.ts` `indexable` + `ROBOTS_NOINDEX`, and install SEO Co-Pilot (needs the domain active).

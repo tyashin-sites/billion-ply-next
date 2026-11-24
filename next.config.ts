@@ -6,7 +6,7 @@ const TYASHIN_SUBDOMAIN = 'https://billion-ply.sites.tyashin.com';
 const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_TYASHIN_API_URL: process.env.TYASHIN_API_URL || 'https://website-api.tyashin.com',
-    NEXT_PUBLIC_SITE_DOMAIN: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'billionply.com',
+    NEXT_PUBLIC_SITE_DOMAIN: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'www.billionply.com',
   },
   // Images are pre-sized JPEGs in public/images; the Tyashin Image
   // Optimization plugin handles AVIF/WebP at the edge once installed.

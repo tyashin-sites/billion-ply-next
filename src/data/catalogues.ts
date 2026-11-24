@@ -3,11 +3,9 @@
  * equivalent here (issue 100):
  *
  *  - Natural veneer ("Download Catalogue" on /decorative-veneer/): the original
- *    is 60 MB, over Cloudflare's 25 MiB static-asset limit, so it cannot ship
- *    inside the Worker. `href` points at the Tyashin-hosted copy once the
- *    file is uploaded to the project's Media Library (docs/ASSET-DEBT.md #1);
- *    until then it still points at the WordPress original, which BLOCKS the
- *    WordPress shutdown.
+ *    is 60 MB, over Cloudflare's 25 MiB static-asset limit and the Media
+ *    Library's 15 MB PDF cap, so it lives in the site's R2 bucket
+ *    `billionply-site-assets` and is served by src/app/downloads/[file].
  *  - Recon veneer: re-hosted inside this site (public/catalogues/).
  *  - The old "Hybrid Veneers" tile (Woodlark e-catalogue) is NOT a Billionply
  *    catalogue any more: it is the Woodlark card.
@@ -29,11 +27,9 @@ export const catalogues: Record<string, Catalogue> = {
     key: 'natural',
     title: 'Natural Veneer Catalogue',
     description: 'The full natural decorative veneer collection.',
-    href:
-      process.env.NEXT_PUBLIC_NATURAL_CATALOGUE_URL ||
-      'https://billionply.com/wp-content/uploads/2025/01/NATURAL-E-CATALOGUE-pdf-VDR-161.pdf',
+    href: '/downloads/billionply-natural-veneer-catalogue.pdf',
     sizeLabel: 'PDF, 60 MB',
-    legacyHost: !process.env.NEXT_PUBLIC_NATURAL_CATALOGUE_URL,
+    legacyHost: false,
   },
   recon: {
     key: 'recon',

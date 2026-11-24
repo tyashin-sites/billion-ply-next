@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 // the customer's domain is cut over (update NEXT_PUBLIC_SITE_DOMAIN).
 export const SITE = {
   name: 'Billionply',
-  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'billionply.com',
+  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'www.billionply.com',
   defaultOgImage: '/images/og-cover.jpg',
   locale: 'en_IN',
   twitter: '',
