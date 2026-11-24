@@ -1,8 +1,10 @@
-import { ProductActions, ProductSpec, RelatedProducts } from '@/components/custom/Product';
+import { ProductActions, ProductHero, ProductSpec, RelatedProducts } from '@/components/custom/Product';
 import { pageMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { getProduct } from '@/data/products';
+import { SITE_URL } from '@/lib/seo';
 
 export const metadata = pageMetadata({
   title: "Block Board (IS 1659)",
@@ -15,28 +17,17 @@ const CRUMBS = [{"name":"Home","path":"/"},{"name":"Block Board","path":"/produc
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS)]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("block-board")!.name}`, description: getProduct("block-board")!.metaDescription, path: "/products/block-board", images: [`${SITE_URL}${getProduct("block-board")!.image}`] })]} />
       <Breadcrumbs items={CRUMBS} />
-      <section className="section pb-0">
-        <div className="container-x max-w-3xl">
-          <h1 className="tt-display reveal">Block Board</h1>
-        </div>
-      </section>
+      <ProductHero slug="block-board" title="Block Board" eyebrow="IS 1659 · 10 ft sizes" />
       <Story {...({
-        "variant": "split",
-        "eyebrow": "IS 1659 · 10 ft sizes",
+        "variant": "stacked",
         "headline": "What block board is",
         "paragraphs": [
           "Billionply block board is made for strength and stability, a natural choice for furniture, doors, partitions and panelling.",
           "It is moisture-resistant and dimensionally stable, with a smooth surface that is easy to work. 10 ft sizes keep joints to a minimum on long runs."
         ],
-        "image": {
-          "src": "/images/products/block-board.jpg",
-          "alt": "Stacked Billionply block boards showing the edge",
-          "brief": "Stacked Billionply block boards showing the edge",
-          "aspect": "landscape"
-        },
-        "imageSide": "right"
+        "eyebrow": "What it is"
       } satisfies StoryProps)} />
       <ProductActions slug="block-board" />
       <Features {...({
@@ -45,20 +36,16 @@ export default function Page() {
         "headline": "Where block board is used",
         "items": [
           {
-            "title": "Heavy-duty furniture",
-            "body": "Billionply block board (IS 1659) for heavy-duty furniture."
+            "title": "Heavy-duty furniture"
           },
           {
-            "title": "Doors",
-            "body": "Billionply block board (IS 1659) for doors."
+            "title": "Doors"
           },
           {
-            "title": "Partitions",
-            "body": "Billionply block board (IS 1659) for partitions."
+            "title": "Partitions"
           },
           {
-            "title": "Panelling",
-            "body": "Billionply block board (IS 1659) for panelling."
+            "title": "Panelling"
           }
         ]
       } satisfies FeaturesProps)} />

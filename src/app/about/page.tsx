@@ -15,7 +15,7 @@ const CRUMBS = [{"name":"Home","path":"/"},{"name":"About","path":"/about"}];
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS)]} />
+      <JsonLd nodes={[organizationLd("LocalBusiness"), websiteLd(), breadcrumbLd(CRUMBS)]} />
       <Breadcrumbs items={CRUMBS} />
       <section className="section pb-0">
         <div className="container-x max-w-3xl">

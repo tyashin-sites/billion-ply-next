@@ -124,8 +124,8 @@ html:root {
   }
 
   .section {
-    padding-top: clamp(4.5rem, 9vw, 8rem);
-    padding-bottom: clamp(4.5rem, 9vw, 8rem);
+    padding-top: clamp(3.5rem, 6vw, 5.5rem);
+    padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
   }
   .container-x {
     max-width: 76rem;
@@ -733,4 +733,18 @@ html:root {
     height: 3.5rem;
     max-width: 15rem;
   }
+}
+
+/* Narrow text columns keep the page's left edge. `container-x max-w-3xl`
+   used to shrink and centre the whole container, so titles started ~110px
+   right of the breadcrumb and body. The container keeps its full width; its
+   children take the narrow measure. Unlayered, so it beats the utility. */
+.container-x.max-w-3xl {
+  max-width: 76rem;
+}
+.container-x.max-w-3xl > * {
+  max-width: 48rem;
+}
+.container-x.max-w-3xl.text-center > * {
+  margin-inline: auto;
 }

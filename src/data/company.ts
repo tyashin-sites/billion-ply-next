@@ -38,7 +38,7 @@ export const timeline: { year?: string; title: string; text: string }[] = [
   },
   {
     title: 'A full range',
-    text: 'Decorative veneer, marine plywood, block board, prelam and flexible plywood, and flush doors, made with 4 Quad Press technology and Italian sanders.',
+    text: 'Decorative veneer, marine plywood, block board, prelam and flexible plywood, and flush doors.',
   },
   {
     year: 'Today',

@@ -1,8 +1,10 @@
-import { ProductActions, ProductSpec, RelatedProducts } from '@/components/custom/Product';
+import { ProductActions, ProductHero, ProductSpec, RelatedProducts } from '@/components/custom/Product';
 import { pageMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { getProduct } from '@/data/products';
+import { SITE_URL } from '@/lib/seo';
 
 export const metadata = pageMetadata({
   title: "Marine Plywood (IS 710)",
@@ -15,28 +17,24 @@ const CRUMBS = [{"name":"Home","path":"/"},{"name":"Marine Plywood","path":"/pro
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS)]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("marine-plywood")!.name}`, description: getProduct("marine-plywood")!.metaDescription, path: "/products/marine-plywood", images: [`${SITE_URL}${getProduct("marine-plywood")!.image}`] })]} />
       <Breadcrumbs items={CRUMBS} />
-      <section className="section pb-0">
-        <div className="container-x max-w-3xl">
-          <h1 className="tt-display reveal">Marine Plywood</h1>
-        </div>
-      </section>
+      <ProductHero slug="marine-plywood" title="Marine Plywood" eyebrow="IS 710 · BWP · 10 ft sizes" />
       <Story {...({
         "variant": "split",
-        "eyebrow": "IS 710 · BWP · 10 ft sizes",
         "headline": "What marine plywood is",
         "paragraphs": [
           "Billionply marine plywood is made from high-quality hardwood bonded with boiling water-proof (BWP) grade resin, built to keep its strength in extreme conditions.",
           "It is highly resistant to water and resists warping, delamination and fungal attack. It goes through rigorous testing to meet IS 710, and comes in 10 ft sizes."
         ],
         "image": {
-          "src": "/images/mood/kitchen.jpg",
-          "alt": "A modern kitchen with wood-finish cabinets and a dining table",
-          "brief": "A modern kitchen with wood-finish cabinets and a dining table",
+          "src": "/images/products/marine-plywood.jpg",
+          "alt": "Billionply marine plywood sheet with IS 710 face stamps",
+          "brief": "Billionply marine plywood sheet with IS 710 face stamps",
           "aspect": "landscape"
         },
-        "imageSide": "right"
+        "imageSide": "right",
+        "eyebrow": "What it is"
       } satisfies StoryProps)} />
       <ProductActions slug="marine-plywood" />
       <Features {...({
@@ -45,20 +43,16 @@ export default function Page() {
         "headline": "Where marine plywood is used",
         "items": [
           {
-            "title": "Kitchens",
-            "body": "Billionply marine plywood (IS 710) for kitchens."
+            "title": "Kitchens"
           },
           {
-            "title": "Bathrooms",
-            "body": "Billionply marine plywood (IS 710) for bathrooms."
+            "title": "Bathrooms"
           },
           {
-            "title": "Coastal areas",
-            "body": "Billionply marine plywood (IS 710) for coastal areas."
+            "title": "Coastal areas"
           },
           {
-            "title": "Boats",
-            "body": "Billionply marine plywood (IS 710) for boats."
+            "title": "Boats"
           }
         ]
       } satisfies FeaturesProps)} />

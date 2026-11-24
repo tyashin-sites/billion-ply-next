@@ -20,7 +20,8 @@ export interface VeneerRange {
   slug: string;
   name: string;
   image: string;
-  blurb: string;
+  /** Only where the client's own material describes the range. */
+  blurb?: string;
   /** Catalogue key in src/data/catalogues.ts, when the range has one. */
   catalogue?: string;
 }
@@ -129,10 +130,17 @@ export const veneerRanges: VeneerRange[] = [
     image: '/images/veneers/rustic.jpg',
     blurb: 'Knots, character marks and warm tones for a lived-in look.',
   },
+  {
+    // Client-confirmed range (shown on the current site's veneer carousel).
+    // No description is published, so none is invented here.
+    slug: 'dyed',
+    name: 'Dyed Veneers',
+    image: '/images/veneers/dyed.jpg',
+  },
 ];
 
-/** Further finish shown in the current site's veneer carousel (client-confirmed). */
-export const veneerFinishes = [{ name: 'Dyed Veneer', image: '/images/veneers/dyed.jpg' }];
+/** Further finishes beyond the ranges above (none at present). */
+export const veneerFinishes: { name: string; image: string }[] = [];
 
 export const prelamFinishes = [
   { image: '/images/prelam/finish-3221.jpg', alt: 'Prelam finish, dark walnut tone' },
@@ -150,8 +158,8 @@ export const products: Product[] = [
     standard: 'IS 1328',
     image: '/images/products/decorative-veneer.jpg',
     imageAlt: 'Fan of Billionply decorative veneer leaves in light and dark woods',
-    heroImage: '/images/mood/living-room-2.jpg',
-    heroImageAlt: 'A warm living room with wood-veneered furniture and panelling',
+    heroImage: '/images/mood/living-room.jpg',
+    heroImageAlt: 'A wood-veneered sideboard and chair in a bright living room',
     cardLine: 'Natural wood veneers for furniture, walls and doors, up to 10 ft tall.',
     metaDescription:
       'Billionply decorative veneer (IS 1328): natural, recon, teak, exotic, metallic, open-grain and rustic ranges, with a 10 ft height option. Download the catalogue.',
@@ -171,7 +179,7 @@ export const products: Product[] = [
     spec: [
       { label: 'Standard', value: 'IS 1328 (decorative veneer)' },
       { label: 'Material', value: 'Natural wood veneer' },
-      { label: 'Ranges', value: 'Natural, Recon, Teak, Exotic, Metallic, Open-grain, Rustic' },
+      { label: 'Ranges', value: 'Natural, Recon, Teak, Exotic, Metallic, Open-grain, Rustic, Dyed' },
       { label: 'Finishing', value: 'Polish, stain or coat' },
       { label: 'Height', value: 'Various sizes, including 10 ft' },
       { label: 'Thickness', value: null },
@@ -277,8 +285,6 @@ export const products: Product[] = [
     standard: null,
     image: '/images/products/prelam-plywood.jpg',
     imageAlt: 'Stack of Billionply prelam plywood sheets in wood and solid finishes',
-    heroImage: '/images/mood/study-desk.jpg',
-    heroImageAlt: 'A polished wood-finish desk in a study',
     cardLine: 'Factory-pressed melamine finish, ready to use for modular interiors.',
     metaDescription:
       'Billionply prelam plywood: factory-pressed melamine finish, no extra surface work. For furniture, partitions, cabinets, wall panels and modular interiors.',
