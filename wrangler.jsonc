@@ -18,10 +18,12 @@
   "durable_objects": {
     "bindings": [{ "name": "NEXT_CACHE_DO_QUEUE", "class_name": "DOQueueHandler" }]
   },
+  // Large downloads (src/app/downloads/[file]).
+  "r2_buckets": [{ "binding": "SITE_ASSETS", "bucket_name": "billionply-site-assets" }],
   "migrations": [{ "tag": "v1", "new_sqlite_classes": ["DOQueueHandler"] }],
   "vars": {
     "TYASHIN_API_URL": "https://website-api.tyashin.com",
-    "NEXT_PUBLIC_SITE_DOMAIN": "billionply.com",
+    "NEXT_PUBLIC_SITE_DOMAIN": "www.billionply.com",
     // Preview: stays "true" until the client approves go-live.
     "ROBOTS_NOINDEX": "true"
   }
