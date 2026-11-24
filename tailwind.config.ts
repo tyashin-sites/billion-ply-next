@@ -1,49 +1,37 @@
 import type { Config } from 'tailwindcss';
 
-// Raw HSL triples live in globals.css; wrapped here with <alpha-value>
-// (tyashin-platform CLAUDE.md §5: never put the colour function in the var).
-const c = (v: string) => `hsl(var(--${v}) / <alpha-value>)`;
-
+// Tailwind tokens → brand CSS variables. Every colour the site uses resolves
+// through a --brand-* variable declared in globals.css, so the palette is the
+// single point of change and a custom section cannot drift off-brand.
 export default {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
-    container: {
-      center: true,
-      padding: { DEFAULT: '1.25rem', md: '2rem' },
-      screens: { '2xl': '1320px' },
-    },
     extend: {
       colors: {
-        background: c('background'),
-        foreground: c('foreground'),
-        card: { DEFAULT: c('card'), foreground: c('foreground') },
-        primary: { DEFAULT: c('primary'), foreground: c('primary-foreground') },
-        muted: { DEFAULT: c('muted'), foreground: c('muted-foreground') },
-        border: c('border'),
-        input: c('border'),
-        ring: c('ring'),
-        ink: c('ink'),
-        leaf: { DEFAULT: c('leaf'), deep: c('leaf-deep'), tint: c('leaf-tint') },
-        oak: { DEFAULT: c('oak'), deep: c('oak-deep'), tint: c('oak-tint') },
-        paper: c('paper'),
-      },
-      fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
-        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        primary: 'var(--brand-primary)',
+        'primary-deep': 'var(--brand-primary-deep)',
+        'primary-contrast': 'var(--brand-primary-contrast)',
+        accent: 'var(--brand-accent)',
+        'accent-soft': 'var(--brand-accent-soft)',
+        ink: 'var(--brand-ink)',
+        paper: 'var(--brand-paper)',
+        background: 'var(--brand-bg)',
+        surface: 'var(--brand-surface)',
+        foreground: 'var(--brand-text)',
+        muted: 'var(--brand-text-muted)',
+        border: 'var(--brand-border)',
       },
       borderRadius: {
-        lg: 'var(--radius-lg)',
-        DEFAULT: 'var(--radius)',
-        sm: 'calc(var(--radius) - 2px)',
+        sm: 'var(--brand-radius-sm)',
+        md: 'var(--brand-radius-md)',
+        lg: 'var(--brand-radius-lg)',
+        full: 'var(--brand-radius-full)',
       },
-      transitionTimingFunction: {
-        brand: 'var(--ease-brand)',
-      },
-      boxShadow: {
-        rest: 'var(--shadow-rest)',
-        hover: 'var(--shadow-hover)',
+      fontFamily: {
+        heading: ['var(--brand-heading-font)'],
+        body: ['var(--brand-body-font)'],
+        mono: ['var(--brand-mono-font)'],
       },
     },
   },
-  plugins: [],
 } satisfies Config;

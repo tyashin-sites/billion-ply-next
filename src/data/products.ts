@@ -157,7 +157,7 @@ export const products: Product[] = [
       'Billionply decorative veneer (IS 1328): natural, recon, teak, exotic, metallic, open-grain and rustic ranges, with a 10 ft height option. Download the catalogue.',
     intro: [
       'Crafted from high-quality natural wood, Billionply decorative veneer brings the beauty of real timber to furniture, walls and doors. Every sheet carries its own grain, so no two designs are alike.',
-      'It can be polished, stained or coated to match your design, and it is lightweight and easy to apply for seamless, high-end interiors. Sourced responsibly, it is a choice that does not trade sustainability for style.',
+      'It can be polished, stained or coated to match your design, and it is lightweight and easy to apply on high-end interiors. Sourced responsibly, it is a choice that does not trade sustainability for style.',
       'For modern architecture it comes in several sizes, including an extended 10 ft height for grand doors and high walls.',
     ],
     uses: ['Furniture', 'Wall panelling', 'Doors, including tall 10 ft doors', 'High walls', 'Homes, offices and commercial spaces'],
@@ -243,7 +243,7 @@ export const products: Product[] = [
     intro: [
       'Billionply block board is made for strength, durability and stability, which makes it a natural choice for furniture, doors, partitions and panelling.',
       'It is moisture-resistant and dimensionally stable, so it holds up to daily use even in challenging environments, with a smooth surface that is easy to work.',
-      'It also comes in 10 ft sizes for seamless applications with minimal joints.',
+      'It also comes in 10 ft sizes, so long runs need fewer joints.',
     ],
     uses: ['Heavy-duty furniture', 'Doors', 'Partitions', 'Panelling', 'Homes, offices and large commercial projects'],
     features: [
@@ -284,7 +284,7 @@ export const products: Product[] = [
       'Billionply prelam plywood: factory-pressed melamine finish, no extra surface work. For furniture, partitions, cabinets, wall panels and modular interiors.',
     intro: [
       'Billionply prelam plywood comes with factory-pressed melamine paper, so it needs no further surface finishing.',
-      'That makes it ideal for furniture, partitions, cabinets, wall panelling and modular interiors, with a seamless, finished look from day one.',
+      'That makes it ideal for furniture, partitions, cabinets, wall panelling and modular interiors, with a finished look from day one.',
       'It is available in a range of colours, textures and finishes, so you can create customised spaces with ready-to-use surfaces.',
     ],
     uses: ['Furniture', 'Partitions', 'Cabinets', 'Wall panelling', 'Modular interiors'],

@@ -1,54 +1,55 @@
 import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site';
 
-// The site's canonical identity. `domain` is the ONLY thing that changes when
-// the customer's domain is cut over (update NEXT_PUBLIC_SITE_DOMAIN).
+/** ONE canonical host (addendum §3c). Every canonical, OG URL, JSON-LD @id and the sitemap derive from here. */
+export const SITE_URL = (process.env.SITE_URL ?? `https://${siteConfig.domain}`).replace(
+  /\/+$/,
+  ''
+);
+
 export const SITE = {
-  name: 'Billionply',
-  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'www.billionply.com',
-  defaultOgImage: '/images/og-cover.jpg',
-  locale: 'en_IN',
-  twitter: '',
-};
+  name: siteConfig.name,
+  locale: siteConfig.locale,
+  defaultOgImage: '/og/default.png',
+} as const;
 
-// The canonical host MUST match the platform's resolveCanonicalHost().
 export function siteUrl(path = '/'): string {
-  const base = `https://${SITE.domain}`;
   const p = path === '/' ? '' : `/${path.replace(/^\/+/, '')}`;
-  return `${base}${p}`;
+  return `${SITE_URL}${p}`;
 }
 
-// Build a complete, absolute-URL Metadata object for one page.
-export function pageMetadata(opts: {
-  title?: string | { absolute: string };
+export type PageMeta = {
+  title: string;
   description: string;
   path: string;
   image?: string;
   type?: 'website' | 'article';
-}): Metadata {
+  keywords?: string[];
+};
+
+/** The one helper every page's metadata routes through (addendum §3a). */
+export function pageMetadata(opts: PageMeta): Metadata {
   const url = siteUrl(opts.path);
   const image = opts.image || SITE.defaultOgImage;
-  const socialTitle = typeof opts.title === 'object' ? opts.title.absolute : opts.title || SITE.name;
   return {
-    // Omit when unset so the layout's default title applies (an explicit
-    // `title: undefined` blanks the <title> on the home page).
-    ...(opts.title ? { title: opts.title } : {}),
+    title: opts.title,
     description: opts.description,
-    alternates: { canonical: url },
+    ...(opts.keywords ? { keywords: opts.keywords } : {}),
+    alternates: { canonical: opts.path },
     openGraph: {
       type: opts.type || 'website',
       url,
       siteName: SITE.name,
-      title: socialTitle,
-      description: opts.description,
       locale: SITE.locale,
-      images: [{ url: image }],
+      title: opts.title,
+      description: opts.description,
+      images: [{ url: image, width: 1200, height: 630 }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: socialTitle,
+      title: opts.title,
       description: opts.description,
       images: [image],
-      ...(SITE.twitter ? { site: SITE.twitter, creator: SITE.twitter } : {}),
     },
   };
 }

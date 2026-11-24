@@ -10,7 +10,7 @@ const OLD = [
   '/top-benefits-of-using-high-quality-plywood-for-interior-design/',
   '/top-benefits-of-using-high-quality-plywood-for-interior-design-2/',
 ];
-const NEW_PAGES = new Set(['/about', '/projects', '/contact', '/events',
+const NEW_PAGES = new Set(['/about', '/projects', '/contact', '/events', '/privacy', '/terms',
   '/products/decorative-veneer', '/products/marine-plywood', '/products/prelam-plywood',
   '/products/flexible-plywood', '/products/block-board', '/products/flush-door']);
 

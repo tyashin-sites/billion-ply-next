@@ -6,7 +6,7 @@
  *    is 60 MB, over Cloudflare's 25 MiB static-asset limit and the Media
  *    Library's 15 MB PDF cap, so it lives in the site's R2 bucket
  *    `billionply-site-assets` and is served by src/app/downloads/[file].
- *  - Recon veneer: re-hosted inside this site (public/catalogues/).
+ *  - Recon veneer (14 MB): same R2 bucket, same route.
  *  - The old "Hybrid Veneers" tile (Woodlark e-catalogue) is NOT a Billionply
  *    catalogue any more: it is the Woodlark card.
  *
@@ -35,7 +35,7 @@ export const catalogues: Record<string, Catalogue> = {
     key: 'recon',
     title: 'Recon Veneer Catalogue',
     description: 'Reconstituted veneers with consistent, repeatable grain.',
-    href: '/catalogues/billion-ply-recon-veneer-catalogue.pdf',
+    href: '/downloads/billionply-recon-veneer-catalogue.pdf',
     sizeLabel: 'PDF, 14 MB',
     legacyHost: false,
   },

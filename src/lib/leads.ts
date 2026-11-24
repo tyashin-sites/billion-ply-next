@@ -1,19 +1,32 @@
 /**
- * Lead validation for the three site forms (pure: no imports, tested by
- * tests/leads.test.mjs). Each form is a separate lead type so marketing can
- * tell general enquiries, dealer applications and sample requests apart:
- * the type sets the `source` and the subject prefix sent to the Tyashin
- * Contact Form & Lead Capture plugin.
+ * The three Billionply forms (enquiry, dealer application, sample request).
+ * Pure helpers, no imports, so tests/leads.test.mjs runs them with plain Node.
+ *
+ * Every form posts to Tyashin's public lead endpoint (the kit's LeadForm
+ * protocol, authoring contract "leads"). Each type gets its own `source` and
+ * a subject prefix so marketing can tell leads apart in the Leads inbox.
  */
 
 export type LeadType = 'enquiry' | 'dealer' | 'sample';
 
-export interface Lead {
+export const LEAD_SOURCES: Record<LeadType, string> = {
+  enquiry: 'contact-form',
+  dealer: 'dealer-application',
+  sample: 'sample-request',
+};
+
+export const LEAD_SUBJECTS: Record<LeadType, string> = {
+  enquiry: 'Website enquiry',
+  dealer: 'Become a dealer',
+  sample: 'Sample request',
+};
+
+export interface LeadFields {
   type: LeadType;
   name: string;
   email: string;
-  phone: string;
-  message: string;
+  phone?: string;
+  message?: string;
   firm?: string;
   city?: string;
   state?: string;
@@ -23,85 +36,51 @@ export interface Lead {
   address?: string;
 }
 
-export const LEAD_SOURCES: Record<LeadType, string> = {
-  enquiry: 'billionply-website-enquiry',
-  dealer: 'billionply-website-dealer-application',
-  sample: 'billionply-website-sample-request',
-};
-
-export const LEAD_SUBJECTS: Record<LeadType, string> = {
-  enquiry: 'Website enquiry',
-  dealer: 'Become a dealer',
-  sample: 'Sample request',
-};
-
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^[+()\d\s-]{7,20}$/;
 
-function str(v: unknown, max: number): string {
-  return typeof v === 'string' ? v.trim().slice(0, max) : '';
+/** Returns the first problem a visitor must fix, or null when the lead is sendable. */
+export function leadProblem(f: LeadFields): string | null {
+  if (!f.name?.trim()) return 'Please enter your name.';
+  if (!f.email?.trim() || !EMAIL_RE.test(f.email.trim())) return 'Please enter a valid email.';
+  const phone = f.phone?.trim() ?? '';
+  if (f.type !== 'enquiry' && !phone) return 'Please enter a phone number.';
+  if (phone && !PHONE_RE.test(phone)) return 'Please enter a valid phone number.';
+  if (f.type === 'dealer') {
+    if (!f.firm?.trim()) return 'Please enter your firm name.';
+    if (!f.city?.trim()) return 'Please enter your city.';
+    if (!f.state?.trim()) return 'Please choose your state.';
+  }
+  if (f.type === 'sample' && !f.products?.trim()) return 'Please choose the samples you need.';
+  if (f.type === 'enquiry' && !f.message?.trim()) return 'Please add a short message.';
+  return null;
 }
 
-export type LeadResult = { ok: true; lead: Lead } | { ok: false; error: string };
-
-export function validateLead(body: unknown): LeadResult {
-  const b = (body && typeof body === 'object' ? body : {}) as Record<string, unknown>;
-  const type = b.type;
-  if (type !== 'enquiry' && type !== 'dealer' && type !== 'sample') {
-    return { ok: false, error: 'Unknown form' };
-  }
-  // Honeypot: real visitors never see or fill this field.
-  if (str(b.website, 200)) return { ok: false, error: 'Rejected' };
-
-  const lead: Lead = {
-    type,
-    name: str(b.name, 100),
-    email: str(b.email, 200),
-    phone: str(b.phone, 40),
-    message: str(b.message, 5000),
-  };
-  for (const k of ['firm', 'city', 'state', 'brands', 'profession', 'products', 'address'] as const) {
-    const v = str(b[k], k === 'address' ? 500 : 200);
-    if (v) lead[k] = v;
-  }
-
-  if (!lead.name) return { ok: false, error: 'Please enter your name' };
-  if (!lead.phone || !PHONE_RE.test(lead.phone)) return { ok: false, error: 'Please enter a valid phone number' };
-  if (type === 'dealer') {
-    if (!lead.email || !EMAIL_RE.test(lead.email)) return { ok: false, error: 'Please enter a valid email' };
-    if (!lead.firm) return { ok: false, error: 'Please enter your firm name' };
-    if (!lead.city) return { ok: false, error: 'Please enter your city' };
-    if (!lead.state) return { ok: false, error: 'Please enter your state' };
-  } else {
-    if (lead.email && !EMAIL_RE.test(lead.email)) return { ok: false, error: 'Please enter a valid email' };
-    if (!lead.email) return { ok: false, error: 'Please enter your email' };
-  }
-  if (type === 'sample' && !lead.products) return { ok: false, error: 'Please tell us which samples you need' };
-  if (type === 'enquiry' && !lead.message) return { ok: false, error: 'Please add a short message' };
-  return { ok: true, lead };
-}
-
-/** The message body forwarded to the platform: every field, labelled. */
-export function leadMessage(lead: Lead): string {
+/** The message body Tyashin stores: every field, labelled. */
+export function leadMessage(f: LeadFields): string {
   const lines: string[] = [];
   const add = (label: string, v?: string) => {
-    if (v) lines.push(`${label}: ${v}`);
+    if (v && v.trim()) lines.push(`${label}: ${v.trim()}`);
   };
-  add('Firm', lead.firm);
-  add('Profession', lead.profession);
-  add('City', lead.city);
-  add('State', lead.state);
-  add('Brands currently carried', lead.brands);
-  add('Samples needed', lead.products);
-  add('Delivery address', lead.address);
-  if (lead.message) {
+  add('Firm', f.firm);
+  add('Profession', f.profession);
+  add('City', f.city);
+  add('State', f.state);
+  add('Brands currently carried', f.brands);
+  add('Product of interest', f.type === 'enquiry' ? f.products : undefined);
+  add('Samples needed', f.type === 'sample' ? f.products : undefined);
+  add('Delivery address', f.address);
+  if (f.message && f.message.trim()) {
     if (lines.length) lines.push('');
-    lines.push(lead.message);
+    lines.push(f.message.trim());
   }
-  return lines.join('\n') || '(no message)';
+  return (lines.join('\n') || '(no message)').slice(0, 5000);
 }
 
-export function leadSubject(lead: Lead): string {
-  const where = [lead.city, lead.state].filter(Boolean).join(', ');
-  return `[${LEAD_SUBJECTS[lead.type]}] ${lead.firm || lead.name}${where ? ` (${where})` : ''}`;
+export function leadSubject(f: LeadFields): string {
+  const where = [f.city, f.state].filter((v) => v && v.trim()).join(', ');
+  return `[${LEAD_SUBJECTS[f.type]}] ${(f.firm || f.name).trim()}${where ? ` (${where})` : ''}`.slice(
+    0,
+    200
+  );
 }
