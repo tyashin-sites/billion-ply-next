@@ -1,371 +1,198 @@
-import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, Quote } from 'lucide-react';
-import { siteConfig } from '@/config/site';
-import { products, useGroups, manufacturing, veneerRanges, veneerFinishes, getProduct } from '@/data/products';
-import { testimonials, events } from '@/data/company';
+import { GrainStrip, HomeWoodlark, Audiences } from '@/components/custom/Home';
 import { pageMetadata } from '@/lib/seo';
-import { JsonLd } from '@/components/JsonLd';
-import { Counter } from '@/components/Counter';
-import { ProductCard } from '@/components/ProductCard';
-import { Reveal } from '@/components/Reveal';
-import { CatalogueButton } from '@/components/CatalogueButton';
-import { TrackedLink } from '@/components/TrackedLink';
-import { WhatsAppIcon } from '@/components/WhatsAppIcon';
-import { CtaBand } from '@/components/CtaBand';
+import { CtaBand, Faq, Features, Hero, JsonLd, Stats, Story, Testimonials } from '@/components/kit';
+import type { CtaBandProps, FaqProps, FeaturesProps, HeroProps, StatsProps, StoryProps, TestimonialsProps } from '@/components/kit';
+import { organizationLd, websiteLd, faqLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: { absolute: 'Billionply | Decorative Veneer, Plywood & Flush Doors Since 1997' },
-  description:
-    'Billionply: decorative veneer, marine plywood, block board, prelam and flexible plywood and flush doors. In the industry since 1997, 1000+ dealers across India.',
-  path: '/',
+const META = pageMetadata({
+  title: "Billionply | Decorative Veneer, Plywood & Flush Doors Since 1997",
+  description: "Billionply makes decorative veneer, marine plywood, block board, prelam and flexible ply and flush doors in Haryana. Since 1997, 1000+ dealers in India.",
+  path: "/",
 });
 
-const faq = [
-  {
-    q: 'What products does Billionply offer?',
-    a: 'Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Flexible Plywood, Prelam Plywood and Flush Doors. Premium Hybrid Veneer is made by Woodlark: explore the range at woodlarkveneer.com.',
-  },
-  {
-    q: 'What technologies and standards does Billionply follow?',
-    a: '4 Quad Press technology for strength and durability, E1 grade for eco-friendliness and safe indoor use, Italian sanders for a smooth, refined finish, and termite and borer protection for long life.',
-  },
-  {
-    q: 'How long has Billionply been in the industry?',
-    a: 'Since 1997. Billionply is run by three generations of the Chhabra family and works with 1000+ dealers across India.',
-  },
-  {
-    q: 'How can I contact Billionply?',
-    a: `Email ${siteConfig.contact.email}, call ${siteConfig.contact.phone} or ${siteConfig.contact.phone2}, or message us on WhatsApp. Our plant is at ${siteConfig.address.oneLine}.`,
-  },
-];
+export const metadata = { ...META, title: { absolute: META.title as string } };
 
-const swatches = [...veneerRanges.map((v) => ({ name: v.name, image: v.image })), ...veneerFinishes];
-
-export default function HomePage() {
-  const event = events[0];
+export default function Page() {
   return (
     <>
-      <JsonLd path="/" title={`${siteConfig.name}: ${siteConfig.tagline}`} description={siteConfig.description} faq={faq} />
-
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div aria-hidden="true" className="pointer-events-none absolute -left-40 top-10 h-[28rem] w-[28rem] rounded-full bg-leaf/10 blur-3xl" />
-        <div aria-hidden="true" className="pointer-events-none absolute -right-20 bottom-0 h-[24rem] w-[24rem] rounded-full bg-oak/15 blur-3xl" />
-        <div className="container relative grid items-center gap-12 pb-16 pt-12 md:pb-24 md:pt-16 lg:grid-cols-[1.15fr_0.85fr]">
-          <div>
-            <p className="eyebrow">In the industry since {siteConfig.foundedYear}</p>
-            <h1 className="display-xl mt-6">
-              Innovative wood for <em className="font-normal italic text-leaf-deep">interiors</em> and furniture
-            </h1>
-            <p className="lead mt-7 max-w-xl">
-              Decorative veneer, plywood, block board and flush doors from Bahadurgarh, Haryana. Three generations of the Chhabra family, 1000+ dealers across India.
-            </p>
-            <div className="mt-9 flex flex-wrap gap-3">
-              <Link href="/products" className="btn-primary">
-                Explore the range <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </Link>
-              <CatalogueButton catalogue="natural" location="home-hero" label="Download catalogue" variant="ghost" />
-              <TrackedLink href={siteConfig.contact.whatsappHref} external event="whatsapp_click" props={{ location: 'home-hero' }} className="btn-whatsapp">
-                <WhatsAppIcon className="h-4 w-4" /> WhatsApp
-              </TrackedLink>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-lg shadow-hover lg:aspect-[5/6]">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/mood/living-room.jpg"
-                alt="A calm living room with a teak-veneered sideboard and wooden chair"
-                fetchPriority="high"
-                className="h-full w-full object-cover object-[50%_60%]"
-              />
-            </div>
-            <Link
-              href="/products/decorative-veneer"
-              className="card card-hover absolute -bottom-6 left-4 flex items-center gap-3 p-3 pr-5 sm:left-[-1.5rem]"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/veneers/teak.jpg" alt="" className="h-12 w-12 rounded object-cover" />
-              <span>
-                <span className="block text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-oak-deep">Decorative veneer</span>
-                <span className="block font-display text-lg text-ink">7 ranges, up to 10 ft</span>
-              </span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* LEGACY NUMBERS */}
-      <section className="border-y bg-white">
-        <dl className="container grid grid-cols-2 divide-border md:grid-cols-4 md:divide-x">
-          {siteConfig.stats.map((s) => (
-            <div key={s.label} className="flex flex-col-reverse px-4 py-10 text-center md:py-12">
-              <dt className="mt-2 text-sm text-muted-foreground">{s.label}</dt>
-              <dd className="font-display text-4xl text-ink md:text-5xl">
-                {'plain' in s && s.plain ? `Since ${s.value}` : <Counter value={s.value} suffix={'suffix' in s ? s.suffix : ''} />}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-
-      {/* PRODUCT RANGE */}
-      <section className="section">
-        <div className="container">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <p className="eyebrow">The range</p>
-              <h2 className="display-lg mt-4">Six products, one standard of care</h2>
-              <p className="lead mt-4">From the veneer on a feature wall to the core of a 10 ft door, each board is made at our own plant.</p>
-            </div>
-            <Link href="/compare" className="btn-ghost">Compare products</Link>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p, i) => (
-              <Reveal key={p.slug} delay={(i % 3) * 90}>
-                <ProductCard product={p} />
-              </Reveal>
-            ))}
-          </div>
-          <Reveal>
-            <TrackedLink
-              href={siteConfig.woodlark.url}
-              external
-              event="woodlark_click"
-              props={{ brand: 'woodlark', location: 'home-range' }}
-              className="card card-hover group mt-6 grid items-center overflow-hidden md:grid-cols-[0.6fr_1.4fr]"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/veneers/hybrid-woodlark.jpg" alt="Hybrid veneer surface" loading="lazy" className="h-40 w-full object-cover md:h-full" />
-              <div className="flex flex-wrap items-center justify-between gap-4 p-6 md:p-8">
-                <div>
-                                    <p className="font-display text-2xl text-ink">Premium Hybrid Veneer by Woodlark</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Explore the range at woodlarkveneer.com.</p>
-                </div>
-                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-leaf-deep">
-                  Visit Woodlark <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </span>
-              </div>
-            </TrackedLink>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* GRAIN MARQUEE */}
-      <section aria-labelledby="grain-h" className="overflow-hidden border-y bg-white py-14">
-        <div className="container mb-8 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="eyebrow">400+ veneer species</p>
-            <h2 id="grain-h" className="display-md mt-3">Every leaf, its own grain</h2>
-          </div>
-          <Link href="/products/decorative-veneer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-leaf-deep">
-            See decorative veneer <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </Link>
-        </div>
-        <div className="grain-marquee" aria-hidden="true">
-          {[...swatches, ...swatches].map((s, i) => (
-            <figure key={`${s.name}-${i}`} className="mx-2 w-52 shrink-0">
-              <div className="aspect-[3/4] overflow-hidden rounded-md">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={s.image} alt="" loading="lazy" className="h-full w-full object-cover" />
-              </div>
-              <figcaption className="mt-2 text-xs font-medium uppercase tracking-[0.15em] text-muted-foreground">{s.name}</figcaption>
-            </figure>
-          ))}
-        </div>
-        <ul className="sr-only">
-          {swatches.map((s) => (
-            <li key={s.name}>{s.name}</li>
-          ))}
-        </ul>
-      </section>
-
-      {/* WHICH PRODUCT */}
-      <section className="section">
-        <div className="container">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Which product for which job</p>
-            <h2 className="display-lg mt-4">Start from the job, not the catalogue</h2>
-          </div>
-          <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {useGroups.map((g, i) => (
-              <Reveal key={g.id} delay={i * 80}>
-                <Link href={`/product-guide#${g.id}`} className="card card-hover group flex h-full flex-col p-6">
-                  <span className="font-display text-sm text-oak-deep">0{i + 1}</span>
-                  <h3 className="mt-3 text-2xl">{g.title}</h3>
-                  <p className="mt-2 flex-1 text-sm text-muted-foreground">{g.lead}</p>
-                  <ul className="mt-5 flex flex-wrap gap-1.5">
-                    {Object.keys(g.why).map((slug) => (
-                      <li key={slug} className="rounded-full bg-leaf-tint px-2.5 py-1 text-xs font-medium text-leaf-deep">
-                        {getProduct(slug)?.short}
-                      </li>
-                    ))}
-                  </ul>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* STANDARDS */}
-      <section className="ink-section on-dark section overflow-hidden">
-        <div aria-hidden="true" className="pointer-events-none absolute -left-24 top-0 h-96 w-96 rounded-full bg-leaf/20 blur-3xl" />
-        <div className="container relative grid gap-14 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="eyebrow">Specification support</p>
-            <h2 className="display-lg mt-4">Made to Indian Standards</h2>
-            <p className="mt-5 max-w-lg text-white/75">
-              Architects and project teams can specify Billionply with confidence: decorative veneer to IS 1328, marine plywood to IS 710 and block board to IS 1659, each with a full spec block on its product page.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/certifications" className="btn-ghost">Certifications</Link>
-              <Link href="/sample-request" className="btn-primary !bg-white !text-ink hover:!bg-leaf-tint">Request samples</Link>
-            </div>
-            <ul className="mt-10 grid gap-3 sm:grid-cols-3">
-              {['IS 1328', 'IS 710', 'IS 1659'].map((s) => (
-                <li key={s} className="rounded-lg border border-white/15 bg-white/[0.04] px-4 py-5 text-center">
-                  <p className="font-display text-2xl">{s}</p>
-                  <p className="mt-1 text-xs text-white/60">
-                    {s === 'IS 1328' ? 'Decorative veneer' : s === 'IS 710' ? 'Marine plywood' : 'Block board'}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <ul className="grid gap-4 sm:grid-cols-2">
-            {manufacturing.map((m, i) => (
-              <Reveal as="li" key={m.title} delay={i * 80} className="rounded-lg border border-white/10 bg-white/[0.05] p-6 backdrop-blur">
-                <span className="block h-px w-10 bg-gradient-to-r from-oak to-leaf" aria-hidden="true" />
-                <h3 className="mt-5 text-xl">{m.title}</h3>
-                <p className="mt-2 text-sm text-white/75">{m.text}</p>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* LEGACY */}
-      <section className="section">
-        <div className="container grid items-center gap-12 lg:grid-cols-2">
-          <Reveal className="relative">
-            <div className="overflow-hidden rounded-lg shadow-hover">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/team/leadership-group.jpg" alt="Jitender, Rahul and Rishabh Chhabra of Billionply" loading="lazy" className="aspect-[16/9] w-full object-cover" />
-            </div>
-            <div className="absolute -bottom-6 left-6 rounded-lg bg-white px-5 py-4 shadow-hover">
-              <p className="font-display text-3xl text-leaf-deep">3</p>
-              <p className="text-xs text-muted-foreground">generations of the Chhabra family</p>
-            </div>
-          </Reveal>
-          <div>
-            <p className="eyebrow">Our legacy</p>
-            <h2 className="display-lg mt-4">{siteConfig.motto}</h2>
-            <p className="lead mt-5">
-              Billionply is more than a plywood and veneer maker. It is a legacy built on the expertise of three generations, blending traditional craftsmanship with modern technology.
-            </p>
-            <Link href="/about" className="btn-ghost mt-8">Our story and team</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="section border-t bg-white">
-        <div className="container">
-          <p className="eyebrow">Client feedback</p>
-          <h2 className="display-lg mt-4 max-w-2xl">Trusted by builders, architects and homeowners</h2>
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal as="figure" key={t.name} delay={i * 90} className="card flex h-full flex-col p-7">
-                <Quote className="h-7 w-7 text-oak" aria-hidden="true" />
-                <blockquote className="mt-4 flex-1 text-[0.95rem] leading-relaxed text-ink/85">{t.quote}</blockquote>
-                <figcaption className="mt-6 border-t pt-4">
-                  <p className="font-semibold text-ink">{t.name}</p>
-                  <p className="text-sm text-muted-foreground">{t.role}</p>
-                </figcaption>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* EVENTS + PROJECTS */}
-      <section className="section">
-        <div className="container grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-center">
-          <div>
-            <p className="eyebrow">Events</p>
-            <h2 className="display-lg mt-4">{event.name}</h2>
-            <p className="lead mt-5">Meet the people behind the boards. See our stand and team at {event.name}, and photos from our plant.</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/events" className="btn-primary">Event photos</Link>
-              <Link href="/projects" className="btn-ghost">Projects and gallery</Link>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-3">
-            {event.photos.slice(0, 6).map((p, i) => (
-              <div key={p.src} className={`overflow-hidden rounded-md ${i === 0 ? 'col-span-2 row-span-2' : ''}`}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={p.src} alt={p.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 hover:scale-105" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AUDIENCES */}
-      <section className="section border-t bg-paper">
-        <div className="container grid gap-6 lg:grid-cols-2">
-          <div className="card relative overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/mood/living-room.jpg" alt="" loading="lazy" className="h-56 w-full object-cover" />
-            <div className="p-8">
-              <p className="eyebrow">Architects and interior designers</p>
-              <h2 className="display-md mt-3">Specify with samples in hand</h2>
-              <p className="mt-3 text-muted-foreground">Ask for veneer, prelam and plywood samples for your next project, and download our catalogues.</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/sample-request" className="btn-primary">Request samples</Link>
-                <Link href="/catalogues" className="btn-ghost">Catalogues</Link>
-              </div>
-            </div>
-          </div>
-          <div className="card relative overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/factory/factory-3.jpg" alt="Billionply warehouse stock" loading="lazy" className="h-56 w-full object-cover" />
-            <div className="p-8">
-              <p className="eyebrow">Dealers and distributors</p>
-              <h2 className="display-md mt-3">Grow with Billionply</h2>
-              <p className="mt-3 text-muted-foreground">Join a network of 1000+ dealers across India. Tell us about your firm and the brands you carry.</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href="/become-a-dealer" className="btn-primary">Become a dealer</Link>
-                <Link href="/dealers" className="btn-ghost">Find a dealer</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="section">
-        <div className="container grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p className="eyebrow">Common questions</p>
-            <h2 className="display-lg mt-4">Good to know</h2>
-          </div>
-          <div className="divide-y border-y">
-            {faq.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium text-ink">
-                  {f.q}
-                  <span aria-hidden="true" className="text-2xl text-leaf transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 max-w-2xl text-muted-foreground">{f.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CtaBand location="home-cta" />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), faqLd([{"q":"What products does Billionply make?","a":"Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Prelam Plywood, Flexible Plywood and Flush Doors."},{"q":"Which standards and technology do you use?","a":"4 Quad Press technology for strength, E1 grade for safe indoor use, Italian sanders for a smooth finish, and termite and borer protection."},{"q":"How long has Billionply been in the industry?","a":"Since 1997. Three generations of the Chhabra family run the company, with 1000+ dealers across India."},{"q":"Where can I buy Billionply products?","a":"Through our dealers across India. Use Find a dealer, or message us on WhatsApp and we will connect you with the nearest one."}])]} />
+      <Hero {...({
+        "variant": "split",
+        "eyebrow": "In the industry since 1997",
+        "headline": "Real wood for interiors and furniture",
+        "sub": "Decorative veneer, plywood, block board and flush doors from Bahadurgarh, Haryana. Three generations of the Chhabra family.",
+        "primaryCta": {
+          "label": "Explore the range",
+          "href": "/products"
+        },
+        "secondaryCta": {
+          "label": "Download catalogue",
+          "href": "/catalogues"
+        },
+        "image": {
+          "src": "/images/mood/living-room.jpg",
+          "alt": "A living room finished in wood veneer and plywood furniture",
+          "brief": "A living room finished in wood veneer and plywood furniture",
+          "aspect": "landscape"
+        },
+        "facts": [
+          "Since 1997",
+          "1000+ dealers across India",
+          "IS 1328 · IS 710 · IS 1659"
+        ]
+      } satisfies HeroProps)} />
+      <Stats {...({
+        "items": [
+          {
+            "value": "Since 1997",
+            "label": "Three generations of the Chhabra family"
+          },
+          {
+            "value": "1000+",
+            "label": "Dealers across India"
+          },
+          {
+            "value": "500+",
+            "label": "Completed projects"
+          },
+          {
+            "value": "400+",
+            "label": "Veneer species"
+          }
+        ]
+      } satisfies StatsProps)} />
+      <Features {...({
+        "variant": "grid",
+        "eyebrow": "The range",
+        "headline": "Six products, made at our own plant",
+        "items": [
+          {
+            "title": "Decorative Veneer",
+            "body": "IS 1328. Natural wood veneers for furniture, walls and doors, up to 10 ft tall.",
+            "icon": "Layers",
+            "href": "/products/decorative-veneer"
+          },
+          {
+            "title": "Marine Plywood",
+            "body": "IS 710. BWP-bonded hardwood plywood for kitchens, bathrooms and coastal homes.",
+            "icon": "Waves",
+            "href": "/products/marine-plywood"
+          },
+          {
+            "title": "Block Board",
+            "body": "IS 1659. Strong, stable boards for furniture, doors and partitions.",
+            "icon": "Package",
+            "href": "/products/block-board"
+          },
+          {
+            "title": "Prelam Plywood",
+            "body": "A factory-pressed melamine finish, ready for modular interiors.",
+            "icon": "Paintbrush",
+            "href": "/products/prelam-plywood"
+          },
+          {
+            "title": "Flexible Plywood",
+            "body": "Bendy ply for curved furniture, shopfitting and set design.",
+            "icon": "Feather",
+            "href": "/products/flexible-plywood"
+          },
+          {
+            "title": "Flush Doors",
+            "body": "Solid-core doors that resist warping and swelling, up to 10 ft.",
+            "icon": "Home",
+            "href": "/products/flush-door"
+          }
+        ],
+        "columns": 3
+      } satisfies FeaturesProps)} />
+      <HomeWoodlark />
+      <GrainStrip />
+      <Story {...({
+        "variant": "split",
+        "eyebrow": "Our legacy",
+        "headline": "Driven by the Purpose. Leading by Example.",
+        "paragraphs": [
+          "Billionply is more than a plywood and veneer maker. It is a legacy built on the expertise of three generations, blending traditional craft with modern technology."
+        ],
+        "image": {
+          "src": "/images/team/leadership-group.jpg",
+          "alt": "Jitender, Rahul and Rishabh Chhabra of Billionply",
+          "brief": "Jitender, Rahul and Rishabh Chhabra of Billionply",
+          "aspect": "wide"
+        },
+        "imageSide": "left",
+        "facts": [
+          {
+            "label": "Pressing",
+            "value": "4 Quad Press"
+          },
+          {
+            "label": "Finishing",
+            "value": "Italian sanders"
+          },
+          {
+            "label": "Emission",
+            "value": "E1 grade"
+          }
+        ]
+      } satisfies StoryProps)} />
+      <Testimonials {...({
+        "eyebrow": "Client feedback",
+        "headline": "Trusted by builders, architects and homeowners",
+        "items": [
+          {
+            "quote": "Working with Billionply has been a game-changer for our projects. Their plywood and veneer products are not just of exceptional quality but also reflect a deep understanding of sustainable design. The team's commitment to detail and personalized service makes them a trusted partner in bringing our architectural visions to life.",
+            "name": "Priyank Sharma",
+            "role": "Builder"
+          },
+          {
+            "quote": "Billionply veneer collection has transformed our interior projects. The natural beauty and durability of their products are unmatched. What sets them apart is their ability to tailor their offerings to our exact specifications, ensuring that each project is a perfect blend of aesthetics and functionality.",
+            "name": "Rohan Mehta",
+            "role": "Architect"
+          },
+          {
+            "quote": "Choosing Billionply for our home renovation was the best decision we made. The veneers they provided added a touch of elegance to our interiors, and the quality is truly top-notch. From selection to installation, the experience was smooth, thanks to their knowledgeable and friendly staff.",
+            "name": "Neha Singh",
+            "role": "Homeowner"
+          }
+        ]
+      } satisfies TestimonialsProps)} />
+      <Audiences />
+      <Faq {...({
+        "eyebrow": "Common questions",
+        "headline": "Good to know",
+        "items": [
+          {
+            "q": "What products does Billionply make?",
+            "a": "Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Prelam Plywood, Flexible Plywood and Flush Doors."
+          },
+          {
+            "q": "Which standards and technology do you use?",
+            "a": "4 Quad Press technology for strength, E1 grade for safe indoor use, Italian sanders for a smooth finish, and termite and borer protection."
+          },
+          {
+            "q": "How long has Billionply been in the industry?",
+            "a": "Since 1997. Three generations of the Chhabra family run the company, with 1000+ dealers across India."
+          },
+          {
+            "q": "Where can I buy Billionply products?",
+            "a": "Through our dealers across India. Use Find a dealer, or message us on WhatsApp and we will connect you with the nearest one."
+          }
+        ]
+      } satisfies FaqProps)} />
+      <CtaBand {...({
+        "eyebrow": "Talk to Billionply",
+        "headline": "Planning a project?",
+        "body": "Tell us what you are building. We help you pick the board, send samples and connect you with your nearest dealer.",
+        "primaryCta": {
+          "label": "Send an enquiry",
+          "href": "/contact"
+        },
+        "secondaryCta": {
+          "label": "Chat on WhatsApp",
+          "href": "https://wa.me/918287903410"
+        }
+      } satisfies CtaBandProps)} />
     </>
   );
 }

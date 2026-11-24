@@ -11,6 +11,10 @@ const FILES: Record<string, { key: string; type: string }> = {
     key: 'catalogues/billionply-natural-veneer-catalogue.pdf',
     type: 'application/pdf',
   },
+  'billionply-recon-veneer-catalogue.pdf': {
+    key: 'catalogues/billionply-recon-veneer-catalogue.pdf',
+    type: 'application/pdf',
+  },
 };
 
 type R2Body = {

@@ -1,36 +1,48 @@
-import { events } from '@/data/company';
+import { EventGallery } from '@/components/custom/Company';
 import { pageMetadata } from '@/lib/seo';
-import { JsonLd } from '@/components/JsonLd';
-import { PageHero } from '@/components/PageHero';
-import { Reveal } from '@/components/Reveal';
-import { CtaBand } from '@/components/CtaBand';
+import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
+import type { CtaBandProps, ProseProps } from '@/components/kit';
+import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-const description = 'Billionply at Matecia 2025: photos of our stand and team.';
+export const metadata = pageMetadata({
+  title: "Events: Billionply at Matecia 2025",
+  description: "Billionply at Matecia 2025: photos of our stand and team. Meet the people behind the boards at trade shows and exhibitions across India.",
+  path: "/events",
+});
 
-export const metadata = pageMetadata({ title: 'Events', description, path: '/events', image: '/images/events/matecia-2025-2917.jpg' });
+const CRUMBS = [{"name":"Home","path":"/"},{"name":"Events","path":"/events"}];
 
-export default function EventsPage() {
+export default function Page() {
   return (
     <>
-      <JsonLd path="/events" title="Events" description={description} breadcrumb={[{ name: 'Events', path: '/events' }]} />
-      <PageHero eyebrow="Events" title="Where to meet us" lead="Trade shows and exhibitions where the Billionply team shows the range in person." crumbs={[{ name: 'Events' }]} />
-      {events.map((e) => (
-        <section key={e.slug} id={e.slug} className="section scroll-mt-24">
-          <div className="container">
-            <h2 className="display-lg">{e.name}</h2>
-            <p className="lead mt-3">{e.summary}</p>
-            <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
-              {e.photos.map((p, i) => (
-                <Reveal key={p.src} delay={(i % 3) * 60} className="mb-4 break-inside-avoid overflow-hidden rounded-md">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.src} alt={p.alt} loading="lazy" className="w-full" />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
-      ))}
-      <CtaBand location="events-cta" />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS)]} />
+      <Breadcrumbs items={CRUMBS} />
+      <Prose {...({
+        "eyebrow": "Events",
+        "headline": "Matecia 2025",
+        "blocks": [
+          {
+            "paragraphs": [
+              "The Billionply stand and team at Matecia 2025."
+            ]
+          }
+        ],
+        "headingLevel": "h1"
+      } satisfies ProseProps)} />
+      <EventGallery />
+      <CtaBand {...({
+        "eyebrow": "Talk to Billionply",
+        "headline": "Planning a project?",
+        "body": "Tell us what you are building. We help you pick the board, send samples and connect you with your nearest dealer.",
+        "primaryCta": {
+          "label": "Send an enquiry",
+          "href": "/contact"
+        },
+        "secondaryCta": {
+          "label": "Chat on WhatsApp",
+          "href": "https://wa.me/918287903410"
+        }
+      } satisfies CtaBandProps)} />
     </>
   );
 }

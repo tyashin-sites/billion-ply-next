@@ -17,6 +17,9 @@ export const legacyRedirects: Record<string, string> = {
   '/gallery': '/projects',
   '/contact-us': '/contact',
   '/event-photos': '/events',
+  // Legal pages of the first build moved to the kit paths.
+  '/privacy-policy': '/privacy',
+  '/terms-and-conditions': '/terms',
   '/how-to-choose-the-right-plywood-for-your-interior-projects':
     '/blog/how-to-choose-the-right-plywood-for-your-interior-projects',
   '/top-benefits-of-using-high-quality-plywood-for-interior-design':

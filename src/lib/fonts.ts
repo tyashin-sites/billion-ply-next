@@ -1,18 +1,26 @@
-import { Fraunces, Manrope } from 'next/font/google';
+import localFont from 'next/font/local';
 
-/** Display: a soft, crafted serif for a three-generation family maker. */
-export const displayFont = Fraunces({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  style: ['normal', 'italic'],
-  variable: '--font-display',
+// Type stack (docs/DESIGN-SPEC.md), SELF-HOSTED via next/font/local so the CI
+// build never depends on a network fetch to Google Fonts.
+//   Headings — Fraunces
+//   Body     — Manrope
+//   Data     — JetBrains Mono
+
+export const headingFont = localFont({
+  src: [{ path: '../fonts/fraunces.woff2', weight: '400 700', style: 'normal' }],
+  variable: '--font-heading',
   display: 'swap',
 });
 
-/** Body: a clean, technical sans for specs and tables. */
-export const bodyFont = Manrope({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+export const bodyFont = localFont({
+  src: [{ path: '../fonts/manrope.woff2', weight: '400 700', style: 'normal' }],
   variable: '--font-body',
   display: 'swap',
+});
+
+export const monoFont = localFont({
+  src: [{ path: '../fonts/jetbrains-mono.woff2', weight: '400 600', style: 'normal' }],
+  variable: '--font-mono',
+  display: 'swap',
+  preload: false,
 });

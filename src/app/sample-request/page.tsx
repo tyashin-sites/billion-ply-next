@@ -1,32 +1,52 @@
+import { RequestFormSection } from '@/components/custom/RequestFormSection';
 import { pageMetadata } from '@/lib/seo';
-import { JsonLd } from '@/components/JsonLd';
-import { PageHero } from '@/components/PageHero';
-import { LeadForm } from '@/components/LeadForm';
-import { CatalogueButton } from '@/components/CatalogueButton';
+import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
+import type { CtaBandProps, ProseProps } from '@/components/kit';
+import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-const description =
-  'Architects and interior designers: request Billionply samples of decorative veneer, prelam, plywood, block board and flush doors for your project.';
+export const metadata = pageMetadata({
+  title: "Request Samples",
+  description: "Architects and interior designers: request Billionply samples of decorative veneer, prelam, plywood, block board and flush doors for your next project.",
+  path: "/sample-request",
+});
 
-export const metadata = pageMetadata({ title: 'Request samples', description, path: '/sample-request' });
+const CRUMBS = [{"name":"Home","path":"/"},{"name":"Samples","path":"/sample-request"}];
 
-export default async function SampleRequestPage({ searchParams }: { searchParams: Promise<{ product?: string }> }) {
-  const { product } = await searchParams;
+export default function Page() {
   return (
     <>
-      <JsonLd path="/sample-request" title="Request samples" description={description} breadcrumb={[{ name: 'Request samples', path: '/sample-request' }]} />
-      <PageHero
-        eyebrow="For architects and designers"
-        title="Request samples"
-        lead="See and feel the grain before you specify. Pick the products you need and where to send them."
-        crumbs={[{ name: 'Request samples' }]}
-      >
-        <CatalogueButton catalogue="natural" location="sample-request" label="Download veneer catalogue" variant="ghost" />
-      </PageHero>
-      <section className="section">
-        <div className="container max-w-4xl">
-          <LeadForm type="sample" defaultProduct={product} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS)]} />
+      <Breadcrumbs items={CRUMBS} />
+      <Prose {...({
+        "eyebrow": "For architects and designers",
+        "headline": "See the grain before you specify",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Pick the products you need and where to send them."
+            ]
+          }
+        ],
+        "headingLevel": "h1"
+      } satisfies ProseProps)} />
+      <section className="section pt-0">
+        <div className="container-x max-w-4xl">
+          <RequestFormSection type="sample" />
         </div>
       </section>
+      <CtaBand {...({
+        "eyebrow": "Talk to Billionply",
+        "headline": "Planning a project?",
+        "body": "Tell us what you are building. We help you pick the board, send samples and connect you with your nearest dealer.",
+        "primaryCta": {
+          "label": "Send an enquiry",
+          "href": "/contact"
+        },
+        "secondaryCta": {
+          "label": "Chat on WhatsApp",
+          "href": "https://wa.me/918287903410"
+        }
+      } satisfies CtaBandProps)} />
     </>
   );
 }
