@@ -9,8 +9,9 @@ const OLD = [
   '/how-to-choose-the-right-plywood-for-your-interior-projects/',
   '/top-benefits-of-using-high-quality-plywood-for-interior-design/',
   '/top-benefits-of-using-high-quality-plywood-for-interior-design-2/',
+  '/digital-card/', '/home-new/',
 ];
-const NEW_PAGES = new Set(['/about', '/projects', '/contact', '/events', '/privacy', '/terms',
+const NEW_PAGES = new Set(['/', '/about', '/projects', '/contact', '/events', '/privacy', '/terms',
   '/products/decorative-veneer', '/products/marine-plywood', '/products/prelam-plywood',
   '/products/flexible-plywood', '/products/block-board', '/products/flush-door']);
 
@@ -38,4 +39,10 @@ test('targets are real pages or blog posts, and the duplicate post folds into th
 test('catch-all trailing-slash rule comes last', () => {
   const rules = redirectRules();
   assert.equal(rules.at(-1).source, '/:path+/');
+});
+
+test('the product-verification URL printed in QR codes is a page, not a redirect', () => {
+  assert.equal(legacyRedirects['/billionply-product-verification'], undefined);
+  const r = redirectRules().find((x) => x.source === '/:path+/');
+  assert.ok(r, 'trailing-slash form (as printed) reaches the page through the catch-all 301');
 });
