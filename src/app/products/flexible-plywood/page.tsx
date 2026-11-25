@@ -1,23 +1,21 @@
 import { ProductActions, ProductHero, ProductSpec, RelatedProducts } from '@/components/custom/Product';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
+import { AnswerSections, ProductFaq } from '@/components/custom/Answers';
+import { PAGE_COPY, PRODUCT_ANSWERS } from '@/data/seo-content';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd, faqLd } from '@/lib/schema';
 import { getProduct } from '@/data/products';
 import { SITE_URL } from '@/lib/seo';
 
-export const metadata = pageMetadata({
-  title: "Flexible Plywood (bendy ply)",
-  description: "Billionply flexible plywood bends and curves without cracking. For curved furniture, architectural features, shopfitting, boats and stage design.",
-  path: "/products/flexible-plywood",
-});
+export const metadata = copyMetadata("/products/flexible-plywood");
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Flexible Plywood","path":"/products/flexible-plywood"}];
 
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("flexible-plywood")!.name}`, description: getProduct("flexible-plywood")!.metaDescription, path: "/products/flexible-plywood", images: [`${SITE_URL}${getProduct("flexible-plywood")!.image}`] })]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("flexible-plywood")!.name}`, description: PAGE_COPY["/products/flexible-plywood"].description, path: "/products/flexible-plywood", images: [`${SITE_URL}${getProduct("flexible-plywood")!.image}`] }), faqLd(PRODUCT_ANSWERS["flexible-plywood"].faqs)]} />
       <Breadcrumbs items={CRUMBS} />
       <ProductHero slug="flexible-plywood" title="Flexible Plywood" eyebrow="Bendy ply" />
       <Story {...({
@@ -50,6 +48,8 @@ export default function Page() {
         ]
       } satisfies FeaturesProps)} />
       <ProductSpec slug="flexible-plywood" />
+      <AnswerSections slug="flexible-plywood" />
+      <ProductFaq slug="flexible-plywood" />
       <RelatedProducts slug="flexible-plywood" />
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",

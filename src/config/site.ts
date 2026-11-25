@@ -9,7 +9,7 @@ export const siteConfig: SiteConfig = {
   "name": "Billionply",
   "shortName": "Billionply",
   "tagline": "Innovative Wood Solutions for Interiors and Furniture",
-  "description": "Billionply makes decorative veneer, marine plywood, block board, prelam and flexible plywood and flush doors in Bahadurgarh, Haryana, since 1997.",
+  "description": "Billionply makes decorative veneers (teak and non-teak), recon veneers, marine and commercial plywood, block board, prelam and flexible plywood, and flush doors in Bahadurgarh, Haryana, India.",
   "domain": "www.billionply.com",
   "locale": "en_US",
   "language": "en",
@@ -31,7 +31,20 @@ export const siteConfig: SiteConfig = {
   "nav": [
     {
       "label": "Products",
-      "href": "/products"
+      "href": "/products",
+      "children": [
+        { "label": "Decorative Veneers", "href": "/products/decorative-veneer" },
+        { "label": "Natural Veneers", "href": "/products/natural-veneer" },
+        { "label": "Teak Veneers", "href": "/products/teak-veneer" },
+        { "label": "Recon Veneers", "href": "/products/recon-veneer" },
+        { "label": "Marine Plywood", "href": "/products/marine-plywood" },
+        { "label": "Commercial Plywood", "href": "/products/commercial-plywood" },
+        { "label": "Block Board", "href": "/products/block-board" },
+        { "label": "Prelam Plywood", "href": "/products/prelam-plywood" },
+        { "label": "Flexible Plywood", "href": "/products/flexible-plywood" },
+        { "label": "Flush Doors", "href": "/products/flush-door" },
+        { "label": "All products", "href": "/products" }
+      ]
     },
     {
       "label": "Compare",

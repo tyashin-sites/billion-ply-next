@@ -6,32 +6,24 @@ export interface FaqProps {
   items: { q: string; a: string }[];
 }
 
-/** Native <details> accordion — no JS, keyboard-accessible, answers in the server HTML. */
+/**
+ * Every question and answer is visible in the server HTML (issue 100: AEO
+ * wants answers on the page, not behind an accordion). The page's FAQPage
+ * JSON-LD must list the same items.
+ */
 export function Faq({ eyebrow, headline, items }: FaqProps) {
   return (
     <section className="section">
       <div className="container-x max-w-3xl">
         {headline ? <SectionHeading eyebrow={eyebrow} title={headline} /> : null}
-        <div
-          className={`divide-border border-border divide-y border-b border-t ${headline ? 'mt-10' : ''}`}
-          data-fx="stagger"
-        >
+        <dl className={`divide-border border-border divide-y border-b border-t ${headline ? 'mt-10' : ''}`}>
           {items.map((it) => (
-            <details key={it.q} className="group py-1">
-              <summary className="font-heading flex cursor-pointer list-none items-center justify-between gap-6 py-4 text-left text-[1.0625rem] font-medium [&::-webkit-details-marker]:hidden">
-                <span>{it.q}</span>
-                <span
-                  className="border-border relative h-6 w-6 shrink-0 rounded-full border"
-                  aria-hidden
-                >
-                  <span className="absolute left-1/2 top-1/2 h-px w-3 -translate-x-1/2 -translate-y-1/2 bg-current" />
-                  <span className="absolute left-1/2 top-1/2 h-3 w-px -translate-x-1/2 -translate-y-1/2 bg-current transition-transform duration-300 group-open:rotate-90" />
-                </span>
-              </summary>
-              <p className="text-muted pb-5 pr-10 text-[15.5px] leading-relaxed">{it.a}</p>
-            </details>
+            <div key={it.q} className="py-5">
+              <dt className="font-heading text-[1.0625rem] font-medium">{it.q}</dt>
+              <dd className="text-muted mt-2 text-[15.5px] leading-relaxed">{it.a}</dd>
+            </div>
           ))}
-        </div>
+        </dl>
       </div>
     </section>
   );

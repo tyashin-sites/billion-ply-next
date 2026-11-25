@@ -1,14 +1,10 @@
 import { CaseStudies, PlantGallery } from '@/components/custom/Company';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Projects and Plant Gallery",
-  description: "Billionply projects and gallery: 500+ completed projects, and a look inside our plant and warehouse in Bahadurgarh, Haryana.",
-  path: "/projects",
-});
+export const metadata = copyMetadata('/projects');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Projects","path":"/projects"}];
 
@@ -19,7 +15,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "500+ completed projects",
-        "headline": "From our plant to your interiors",
+        "headline": "Billionply projects and gallery",
         "blocks": [
           {
             "paragraphs": [

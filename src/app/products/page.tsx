@@ -1,14 +1,11 @@
-import { ProductGrid } from '@/components/custom/Product';
-import { pageMetadata } from '@/lib/seo';
+import { WoodlarkCard } from '@/components/custom/Product';
+import { RangeGroups } from '@/components/custom/Answers';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Plywood, Veneer and Flush Doors",
-  description: "The Billionply range: decorative veneer (IS 1328), marine plywood (IS 710), block board (IS 1659), prelam and flexible plywood, and flush doors.",
-  path: "/products",
-});
+export const metadata = copyMetadata('/products');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Products","path":"/products"}];
 
@@ -19,17 +16,20 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "The range",
-        "headline": "Six products, one standard of care",
+        "headline": "Veneers, plywood, block board and flush doors",
         "blocks": [
           {
             "paragraphs": [
-              "Decorative veneer, plywood, block board and flush doors for interiors, furniture and doors, from a family in plywood and veneer since 1997."
+              "Veneers for the surface, plywood and boards for the structure, and flush doors. Pick a product for its uses, sizes and standards, or compare them side by side."
             ]
           }
         ],
         "headingLevel": "h1"
       } satisfies ProseProps)} />
-      <ProductGrid />
+      <RangeGroups />
+      <div className="container-x -mt-8 pb-8">
+        <WoodlarkCard location="products" />
+      </div>
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",
         "headline": "Planning a project?",

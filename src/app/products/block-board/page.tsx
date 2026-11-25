@@ -1,23 +1,21 @@
 import { ProductActions, ProductHero, ProductSpec, RelatedProducts } from '@/components/custom/Product';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
+import { AnswerSections, ProductFaq } from '@/components/custom/Answers';
+import { PAGE_COPY, PRODUCT_ANSWERS } from '@/data/seo-content';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd, faqLd } from '@/lib/schema';
 import { getProduct } from '@/data/products';
 import { SITE_URL } from '@/lib/seo';
 
-export const metadata = pageMetadata({
-  title: "Block Board (IS 1659)",
-  description: "Billionply block board to IS 1659: strong, moisture-resistant and dimensionally stable for furniture, doors, partitions and panelling. 10 ft sizes.",
-  path: "/products/block-board",
-});
+export const metadata = copyMetadata("/products/block-board");
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Block Board","path":"/products/block-board"}];
 
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("block-board")!.name}`, description: getProduct("block-board")!.metaDescription, path: "/products/block-board", images: [`${SITE_URL}${getProduct("block-board")!.image}`] })]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("block-board")!.name}`, description: PAGE_COPY["/products/block-board"].description, path: "/products/block-board", images: [`${SITE_URL}${getProduct("block-board")!.image}`] }), faqLd(PRODUCT_ANSWERS["block-board"].faqs)]} />
       <Breadcrumbs items={CRUMBS} />
       <ProductHero slug="block-board" title="Block Board" eyebrow="IS 1659 · 10 ft sizes" />
       <Story {...({
@@ -50,6 +48,8 @@ export default function Page() {
         ]
       } satisfies FeaturesProps)} />
       <ProductSpec slug="block-board" />
+      <AnswerSections slug="block-board" />
+      <ProductFaq slug="block-board" />
       <RelatedProducts slug="block-board" />
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",

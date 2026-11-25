@@ -1,14 +1,10 @@
 import { RequestFormSection } from '@/components/custom/RequestFormSection';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Request Samples",
-  description: "Architects and interior designers: request Billionply samples of decorative veneer, prelam, plywood, block board and flush doors for your next project.",
-  path: "/sample-request",
-});
+export const metadata = copyMetadata('/sample-request');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Samples","path":"/sample-request"}];
 
@@ -19,7 +15,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "For architects and designers",
-        "headline": "See the grain before you specify",
+        "headline": "Request veneer and plywood samples",
         "blocks": [
           {
             "paragraphs": [

@@ -10,6 +10,7 @@ import {
   type Product,
 } from '@/data/products';
 import { catalogues } from '@/data/catalogues';
+import { PAGE_COPY, PRODUCT_ANSWERS } from '@/data/seo-content';
 import { certifications } from '@/data/company';
 import { Hero, SectionHeading } from '@/components/kit';
 import { TrackedLink } from './TrackedLink';
@@ -125,10 +126,15 @@ export function VeneerRanges() {
             return (
               <li key={v.slug} id={v.slug} className="card scroll-mt-28 overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={v.image} alt={`${v.name} swatch`} width={900} height={675} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
+                <img src={v.image} alt={`Billionply ${v.name.toLowerCase()} swatch`} width={900} height={675} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover" />
                 <div className="p-5">
                   <h3 className="tt-3">{v.name}</h3>
                   {v.blurb ? <p className="text-muted mt-2 text-sm">{v.blurb}</p> : null}
+                  {v.page ? (
+                    <Link href={v.page} className="text-primary mt-4 flex items-center gap-1.5 text-sm font-semibold">
+                      About {v.name.toLowerCase()} <ArrowUpRight className="h-4 w-4" aria-hidden />
+                    </Link>
+                  ) : null}
                   {cat ? (
                     <TrackedLink href={cat.href} event="catalogue_download" props={{ catalogue: cat.key, location: `veneer-range-${v.slug}` }} className="text-primary mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
                       <Download className="h-4 w-4" aria-hidden /> {cat.title}
@@ -141,7 +147,7 @@ export function VeneerRanges() {
           <li className="card ink on-dark overflow-hidden">
             <TrackedLink href={BRAND.woodlark.url} event="woodlark_click" props={{ location: 'veneer-ranges' }} className="flex h-full flex-col">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/veneers/hybrid-woodlark.jpg" alt="Hybrid veneer surface" width={900} height={675} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover opacity-90" />
+              <img src="/images/veneers/hybrid-woodlark.jpg" alt="Woodlark premium hybrid veneer surface" width={900} height={675} loading="lazy" decoding="async" className="aspect-[4/3] w-full object-cover opacity-90" />
               <span className="flex flex-1 flex-col p-5">
                 <span className="tt-3">Premium Hybrid Veneer by Woodlark</span>
                 <span className="text-paper/75 mt-2 flex-1 text-sm">Explore the range at woodlarkveneer.com.</span>
@@ -254,7 +260,7 @@ export function WoodlarkCard({ location }: { location: string }) {
   return (
     <TrackedLink href={BRAND.woodlark.url} event="woodlark_click" props={{ location }} className="card group mt-8 grid overflow-hidden md:grid-cols-[0.5fr_1.5fr]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/images/veneers/hybrid-woodlark.jpg" alt="Hybrid veneer surface" width={900} height={600} loading="lazy" decoding="async" className="h-40 w-full object-cover md:h-full" />
+      <img src="/images/veneers/hybrid-woodlark.jpg" alt="Woodlark premium hybrid veneer surface" width={900} height={600} loading="lazy" decoding="async" className="h-40 w-full object-cover md:h-full" />
       <span className="flex flex-wrap items-center justify-between gap-4 p-6 md:p-8">
         <span>
           <span className="tt-3 block">Premium Hybrid Veneer by Woodlark</span>
@@ -273,17 +279,20 @@ export function WoodlarkCard({ location }: { location: string }) {
  * product shot where no in-use photo exists yet. Mood photos are never
  * captioned as Billionply projects.
  */
-export function ProductHero({ slug, title, eyebrow }: { slug: string; title: string; eyebrow?: string }) {
+export function ProductHero({ slug, eyebrow }: { slug: string; title?: string; eyebrow?: string }) {
   const p = getProduct(slug);
   if (!p) return null;
+  const copy = PAGE_COPY[`/products/${slug}`];
+  const answer = PRODUCT_ANSWERS[slug]?.shortAnswer;
   const src = p.heroImage ?? p.image;
   const alt = p.heroImage ? (p.heroImageAlt ?? p.imageAlt) : p.imageAlt;
   return (
     <Hero
       variant="split"
       eyebrow={eyebrow}
-      headline={title}
-      sub={p.cardLine}
+      headline={copy?.h1 ?? p.name}
+      answer={answer}
+      sub={answer ? undefined : p.cardLine}
       image={{ src, alt, brief: alt, aspect: src.endsWith('flexible-plywood.jpg') ? 'square' : 'landscape' }}
     />
   );

@@ -24,6 +24,8 @@ export interface VeneerRange {
   blurb?: string;
   /** Catalogue key in src/data/catalogues.ts, when the range has one. */
   catalogue?: string;
+  /** Its own page, where one exists (issue 100 keyword pages). */
+  page?: string;
 }
 
 export interface Product {
@@ -86,6 +88,7 @@ export const manufacturing = [
 export const veneerRanges: VeneerRange[] = [
   {
     slug: 'natural',
+    page: '/products/natural-veneer',
     name: 'Natural Veneers',
     image: '/images/veneers/natural.jpg',
     blurb:
@@ -94,6 +97,7 @@ export const veneerRanges: VeneerRange[] = [
   },
   {
     slug: 'recon',
+    page: '/products/recon-veneer',
     name: 'Recon Veneers',
     image: '/images/veneers/recon.jpg',
     blurb:
@@ -102,6 +106,7 @@ export const veneerRanges: VeneerRange[] = [
   },
   {
     slug: 'teak',
+    page: '/products/teak-veneer',
     name: 'Teak Veneers',
     image: '/images/veneers/teak.jpg',
     blurb: 'The warm, golden grain of teak for furniture, walls and doors.',

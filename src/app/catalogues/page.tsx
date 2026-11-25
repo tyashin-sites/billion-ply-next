@@ -1,14 +1,10 @@
 import { CatalogueList } from '@/components/custom/Specify';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Catalogues to Download",
-  description: "Download Billionply catalogues: the full natural decorative veneer catalogue and the recon veneer catalogue, as PDF files you can share with clients.",
-  path: "/catalogues",
-});
+export const metadata = copyMetadata('/catalogues');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Catalogues","path":"/catalogues"}];
 
@@ -19,7 +15,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "Downloads",
-        "headline": "Take the range with you",
+        "headline": "Veneer catalogues",
         "blocks": [
           {
             "paragraphs": [

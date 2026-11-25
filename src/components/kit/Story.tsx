@@ -10,6 +10,8 @@ export interface StoryProps {
   imageSide?: 'left' | 'right';
   /** Label/value facts ("Founded", "2011"). Only facts the customer gave. */
   facts?: { label: string; value: string }[];
+  /** One text link under the copy ("About Billionply"). */
+  link?: { label: string; href: string };
 }
 
 export function Story({
@@ -20,6 +22,7 @@ export function Story({
   image,
   imageSide = 'right',
   facts,
+  link,
 }: StoryProps) {
   const copy = (
     <>
@@ -38,6 +41,13 @@ export function Story({
             </div>
           ))}
         </dl>
+      ) : null}
+      {link ? (
+        <p className="mt-6">
+          <a href={link.href} className="text-primary font-semibold underline-offset-4 hover:underline">
+            {link.label}
+          </a>
+        </p>
       ) : null}
     </>
   );

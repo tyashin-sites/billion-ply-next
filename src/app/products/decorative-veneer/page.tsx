@@ -1,23 +1,21 @@
 import { ProductActions, ProductHero, ProductSpec, RelatedProducts, VeneerRanges } from '@/components/custom/Product';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
+import { AnswerSections, ProductFaq } from '@/components/custom/Answers';
+import { PAGE_COPY, PRODUCT_ANSWERS } from '@/data/seo-content';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd, faqLd } from '@/lib/schema';
 import { getProduct } from '@/data/products';
 import { SITE_URL } from '@/lib/seo';
 
-export const metadata = pageMetadata({
-  title: "Decorative Veneer (IS 1328)",
-  description: "Billionply decorative veneer to IS 1328: natural, recon, teak, exotic, metallic, open-grain, rustic and dyed, with a 10 ft height option.",
-  path: "/products/decorative-veneer",
-});
+export const metadata = copyMetadata("/products/decorative-veneer");
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Decorative Veneer","path":"/products/decorative-veneer"}];
 
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("decorative-veneer")!.name}`, description: getProduct("decorative-veneer")!.metaDescription, path: "/products/decorative-veneer", images: [`${SITE_URL}${getProduct("decorative-veneer")!.image}`] })]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("decorative-veneer")!.name}`, description: PAGE_COPY["/products/decorative-veneer"].description, path: "/products/decorative-veneer", images: [`${SITE_URL}${getProduct("decorative-veneer")!.image}`] }), faqLd(PRODUCT_ANSWERS["decorative-veneer"].faqs)]} />
       <Breadcrumbs items={CRUMBS} />
       <ProductHero slug="decorative-veneer" title="Decorative Veneer" eyebrow="IS 1328 · 10 ft height" />
       <Story {...({
@@ -58,6 +56,8 @@ export default function Page() {
       } satisfies FeaturesProps)} />
       <ProductSpec slug="decorative-veneer" />
       <VeneerRanges />
+      <AnswerSections slug="decorative-veneer" />
+      <ProductFaq slug="decorative-veneer" />
       <RelatedProducts slug="decorative-veneer" />
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",

@@ -1,14 +1,10 @@
 import { EventGallery } from '@/components/custom/Company';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Events: Billionply at Matecia 2025",
-  description: "Billionply at Matecia 2025: photos of our stand and team. Meet the people behind the boards at trade shows and exhibitions across India.",
-  path: "/events",
-});
+export const metadata = copyMetadata('/events');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Events","path":"/events"}];
 
@@ -19,7 +15,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "Events",
-        "headline": "Matecia 2025",
+        "headline": "Billionply events and exhibitions",
         "blocks": [
           {
             "paragraphs": [

@@ -18,15 +18,38 @@ export function Header() {
           <BrandMark />
         </Link>
         <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="nav-link text-foreground/80 hover:text-foreground whitespace-nowrap text-[15px] font-medium transition-colors"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {siteConfig.nav.map((item) =>
+            item.children?.length ? (
+              <div key={item.href} className="group relative">
+                <Link
+                  href={item.href}
+                  className="nav-link text-foreground/80 hover:text-foreground whitespace-nowrap text-[15px] font-medium transition-colors"
+                >
+                  {item.label}
+                </Link>
+                {/* CSS-only dropdown: opens on hover and on keyboard focus. */}
+                <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-opacity duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <ul className="bg-background border-border grid w-64 gap-0.5 rounded-lg border p-2 shadow-lg">
+                    {item.children.map((c) => (
+                      <li key={c.href + c.label}>
+                        <Link href={c.href} className="hover:bg-surface block rounded-md px-3 py-2 text-[15px]">
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="nav-link text-foreground/80 hover:text-foreground whitespace-nowrap text-[15px] font-medium transition-colors"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </nav>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           {siteConfig.commerce?.enabled ? <CartLink client={storeClientConfig()} /> : null}
