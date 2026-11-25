@@ -69,3 +69,20 @@ test('every new keyword page exists and is in the page sitemap', () => {
     assert.match(routes, new RegExp(`/products/${slug}"`));
   }
 });
+
+test('/compare cells from the requester review (comment 20)', () => {
+  const products = readFileSync('src/data/products.ts', 'utf8');
+  const block = (slug) => {
+    const at = products.indexOf(`slug: '${slug}'`);
+    const c = products.indexOf('compare: {', at);
+    return products.slice(c, products.indexOf('}', c));
+  };
+  assert.match(block('marine-plywood'), /grades: 'BWP'/);
+  assert.match(block('decorative-veneer'), /grades: 'Not applicable'/);
+  assert.match(block('decorative-veneer'), /water: 'Not applicable'/);
+});
+
+test('answer-section tables scroll in their own box on phones (grid child min-w-0)', () => {
+  const answers = readFileSync('src/components/custom/Answers.tsx', 'utf8');
+  assert.match(answers, /id=\{s\.id\} className="min-w-0 /);
+});
