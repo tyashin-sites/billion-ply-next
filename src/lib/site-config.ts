@@ -8,7 +8,17 @@ export interface NavItem {
   label: string;
   href: string;
   /** Sub-pages, shown as a dropdown on desktop and a sub-list on mobile. */
-  children?: { label: string; href: string }[];
+  children?: NavChild[];
+}
+
+/**
+ * A dropdown entry. `depth` indents it under the entry above (1 = child,
+ * 2 = grandchild). An entry without `href` is a group label, not a link.
+ */
+export interface NavChild {
+  label: string;
+  href?: string;
+  depth?: 0 | 1 | 2;
 }
 
 export interface SiteConfig {

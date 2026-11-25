@@ -748,3 +748,25 @@ html:root {
 .container-x.max-w-3xl.text-center > * {
   margin-inline: auto;
 }
+
+/* Compact split hero (home). Unlayered so it wins over .section, the
+   luxury style and the Tailwind spacing utilities on the hero parts. */
+.section.hero-compact {
+  padding-top: clamp(1.5rem, 2.6vw, 2.5rem);
+}
+.hero-compact .tt-display {
+  font-size: clamp(2.25rem, 4.2vw, 3.5rem);
+}
+.hero-compact .hero-answer {
+  margin-top: 1rem;
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
+}
+.hero-compact .hero-ctas {
+  margin-top: 1.5rem;
+}
+.hero-compact .hero-links {
+  margin-top: 1.25rem;
+}
+.hero-compact .hero-facts {
+  margin-top: 1.25rem;
+}

@@ -3,6 +3,7 @@ import { siteConfig, PRIMARY_CTA } from '@/config/site';
 import { CtaLink } from './CtaLink';
 import { MobileNav } from './MobileNav';
 import { BrandMark } from './BrandMark';
+import { NavChildLink } from './NavChildLink';
 import { CartLink } from '@/components/store/CartLink';
 import { storeClientConfig } from '@/lib/commerce';
 
@@ -29,12 +30,14 @@ export function Header() {
                 </Link>
                 {/* CSS-only dropdown: opens on hover and on keyboard focus. */}
                 <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-opacity duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-                  <ul className="bg-background border-border grid w-64 gap-0.5 rounded-lg border p-2 shadow-lg">
+                  <ul className="bg-background border-border grid w-72 gap-0.5 rounded-lg border p-2 shadow-lg">
                     {item.children.map((c) => (
-                      <li key={c.href + c.label}>
-                        <Link href={c.href} className="hover:bg-surface block rounded-md px-3 py-2 text-[15px]">
-                          {c.label}
-                        </Link>
+                      <li key={`${c.href ?? ''}${c.label}`}>
+                        <NavChildLink
+                          item={c}
+                          className={`hover:bg-surface rounded-md px-3 py-1.5 ${c.depth ? 'text-foreground/80 text-sm' : 'text-[15px] font-medium'}`}
+                          labelClassName="text-muted px-3 pb-1 pt-2 text-xs font-semibold uppercase tracking-[0.12em]"
+                        />
                       </li>
                     ))}
                   </ul>

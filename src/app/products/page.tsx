@@ -1,5 +1,5 @@
-import { WoodlarkCard } from '@/components/custom/Product';
 import { RangeGroups } from '@/components/custom/Answers';
+import { PRODUCT_HIERARCHY } from '@/data/seo-content';
 import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
@@ -20,16 +20,13 @@ export default function Page() {
         "blocks": [
           {
             "paragraphs": [
-              "Veneers for the surface, plywood and boards for the structure, and flush doors. Pick a product for its uses, sizes and standards, or compare them side by side."
+              "Decorative veneers, commercial plywood, block boards and Billionply Doors, plus marine, prelam and flexible plywood. Pick a product for its grades, sizes and standards, or compare them side by side."
             ]
           }
         ],
         "headingLevel": "h1"
       } satisfies ProseProps)} />
-      <RangeGroups />
-      <div className="container-x -mt-8 pb-8">
-        <WoodlarkCard location="products" />
-      </div>
+      <RangeGroups groups={PRODUCT_HIERARCHY} />
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",
         "headline": "Planning a project?",

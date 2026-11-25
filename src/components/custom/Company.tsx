@@ -113,14 +113,18 @@ export function CaseStudies() {
   );
 }
 
-/** Standards per product; licence numbers and certificate images appear only once supplied. */
+/** ISO 9001:2015 (name only) and the IS standard per product. Licence numbers stay off for now. */
 export function Certifications() {
   const withStandard = products.filter((p) => p.standard);
   return (
     <section className="section">
       <div className="container-x">
-        <SectionHeading eyebrow="BIS" title="Indian Standards" />
-        <ul className="mt-10 grid gap-6 md:grid-cols-3" data-fx="stagger">
+        <SectionHeading eyebrow="Certifications and standards" title="ISO 9001:2015 and Indian Standards" />
+        <ul className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-fx="stagger">
+          <li className="card flex flex-col p-7">
+            <p className="tt-2">ISO 9001:2015</p>
+            <p className="text-muted mt-2 text-[15px]">Billionply is ISO 9001:2015 certified.</p>
+          </li>
           {withStandard.map((p) => {
             const lic = certifications.find((c) => c.standard === p.standard);
             return (

@@ -5,7 +5,7 @@ import { catalogues } from '@/data/catalogues';
 import { PAGE_COPY, PRODUCT_ANSWERS, getRangePage } from '@/data/seo-content';
 import { breadcrumbLd, faqLd, organizationLd, productLd, websiteLd } from '@/lib/schema';
 import { SITE_URL } from '@/lib/seo';
-import { Breadcrumbs, CtaBand, Hero, JsonLd, SectionHeading } from '@/components/kit';
+import { Breadcrumbs, CtaBand, Hero, JsonLd } from '@/components/kit';
 import { AnswerSections, ProductFaq } from './Answers';
 import { RelatedProducts } from './Product';
 import { TrackedLink } from './TrackedLink';
@@ -13,8 +13,9 @@ import { TrackedLink } from './TrackedLink';
 /**
  * The four keyword pages (natural, teak and recon veneer, commercial
  * plywood). Same order as the product pages: H1, short answer, actions,
- * marketing sections, FAQ, the range. Commercial plywood has no photo and no
- * spec beyond "dry interiors" until the client sends data.
+ * marketing sections, FAQ, the range. Commercial plywood has no photo of its
+ * own: its hero shows a neutral warehouse photo that is not described as
+ * commercial plywood and is left out of its Product schema.
  */
 export function RangePageView({ slug, eyebrow }: { slug: string; eyebrow?: string }) {
   const r = getRangePage(slug);
@@ -28,6 +29,7 @@ export function RangePageView({ slug, eyebrow }: { slug: string; eyebrow?: strin
     { name: r.name, path },
   ];
   const cat = r.catalogue ? catalogues[r.catalogue] : undefined;
+  const heroImage = r.image && r.imageAlt ? { src: r.image, alt: r.imageAlt } : r.heroFallback;
   return (
     <>
       <JsonLd
@@ -45,19 +47,20 @@ export function RangePageView({ slug, eyebrow }: { slug: string; eyebrow?: strin
         ]}
       />
       <Breadcrumbs items={crumbs} />
-      {r.image && r.imageAlt ? (
+      {heroImage ? (
         <Hero
           variant="split"
-          eyebrow={eyebrow}
+          eyebrow={eyebrow ?? r.eyebrow}
           headline={copy.h1}
           answer={answer.shortAnswer}
-          image={{ src: r.image, alt: r.imageAlt, brief: r.imageAlt, aspect: 'landscape' }}
+          sub={r.intro}
+          image={{ src: heroImage.src, alt: heroImage.alt, brief: heroImage.alt, aspect: 'landscape' }}
         />
       ) : (
-        <Hero variant="centered" eyebrow={eyebrow} headline={copy.h1} answer={answer.shortAnswer} />
+        <Hero variant="centered" eyebrow={eyebrow ?? r.eyebrow} headline={copy.h1} answer={answer.shortAnswer} sub={r.intro} />
       )}
       <section className="pb-4 pt-2">
-        <div className={`container-x flex flex-wrap gap-3 ${r.image ? '' : 'justify-center'}`}>
+        <div className={`container-x flex flex-wrap gap-3 ${heroImage ? '' : 'justify-center'}`}>
           <Link href="/contact" className="btn btn-primary">Enquire about {r.name.toLowerCase()}</Link>
           <Link href="/sample-request" className="btn btn-ghost">Request a sample</Link>
           {cat ? (
@@ -72,27 +75,6 @@ export function RangePageView({ slug, eyebrow }: { slug: string; eyebrow?: strin
           ) : null}
         </div>
       </section>
-      {slug === 'commercial-plywood' ? (
-        <section className="section pb-0">
-          <div className="container-x max-w-4xl">
-            <SectionHeading eyebrow="For architects and project teams" title="Specification" />
-            <table className="mt-8 w-full text-[15px]">
-              <tbody className="divide-border divide-y">
-                <tr>
-                  <th scope="row" className="text-muted w-2/5 py-3 pr-6 text-left align-top font-medium">Use</th>
-                  <td className="py-3">Dry interiors</td>
-                </tr>
-                <tr>
-                  <th scope="row" className="text-muted w-2/5 py-3 pr-6 text-left align-top font-medium">Grade, thickness and sizes</th>
-                  <td className="py-3">
-                    <Link href="/contact" className="text-primary underline underline-offset-4">Ask our team</Link> for grade, thickness and sizes
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      ) : null}
       <AnswerSections slug={slug} />
       <ProductFaq slug={slug} />
       <RelatedProducts slug={slug} />

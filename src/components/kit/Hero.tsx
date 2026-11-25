@@ -21,6 +21,12 @@ export interface HeroProps {
   answer?: string;
   /** Text links under the CTAs (category shortcuts). */
   links?: { label: string; href: string }[];
+  /**
+   * split only: tighter top padding and a smaller headline so a long hero
+   * (answer + CTAs + links + facts) fits a 1440x783 window, with the photo
+   * aligned to the top of the text instead of centred.
+   */
+  compact?: boolean;
 }
 
 function Answer({ answer }: { answer?: string }) {
@@ -31,7 +37,7 @@ function Answer({ answer }: { answer?: string }) {
 function Links({ links }: { links?: { label: string; href: string }[] }) {
   if (!links?.length) return null;
   return (
-    <nav aria-label="Product categories" className="mt-7">
+    <nav aria-label="Product categories" className="hero-links mt-7">
       <ul className="flex flex-wrap gap-2">
         {links.map((l) => (
           <li key={l.href}>
@@ -53,7 +59,7 @@ function Ctas({
   if (!primaryCta && !secondaryCta) return null;
   return (
     <div
-      className={`reveal mt-9 flex flex-col gap-3 sm:flex-row ${center ? 'justify-center' : ''}`}
+      className={`hero-ctas reveal mt-9 flex flex-col gap-3 sm:flex-row ${center ? 'justify-center' : ''}`}
       style={{ animationDelay: '200ms' }}
     >
       {primaryCta ? <CtaLink cta={primaryCta} className="px-7 py-4 text-base" /> : null}
@@ -68,7 +74,7 @@ function Facts({ facts, center }: { facts?: string[]; center?: boolean }) {
   if (!facts?.length) return null;
   return (
     <ul
-      className={`reveal text-muted mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm ${center ? 'justify-center' : ''}`}
+      className={`hero-facts reveal text-muted mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm ${center ? 'justify-center' : ''}`}
       style={{ animationDelay: '280ms' }}
     >
       {facts.map((f) => (
@@ -205,8 +211,8 @@ export function Hero(props: HeroProps) {
   }
 
   return (
-    <section className="section relative overflow-hidden">
-      <div className="container-x grid items-center gap-12 lg:grid-cols-12">
+    <section className={`section relative overflow-hidden ${props.compact ? 'hero-compact' : ''}`}>
+      <div className={`container-x grid gap-12 lg:grid-cols-12 ${props.compact ? 'items-start' : 'items-center'}`}>
         <div className="lg:col-span-6">
           {eyebrow ? <p className="eyebrow reveal">{eyebrow}</p> : null}
           <h1 className="tt-display reveal" style={{ animationDelay: '80ms' }}>

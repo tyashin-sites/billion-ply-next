@@ -3,6 +3,7 @@ import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
+import { CERTIFICATIONS_OPENING, PAGE_COPY } from '@/data/seo-content';
 
 export const metadata = copyMetadata('/certifications');
 
@@ -15,12 +16,10 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "Quality",
-        "headline": "Indian Standards and quality",
+        "headline": PAGE_COPY['/certifications'].h1,
         "blocks": [
           {
-            "paragraphs": [
-              "The Indian Standards our products are made to, and how we make them."
-            ]
+            "paragraphs": [CERTIFICATIONS_OPENING]
           }
         ],
         "headingLevel": "h1"

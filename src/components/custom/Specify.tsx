@@ -3,28 +3,51 @@ import { ArrowRight, Download, FileText } from 'lucide-react';
 import { BRAND } from '@/config/site';
 import { getProduct, products, useGroups } from '@/data/products';
 import { catalogueList } from '@/data/catalogues';
+import { COMMERCIAL_COMPARE } from '@/data/seo-content';
 import { TrackedLink } from './TrackedLink';
 
 const ASK = <span className="text-muted">Ask us</span>;
 
-/** Water resistance, uses, IS standard and sizes for the whole range. "Ask us" where unpublished. */
+interface CompareColumn {
+  slug: string;
+  short: string;
+  water: string | null;
+  uses: string;
+  standard: string | null;
+  sizes: string | null;
+  grades?: string | null;
+  thickness?: string | null;
+}
+
+/** The six products plus commercial plywood (client sheet), after marine plywood. */
+function compareColumns(): CompareColumn[] {
+  const cols: CompareColumn[] = products.map((p) => ({ slug: p.slug, short: p.short, ...p.compare }));
+  const at = cols.findIndex((c) => c.slug === 'marine-plywood') + 1;
+  cols.splice(at, 0, COMMERCIAL_COMPARE);
+  return cols;
+}
+
+/** Grades, thickness, sizes, uses, water resistance and IS standard. "Ask us" where unpublished. */
 export function CompareTable() {
-  const rows: { label: string; get: (p: (typeof products)[number]) => React.ReactNode }[] = [
-    { label: 'Water resistance', get: (p) => p.compare.water ?? ASK },
-    { label: 'Typical uses', get: (p) => p.compare.uses },
-    { label: 'IS standard', get: (p) => p.compare.standard ?? ASK },
-    { label: 'Sizes', get: (p) => p.compare.sizes ?? ASK },
+  const cols = compareColumns();
+  const rows: { label: string; get: (p: CompareColumn) => React.ReactNode }[] = [
+    { label: 'Grades', get: (p) => p.grades ?? ASK },
+    { label: 'Thickness', get: (p) => p.thickness ?? ASK },
+    { label: 'Sizes', get: (p) => p.sizes ?? ASK },
+    { label: 'Typical uses', get: (p) => p.uses },
+    { label: 'Water resistance', get: (p) => p.water ?? ASK },
+    { label: 'IS standard', get: (p) => p.standard ?? ASK },
   ];
   return (
     <section className="section">
       <div className="container-x">
         <div className="border-border hidden overflow-x-auto rounded-lg border md:block">
-          <table className="w-full min-w-[960px] text-left text-[15px]">
+          <table className="w-full min-w-[1120px] text-left text-[15px]">
             <caption className="sr-only">Billionply product comparison</caption>
             <thead className="bg-surface">
               <tr>
                 <th scope="col" className="text-muted w-40 px-5 py-4 font-medium">Product</th>
-                {products.map((p) => (
+                {cols.map((p) => (
                   <th key={p.slug} scope="col" className="px-5 py-4 align-bottom">
                     <Link href={`/products/${p.slug}`} className="font-heading hover:text-primary text-lg">{p.short}</Link>
                   </th>
@@ -35,7 +58,7 @@ export function CompareTable() {
               {rows.map((r) => (
                 <tr key={r.label} className="align-top">
                   <th scope="row" className="text-muted px-5 py-4 font-medium">{r.label}</th>
-                  {products.map((p) => (
+                  {cols.map((p) => (
                     <td key={p.slug} className="px-5 py-4">{r.get(p)}</td>
                   ))}
                 </tr>
@@ -44,7 +67,7 @@ export function CompareTable() {
           </table>
         </div>
         <ul className="grid gap-4 md:hidden">
-          {products.map((p) => (
+          {cols.map((p) => (
             <li key={p.slug} className="card p-5">
               <Link href={`/products/${p.slug}`} className="font-heading text-xl">{p.short}</Link>
               <dl className="divide-border mt-3 divide-y text-sm">

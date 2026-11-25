@@ -127,12 +127,7 @@ export const certifications: {
   image?: string;
   validUntil?: string;
 }[] = [
-  {
-    // Printed with the ISI mark on the back cover of the client's own Natural
-    // Veneer e-catalogue (billionply.com). Added on Aditya's go-ahead,
-    // 24 Nov 2026. Validity date and certificate image still to come.
-    standard: 'IS 1328',
-    title: 'Decorative veneer (IS 1328)',
-    licenceNumber: 'CM/L-9693005',
-  },
+  // The IS 1328 BIS licence number was taken down on 25 Nov 2026 at the
+  // user's request (tyashin-platform issue 100). Licence numbers stay off
+  // the site until the user says otherwise.
 ];

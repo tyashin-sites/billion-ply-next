@@ -5,12 +5,8 @@ import { createPortal } from 'react-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowUpRight } from 'lucide-react';
 import { CtaLink, type CtaProps } from './CtaLink';
-
-interface NavItem {
-  label: string;
-  href: string;
-  children?: { label: string; href: string }[];
-}
+import { NavChildLink } from './NavChildLink';
+import type { NavItem } from '@/lib/site-config';
 
 /**
  * Full-screen menu on the ink ground. Portalled to <body> (the blurred sticky
@@ -96,12 +92,15 @@ export function MobileNav({ nav, cta }: { nav: NavItem[]; cta: CtaProps | null }
                   />
                 </Link>
                 {item.children?.length ? (
-                  <ul className="grid grid-cols-2 gap-x-4 gap-y-2 pb-4 pl-12">
+                  <ul className="grid gap-y-2 pb-4 pl-12">
                     {item.children.map((c) => (
-                      <li key={c.href + c.label}>
-                        <Link href={c.href} onClick={close} className="text-paper/80 hover:text-paper text-[15px]">
-                          {c.label}
-                        </Link>
+                      <li key={`${c.href ?? ''}${c.label}`}>
+                        <NavChildLink
+                          item={c}
+                          onClick={close}
+                          className={`hover:text-paper ${c.depth ? 'text-paper/70 text-sm' : 'text-paper/85 text-[15px]'}`}
+                          labelClassName="text-accent-soft pt-1 text-xs font-semibold uppercase tracking-[0.12em]"
+                        />
                       </li>
                     ))}
                   </ul>

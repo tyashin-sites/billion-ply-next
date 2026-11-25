@@ -58,6 +58,9 @@ export interface Product {
     uses: string;
     standard: string | null;
     sizes: string | null;
+    /** Client sheet (25 Nov 2026); null → "Ask us". */
+    grades?: string | null;
+    thickness?: string | null;
   };
   useGroups: UseGroup[];
   tenFoot: boolean;
@@ -250,7 +253,7 @@ export const products: Product[] = [
     standard: 'IS 1659',
     image: '/images/products/block-board.jpg',
     imageAlt: 'Stacked Billionply block boards showing the edge',
-    cardLine: 'Strong, stable boards for furniture, doors and partitions.',
+    cardLine: 'MR and BWP block boards, 16 to 25 mm, for furniture, doors and partitions.',
     metaDescription:
       'Billionply block board (IS 1659): strong, moisture-resistant and dimensionally stable for furniture, doors, partitions and panelling. 10 ft sizes for fewer joints.',
     intro: [
@@ -268,17 +271,20 @@ export const products: Product[] = [
     ],
     spec: [
       { label: 'Standard', value: 'IS 1659 (block board)' },
+      { label: 'Grades', value: 'MR (moisture-resistant), BWP (boiling water-proof)' },
+      { label: 'Thickness', value: '16, 19, 22, 25 mm' },
+      { label: 'Sizes', value: '8 x 4 ft to 10 x 4 ft' },
       { label: 'Moisture', value: 'Moisture-resistant, dimensionally stable' },
       { label: 'Surface', value: 'Smooth, ready to work' },
-      { label: 'Sizes', value: 'Including 10 ft' },
-      { label: 'Thickness', value: null },
       { label: 'Warranty', value: null },
     ],
     compare: {
-      water: 'Moisture-resistant',
+      water: 'MR or BWP',
       uses: 'Heavy-duty furniture, doors, partitions, panelling',
       standard: 'IS 1659',
-      sizes: 'Including 10 ft',
+      sizes: '8 x 4 ft to 10 x 4 ft',
+      grades: 'MR, BWP',
+      thickness: '16, 19, 22, 25 mm',
     },
     useGroups: ['heavy-duty', 'doors', 'interiors'],
     tenFoot: true,
@@ -366,7 +372,7 @@ export const products: Product[] = [
     standard: null,
     image: '/images/products/flush-door.jpg',
     imageAlt: 'A Billionply flush door with a smooth wood face',
-    cardLine: 'Solid-core doors that resist warping and swelling, up to 10 ft.',
+    cardLine: 'Billionply Doors: solid-core flush doors in MR and BWP, 30 to 35 mm.',
     metaDescription:
       'Billionply flush doors: solid core, sound insulation, resist warping, cracking and swelling. Smooth face ready for paint or polish, in a 10 ft size.',
     intro: [
@@ -386,15 +392,18 @@ export const products: Product[] = [
       { label: 'Acoustics', value: 'Excellent sound insulation' },
       { label: 'Stability', value: 'Resists warping, cracking and swelling from humidity' },
       { label: 'Finish', value: 'Smooth face, ready for paint or polish' },
-      { label: 'Sizes', value: 'Including 10 ft' },
-      { label: 'Thickness', value: null },
+      { label: 'Grades', value: 'MR (moisture-resistant), BWP (boiling water-proof)' },
+      { label: 'Thickness', value: '30, 32, 35 mm' },
+      { label: 'Sizes', value: '8 x 4 ft to 10 x 4 ft' },
       { label: 'Warranty', value: null },
     ],
     compare: {
       water: 'Resists swelling from humidity',
       uses: 'Interior doors for homes and commercial spaces',
       standard: null,
-      sizes: 'Including 10 ft',
+      sizes: '8 x 4 ft to 10 x 4 ft',
+      grades: 'MR, BWP',
+      thickness: '30, 32, 35 mm',
     },
     useGroups: ['doors'],
     tenFoot: true,
