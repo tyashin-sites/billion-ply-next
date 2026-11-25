@@ -31,10 +31,33 @@ export const legacyRedirects: Record<string, string> = {
     '/blog/top-benefits-of-using-high-quality-plywood-for-interior-design',
 };
 
+/**
+ * billionveneers.com, the client's old domain (issue 100). Paths from the
+ * Wayback Machine index of the old static site (25 Nov 2026); anything else
+ * goes to the home page. These rules match on the Host header, so they do
+ * nothing until billionveneers.com and www.billionveneers.com are attached
+ * to this site at go-live. The target is www.billionply.com, which is still
+ * WordPress today: attach the old domain only after the billionply.com
+ * cutover.
+ */
+export const OLD_DOMAIN_HOST = '(www\\.)?billionveneers\\.com';
+export const NEW_ORIGIN = 'https://www.billionply.com';
+export const oldDomainRedirects: Record<string, string> = {
+  '/index.html': '/',
+  '/aboutus.html': '/about',
+  '/certifications.html': '/certifications',
+  '/contacts.html': '/contact',
+  '/dealers.html': '/dealers',
+  '/veneers.html': '/products/decorative-veneer',
+  '/prductsalb.html': '/products',
+  '/productsalb3.html': '/products',
+};
+
 export interface RedirectRule {
   source: string;
   destination: string;
   statusCode: 301;
+  has?: { type: 'host'; value: string }[];
 }
 
 /**
@@ -45,6 +68,12 @@ export interface RedirectRule {
  */
 export function redirectRules(): RedirectRule[] {
   const rules: RedirectRule[] = [];
+  // Old domain first, so its requests never fall through to the rules below.
+  const has = [{ type: 'host' as const, value: OLD_DOMAIN_HOST }];
+  for (const [from, to] of Object.entries(oldDomainRedirects)) {
+    rules.push({ source: from, destination: `${NEW_ORIGIN}${to === '/' ? '/' : to}`, statusCode: 301, has });
+  }
+  rules.push({ source: '/:path*', destination: `${NEW_ORIGIN}/`, statusCode: 301, has });
   for (const [from, to] of Object.entries(legacyRedirects)) {
     rules.push({ source: from, destination: to, statusCode: 301 });
     rules.push({ source: `${from}/`, destination: to, statusCode: 301 });

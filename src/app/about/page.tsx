@@ -1,14 +1,11 @@
 import { Timeline, Leadership } from '@/components/custom/Company';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
+import { ABOUT_OPENING, PAGE_COPY } from '@/data/seo-content';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Stats, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StatsProps, StoryProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "About Billionply",
-  description: "Billionply (Jai Shiv Plywood Pvt. Ltd.): three generations of the Chhabra family in plywood and veneer since 1997. Our story, mission and leadership.",
-  path: "/about",
-});
+export const metadata = copyMetadata('/about');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"About","path":"/about"}];
 
@@ -19,7 +16,8 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <section className="section pb-0">
         <div className="container-x max-w-3xl">
-          <h1 className="tt-display reveal">Driven by the Purpose. Leading by Example.</h1>
+          <h1 className="tt-display reveal">{PAGE_COPY['/about'].h1}</h1>
+          <p className="lead mt-6">{ABOUT_OPENING}</p>
         </div>
       </section>
       <Story {...({

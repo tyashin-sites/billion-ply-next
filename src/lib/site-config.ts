@@ -7,6 +7,8 @@
 export interface NavItem {
   label: string;
   href: string;
+  /** Sub-pages, shown as a dropdown on desktop and a sub-list on mobile. */
+  children?: { label: string; href: string }[];
 }
 
 export interface SiteConfig {

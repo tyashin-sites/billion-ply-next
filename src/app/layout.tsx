@@ -43,19 +43,20 @@ html:root[data-theme="dark"], html:root[data-theme="dark"] body { background-col
 `;
 
 const FOOTER = {
-  "blurb": "Three generations of the Chhabra family, in plywood and veneer since 1997.",
+  "blurb": "Decorative veneers, plywood, block board and flush doors from Bahadurgarh, Haryana. In the industry since 1997.",
   "columns": [
     {
       "heading": "Products",
       "links": [
-        {
-          "label": "Decorative Veneer",
-          "href": "/products/decorative-veneer"
-        },
+        { "label": "Decorative Veneers", "href": "/products/decorative-veneer" },
+        { "label": "Natural Veneers", "href": "/products/natural-veneer" },
+        { "label": "Teak Veneers", "href": "/products/teak-veneer" },
+        { "label": "Recon Veneers", "href": "/products/recon-veneer" },
         {
           "label": "Marine Plywood",
           "href": "/products/marine-plywood"
         },
+        { "label": "Commercial Plywood", "href": "/products/commercial-plywood" },
         {
           "label": "Block Board",
           "href": "/products/block-board"

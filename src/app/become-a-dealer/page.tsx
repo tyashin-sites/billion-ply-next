@@ -1,14 +1,10 @@
 import { RequestFormSection } from '@/components/custom/RequestFormSection';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Become a Billionply Dealer",
-  description: "Become a Billionply dealer. Join 1000+ dealers across India selling decorative veneer, plywood, block board and flush doors. Apply in two minutes.",
-  path: "/become-a-dealer",
-});
+export const metadata = copyMetadata('/become-a-dealer');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Become a dealer","path":"/become-a-dealer"}];
 
@@ -19,7 +15,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "For dealers and distributors",
-        "headline": "Grow with Billionply",
+        "headline": "Become a Billionply dealer",
         "blocks": [
           {
             "paragraphs": [

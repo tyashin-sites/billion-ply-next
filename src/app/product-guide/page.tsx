@@ -1,14 +1,11 @@
 import { ProductGuide } from '@/components/custom/Specify';
-import { pageMetadata } from '@/lib/seo';
+import { GuideAnswers } from '@/components/custom/Answers';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Which Product for Which Job",
-  description: "Which Billionply product for which job: interiors, doors, heavy-duty furniture and wet or harsh areas like kitchens, bathrooms and coastal homes.",
-  path: "/product-guide",
-});
+export const metadata = copyMetadata('/product-guide');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Guide","path":"/product-guide"}];
 
@@ -19,7 +16,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "Product guide",
-        "headline": "Start from the job",
+        "headline": "Which plywood or veneer should you use?",
         "blocks": [
           {
             "paragraphs": [
@@ -29,6 +26,7 @@ export default function Page() {
         ],
         "headingLevel": "h1"
       } satisfies ProseProps)} />
+      <GuideAnswers />
       <ProductGuide />
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",

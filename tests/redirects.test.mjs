@@ -46,3 +46,23 @@ test('the product-verification URL printed in QR codes is a page, not a redirect
   const r = redirectRules().find((x) => x.source === '/:path+/');
   assert.ok(r, 'trailing-slash form (as printed) reaches the page through the catch-all 301');
 });
+
+test('billionveneers.com: every rule is host-gated and points at www.billionply.com', async () => {
+  const { oldDomainRedirects, OLD_DOMAIN_HOST } = await import('../src/config/legacy-redirects.ts');
+  const host = new RegExp(`^${OLD_DOMAIN_HOST}$`);
+  for (const h of ['billionveneers.com', 'www.billionveneers.com']) assert.match(h, host);
+  for (const h of ['www.billionply.com', 'billionveneers.com.evil.test']) assert.doesNotMatch(h, host);
+  const rules = redirectRules().filter((r) => r.has);
+  assert.equal(rules.length, Object.keys(oldDomainRedirects).length + 1);
+  for (const r of rules) {
+    assert.equal(r.statusCode, 301);
+    assert.ok(r.destination.startsWith('https://www.billionply.com/'), r.destination);
+  }
+  // Known old pages go to the matching page; the catch-all goes home.
+  assert.equal(rules.find((r) => r.source === '/aboutus.html').destination, 'https://www.billionply.com/about');
+  assert.equal(rules.find((r) => r.source === '/:path*').destination, 'https://www.billionply.com/');
+  // Host rules come before the catch-all of this site, and only billionply rules lack `has`.
+  const all = redirectRules();
+  assert.ok(all.findIndex((r) => r.source === '/:path*') < all.findIndex((r) => r.source === '/:path+/'));
+  for (const to of Object.values(oldDomainRedirects)) assert.ok(NEW_PAGES.has(to) || ['/certifications', '/dealers', '/products'].includes(to), to);
+});

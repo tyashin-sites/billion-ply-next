@@ -14,6 +14,35 @@ export interface HeroProps {
   image?: ImageBrief;
   /** Short proof points shown under the CTAs ("Since 1998", "Same-day quotes"). */
   facts?: string[];
+  /**
+   * The page's short answer, set directly under the H1 as plain text with no
+   * reveal animation (AEO: answer engines and no-JS readers see it at once).
+   */
+  answer?: string;
+  /** Text links under the CTAs (category shortcuts). */
+  links?: { label: string; href: string }[];
+}
+
+function Answer({ answer }: { answer?: string }) {
+  if (!answer) return null;
+  return <p className="hero-answer lead mt-6">{answer}</p>;
+}
+
+function Links({ links }: { links?: { label: string; href: string }[] }) {
+  if (!links?.length) return null;
+  return (
+    <nav aria-label="Product categories" className="mt-7">
+      <ul className="flex flex-wrap gap-2">
+        {links.map((l) => (
+          <li key={l.href}>
+            <a href={l.href} className="border-border hover:border-foreground/40 inline-block rounded-full border px-3 py-1.5 text-sm font-medium transition-colors">
+              {l.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 }
 
 function Ctas({
@@ -100,6 +129,9 @@ export function Hero(props: HeroProps) {
           <h1 className="tt-display reveal mx-auto max-w-4xl" style={{ animationDelay: '80ms' }}>
             {headline}
           </h1>
+          <div className="mx-auto max-w-3xl">
+            <Answer answer={props.answer} />
+          </div>
           {sub ? (
             <p className="lead reveal mx-auto mt-6" style={{ animationDelay: '140ms' }}>
               {sub}
@@ -180,12 +212,14 @@ export function Hero(props: HeroProps) {
           <h1 className="tt-display reveal" style={{ animationDelay: '80ms' }}>
             {headline}
           </h1>
+          <Answer answer={props.answer} />
           {sub ? (
             <p className="lead reveal mt-6" style={{ animationDelay: '140ms' }}>
               {sub}
             </p>
           ) : null}
           <Ctas {...props} />
+          <Links links={props.links} />
           <Facts facts={props.facts} />
         </div>
         <div className="reveal lg:col-span-6" style={{ animationDelay: '220ms' }}>

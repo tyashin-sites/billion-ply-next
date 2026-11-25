@@ -9,6 +9,7 @@ import { CtaLink, type CtaProps } from './CtaLink';
 interface NavItem {
   label: string;
   href: string;
+  children?: { label: string; href: string }[];
 }
 
 /**
@@ -94,6 +95,17 @@ export function MobileNav({ nav, cta }: { nav: NavItem[]; cta: CtaProps | null }
                     aria-hidden
                   />
                 </Link>
+                {item.children?.length ? (
+                  <ul className="grid grid-cols-2 gap-x-4 gap-y-2 pb-4 pl-12">
+                    {item.children.map((c) => (
+                      <li key={c.href + c.label}>
+                        <Link href={c.href} onClick={close} className="text-paper/80 hover:text-paper text-[15px]">
+                          {c.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
               </li>
             ))}
           </ol>

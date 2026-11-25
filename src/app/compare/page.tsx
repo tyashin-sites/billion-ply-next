@@ -1,14 +1,10 @@
 import { CompareTable } from '@/components/custom/Specify';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Compare Plywood, Veneer and Doors",
-  description: "Compare Billionply marine plywood, block board, prelam and flexible plywood, veneer and flush doors: water resistance, uses, IS standard and sizes.",
-  path: "/compare",
-});
+export const metadata = copyMetadata('/compare');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Compare","path":"/compare"}];
 
@@ -19,7 +15,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "Compare",
-        "headline": "Side by side",
+        "headline": "Compare veneers, plywood and doors",
         "blocks": [
           {
             "paragraphs": [

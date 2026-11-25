@@ -1,23 +1,21 @@
 import { ProductActions, ProductHero, ProductSpec, RelatedProducts, PrelamFinishes } from '@/components/custom/Product';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
+import { AnswerSections, ProductFaq } from '@/components/custom/Answers';
+import { PAGE_COPY, PRODUCT_ANSWERS } from '@/data/seo-content';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd, faqLd } from '@/lib/schema';
 import { getProduct } from '@/data/products';
 import { SITE_URL } from '@/lib/seo';
 
-export const metadata = pageMetadata({
-  title: "Prelam Plywood",
-  description: "Billionply prelam plywood: a factory-pressed melamine finish that needs no extra surface work. For furniture, partitions, cabinets and modular interiors.",
-  path: "/products/prelam-plywood",
-});
+export const metadata = copyMetadata("/products/prelam-plywood");
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Prelam Plywood","path":"/products/prelam-plywood"}];
 
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("prelam-plywood")!.name}`, description: getProduct("prelam-plywood")!.metaDescription, path: "/products/prelam-plywood", images: [`${SITE_URL}${getProduct("prelam-plywood")!.image}`] })]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("prelam-plywood")!.name}`, description: PAGE_COPY["/products/prelam-plywood"].description, path: "/products/prelam-plywood", images: [`${SITE_URL}${getProduct("prelam-plywood")!.image}`] }), faqLd(PRODUCT_ANSWERS["prelam-plywood"].faqs)]} />
       <Breadcrumbs items={CRUMBS} />
       <ProductHero slug="prelam-plywood" title="Prelam Plywood" eyebrow="Ready-finished surface" />
       <Story {...({
@@ -51,6 +49,8 @@ export default function Page() {
       } satisfies FeaturesProps)} />
       <ProductSpec slug="prelam-plywood" />
       <PrelamFinishes />
+      <AnswerSections slug="prelam-plywood" />
+      <ProductFaq slug="prelam-plywood" />
       <RelatedProducts slug="prelam-plywood" />
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",

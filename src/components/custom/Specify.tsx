@@ -88,7 +88,7 @@ export function ProductGuide() {
                   <li key={slug}>
                     <Link href={`/products/${p.slug}`} className="card flex h-full gap-4 overflow-hidden p-4">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={p.image} alt="" width={96} height={96} loading="lazy" decoding="async" className="h-24 w-24 shrink-0 rounded-md object-cover" />
+                      <img src={p.image} alt={p.imageAlt} width={96} height={96} loading="lazy" decoding="async" className="h-24 w-24 shrink-0 rounded-md object-cover" />
                       <span>
                         <span className="font-heading block text-lg">{p.name}</span>
                         {p.standard ? <span className="text-muted block text-xs">{p.standard}</span> : null}

@@ -1,14 +1,10 @@
 import { Certifications } from '@/components/custom/Company';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Certifications and Standards",
-  description: "Billionply standards and certifications: decorative veneer to IS 1328, marine plywood to IS 710, block board to IS 1659, E1 grade and termite protection.",
-  path: "/certifications",
-});
+export const metadata = copyMetadata('/certifications');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Certifications","path":"/certifications"}];
 
@@ -19,7 +15,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "Quality",
-        "headline": "Made to Indian Standards",
+        "headline": "Indian Standards and quality",
         "blocks": [
           {
             "paragraphs": [

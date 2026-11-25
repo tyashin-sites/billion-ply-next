@@ -1,23 +1,21 @@
 import { ProductActions, ProductHero, ProductSpec, RelatedProducts } from '@/components/custom/Product';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
+import { AnswerSections, ProductFaq } from '@/components/custom/Answers';
+import { PAGE_COPY, PRODUCT_ANSWERS } from '@/data/seo-content';
 import { Breadcrumbs, CtaBand, Features, JsonLd, Story } from '@/components/kit';
 import type { CtaBandProps, FeaturesProps, StoryProps } from '@/components/kit';
-import { organizationLd, websiteLd, breadcrumbLd, productLd } from '@/lib/schema';
+import { organizationLd, websiteLd, breadcrumbLd, productLd, faqLd } from '@/lib/schema';
 import { getProduct } from '@/data/products';
 import { SITE_URL } from '@/lib/seo';
 
-export const metadata = pageMetadata({
-  title: "Marine Plywood (IS 710)",
-  description: "Billionply marine plywood to IS 710: hardwood core bonded with BWP resin, resists water, warping, delamination and fungus. Available in 10 ft sizes.",
-  path: "/products/marine-plywood",
-});
+export const metadata = copyMetadata("/products/marine-plywood");
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Marine Plywood","path":"/products/marine-plywood"}];
 
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("marine-plywood")!.name}`, description: getProduct("marine-plywood")!.metaDescription, path: "/products/marine-plywood", images: [`${SITE_URL}${getProduct("marine-plywood")!.image}`] })]} />
+      <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("marine-plywood")!.name}`, description: PAGE_COPY["/products/marine-plywood"].description, path: "/products/marine-plywood", images: [`${SITE_URL}${getProduct("marine-plywood")!.image}`] }), faqLd(PRODUCT_ANSWERS["marine-plywood"].faqs)]} />
       <Breadcrumbs items={CRUMBS} />
       <ProductHero slug="marine-plywood" title="Marine Plywood" eyebrow="IS 710 · BWP · 10 ft sizes" />
       <Story {...({
@@ -57,6 +55,8 @@ export default function Page() {
         ]
       } satisfies FeaturesProps)} />
       <ProductSpec slug="marine-plywood" />
+      <AnswerSections slug="marine-plywood" />
+      <ProductFaq slug="marine-plywood" />
       <RelatedProducts slug="marine-plywood" />
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",

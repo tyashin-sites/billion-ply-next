@@ -1,4 +1,5 @@
-import { siteConfig, FULL_ADDRESS } from '@/config/site';
+import { siteConfig, BRAND } from '@/config/site';
+import { COMPANY_SHORT, KNOWS_ABOUT } from '@/data/seo-content';
 import { SITE_URL } from '@/lib/seo';
 
 /** Sitewide entity nodes (addendum §3b). Only facts from siteConfig — nothing invented. */
@@ -10,21 +11,25 @@ export function organizationLd(kind: 'Organization' | 'LocalBusiness' | 'Store' 
     '@type': kind,
     '@id': ORG_ID,
     name: siteConfig.name,
+    legalName: BRAND.legalName,
     url: SITE_URL,
     image: `${SITE_URL}/og/default.png`,
-    description: siteConfig.description,
+    description: COMPANY_SHORT,
+    knowsAbout: KNOWS_ABOUT,
   };
   if (siteConfig.tagline) node.slogan = siteConfig.tagline;
   if (siteConfig.contact.phoneE164) node.telephone = siteConfig.contact.phoneE164;
   if (siteConfig.contact.email) node.email = siteConfig.contact.email;
-  if (FULL_ADDRESS) {
-    node.address = {
-      '@type': 'PostalAddress',
-      ...(siteConfig.address.line ? { streetAddress: siteConfig.address.line } : {}),
-      ...(siteConfig.address.locality ? { addressLocality: siteConfig.address.locality } : {}),
-      ...(siteConfig.address.country ? { addressCountry: siteConfig.address.country } : {}),
-    };
-  }
+  // Structured address (issue 100): locality, region and postcode as their
+  // own fields, two-letter country code. No founding date: 1997/1998/2004 is open.
+  node.address = {
+    '@type': 'PostalAddress',
+    streetAddress: BRAND.postal.street,
+    addressLocality: BRAND.postal.locality,
+    addressRegion: BRAND.postal.region,
+    postalCode: BRAND.postal.postalCode,
+    addressCountry: BRAND.postal.country,
+  };
   if (siteConfig.socials.length) node.sameAs = siteConfig.socials.map((s) => s.href);
   return node;
 }

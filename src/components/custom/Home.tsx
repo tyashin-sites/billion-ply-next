@@ -57,7 +57,7 @@ export function Audiences() {
       <div className="container-x grid gap-6 lg:grid-cols-2">
         <div className="card overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/mood/study-desk.jpg" alt="" width={1200} height={600} loading="lazy" decoding="async" className="h-56 w-full object-cover" />
+          <img src="/images/mood/study-desk.jpg" alt="A study desk and shelves in a wood finish" width={1200} height={600} loading="lazy" decoding="async" className="h-56 w-full object-cover" />
           <div className="p-8">
             <p className="eyebrow">Architects and interior designers</p>
             <h2 className="tt-3">Specify with samples in hand</h2>

@@ -3,16 +3,12 @@ import { DealerLocator } from '@/components/custom/DealerLocator';
 import { TEL_URL, WHATSAPP_URL, siteConfig } from '@/config/site';
 import { validDealers } from '@/lib/dealer-search';
 import rawDealers from '@/data/dealers.json';
-import { pageMetadata } from '@/lib/seo';
+import { copyMetadata } from '@/lib/seo';
 import { Breadcrumbs, CtaBand, JsonLd, Prose } from '@/components/kit';
 import type { CtaBandProps, ProseProps } from '@/components/kit';
 import { organizationLd, websiteLd, breadcrumbLd } from '@/lib/schema';
 
-export const metadata = pageMetadata({
-  title: "Find a Billionply Dealer",
-  description: "Find a Billionply dealer near you. Search by city, pincode or state, or contact us and we will connect you with your nearest dealer.",
-  path: "/dealers",
-});
+export const metadata = copyMetadata('/dealers');
 
 const CRUMBS = [{"name":"Home","path":"/"},{"name":"Dealers","path":"/dealers"}];
 
@@ -23,7 +19,7 @@ export default function Page() {
       <Breadcrumbs items={CRUMBS} />
       <Prose {...({
         "eyebrow": "1000+ dealers across India",
-        "headline": "Search by city or state",
+        "headline": "Find a Billionply dealer",
         "blocks": [
           {
             "paragraphs": [

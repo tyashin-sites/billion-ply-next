@@ -1,98 +1,55 @@
 import { GrainStrip, HomeWoodlark, Audiences } from '@/components/custom/Home';
-import { ProductRange } from '@/components/custom/Product';
-import { pageMetadata } from '@/lib/seo';
-import { CtaBand, Faq, Hero, JsonLd, Stats, Story, Testimonials } from '@/components/kit';
-import type { CtaBandProps, FaqProps, HeroProps, StatsProps, StoryProps, TestimonialsProps } from '@/components/kit';
+import { RangeGroups } from '@/components/custom/Answers';
+import { copyMetadata } from '@/lib/seo';
+import { CtaBand, Faq, Hero, JsonLd, Story, Testimonials } from '@/components/kit';
+import type { CtaBandProps, HeroProps, StoryProps, TestimonialsProps } from '@/components/kit';
 import { organizationLd, websiteLd, faqLd } from '@/lib/schema';
+import { HOME, PAGE_COPY } from '@/data/seo-content';
 
-const META = pageMetadata({
-  title: "Billionply | Decorative Veneer, Plywood & Flush Doors Since 1997",
-  description: "Billionply makes decorative veneer, marine plywood, block board, prelam and flexible ply and flush doors in Haryana. Since 1997, 1000+ dealers in India.",
-  path: "/",
-});
-
-export const metadata = { ...META, title: { absolute: META.title as string } };
+export const metadata = copyMetadata('/');
 
 export default function Page() {
   return (
     <>
-      <JsonLd nodes={[organizationLd("LocalBusiness"), websiteLd(), faqLd([{"q":"What products does Billionply make?","a":"Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Prelam Plywood, Flexible Plywood and Flush Doors."},{"q":"Which standards and technology do you use?","a":"4 Quad Press technology for strength, E1 grade for safe indoor use, Italian sanders for a smooth finish, and termite and borer protection."},{"q":"How long has Billionply been in the industry?","a":"Since 1997. Three generations of the Chhabra family run the company, with 1000+ dealers across India."},{"q":"Where can I buy Billionply products?","a":"Through our dealers across India. Use Find a dealer, or message us on WhatsApp and we will connect you with the nearest one."}])]} />
+      <JsonLd nodes={[organizationLd("LocalBusiness"), websiteLd(), faqLd(HOME.faqs)]} />
       <Hero {...({
-        "variant": "split",
-        "eyebrow": "In the industry since 1997",
-        "headline": "Real wood for interiors and furniture",
-        "sub": "Decorative veneer, plywood, block board and flush doors from Bahadurgarh, Haryana. Three generations of the Chhabra family.",
-        "primaryCta": {
-          "label": "Explore the range",
-          "href": "/products"
+        variant: 'split',
+        eyebrow: HOME.eyebrow,
+        headline: PAGE_COPY['/'].h1,
+        answer: HOME.text,
+        primaryCta: { label: 'Explore products', href: '/products' },
+        secondaryCta: { label: 'Download catalogue', href: '/catalogues' },
+        links: HOME.categoryLinks,
+        image: {
+          src: '/images/mood/living-room.jpg',
+          alt: 'A living room with wood-veneered furniture',
+          brief: 'A living room with wood-veneered furniture',
+          aspect: 'landscape',
         },
-        "secondaryCta": {
-          "label": "Download catalogue",
-          "href": "/catalogues"
-        },
-        "image": {
-          "src": "/images/mood/living-room.jpg",
-          "alt": "A living room finished in wood veneer and plywood furniture",
-          "brief": "A living room finished in wood veneer and plywood furniture",
-          "aspect": "landscape"
-        },
-        "facts": [
-          "Since 1997",
-          "1000+ dealers across India",
-          "IS 1328 · IS 710 · IS 1659"
-        ]
+        facts: HOME.trustLine,
       } satisfies HeroProps)} />
-      <Stats {...({
-        "items": [
-          {
-            "value": "Since 1997",
-            "label": "Three generations of the Chhabra family"
-          },
-          {
-            "value": "1000+",
-            "label": "Dealers across India"
-          },
-          {
-            "value": "500+",
-            "label": "Completed projects"
-          },
-          {
-            "value": "400+",
-            "label": "Veneer species"
-          }
-        ]
-      } satisfies StatsProps)} />
-      <ProductRange eyebrow="The range" title="Six products for interiors, furniture and doors" />
+      <section className="section pt-0">
+        <div className="container-x max-w-3xl">
+          <h2 className="tt-2">{HOME.answerHeading}</h2>
+          <p className="mt-5 text-[1.125rem] leading-relaxed">{HOME.answer}</p>
+        </div>
+      </section>
+      <RangeGroups eyebrow="The range" heading={HOME.rangeHeading} />
       <HomeWoodlark />
       <GrainStrip />
       <Story {...({
-        "variant": "split",
-        "eyebrow": "Our legacy",
-        "headline": "Driven by the Purpose. Leading by Example.",
-        "paragraphs": [
-          "Billionply is more than a plywood and veneer maker. It is a legacy built on the expertise of three generations, blending traditional craft with modern technology."
-        ],
-        "image": {
-          "src": "/images/team/leadership-group.jpg",
-          "alt": "Jitender, Rahul and Rishabh Chhabra of Billionply",
-          "brief": "Jitender, Rahul and Rishabh Chhabra of Billionply",
-          "aspect": "wide"
+        variant: 'split',
+        eyebrow: 'Since 1997',
+        headline: HOME.expertiseHeading,
+        paragraphs: [HOME.expertise],
+        image: {
+          src: '/images/factory/factory-1.jpg',
+          alt: 'Billionply warehouse with stacked boards',
+          brief: 'Billionply warehouse with stacked boards',
+          aspect: 'wide',
         },
-        "imageSide": "left",
-        "facts": [
-          {
-            "label": "Pressing",
-            "value": "4 Quad Press"
-          },
-          {
-            "label": "Finishing",
-            "value": "Italian sanders"
-          },
-          {
-            "label": "Emission",
-            "value": "E1 grade"
-          }
-        ]
+        imageSide: 'left',
+        link: { label: 'About Billionply', href: '/about' },
       } satisfies StoryProps)} />
       <Testimonials {...({
         "eyebrow": "Client feedback",
@@ -116,28 +73,7 @@ export default function Page() {
         ]
       } satisfies TestimonialsProps)} />
       <Audiences />
-      <Faq {...({
-        "eyebrow": "Common questions",
-        "headline": "Good to know",
-        "items": [
-          {
-            "q": "What products does Billionply make?",
-            "a": "Decorative Veneer (IS 1328), Marine Plywood (IS 710), Block Board (IS 1659), Prelam Plywood, Flexible Plywood and Flush Doors."
-          },
-          {
-            "q": "Which standards and technology do you use?",
-            "a": "4 Quad Press technology for strength, E1 grade for safe indoor use, Italian sanders for a smooth finish, and termite and borer protection."
-          },
-          {
-            "q": "How long has Billionply been in the industry?",
-            "a": "Since 1997. Three generations of the Chhabra family run the company, with 1000+ dealers across India."
-          },
-          {
-            "q": "Where can I buy Billionply products?",
-            "a": "Through our dealers across India. Use Find a dealer, or message us on WhatsApp and we will connect you with the nearest one."
-          }
-        ]
-      } satisfies FaqProps)} />
+      <Faq eyebrow="Common questions" headline="Good to know" items={HOME.faqs} />
       <CtaBand {...({
         "eyebrow": "Talk to Billionply",
         "headline": "Planning a project?",
