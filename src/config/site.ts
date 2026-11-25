@@ -33,16 +33,20 @@ export const siteConfig: SiteConfig = {
       "label": "Products",
       "href": "/products",
       "children": [
+        // Client hierarchy (25 Nov 2026), then the plywood the user kept.
         { "label": "Decorative Veneers", "href": "/products/decorative-veneer" },
-        { "label": "Natural Veneers", "href": "/products/natural-veneer" },
-        { "label": "Teak Veneers", "href": "/products/teak-veneer" },
-        { "label": "Recon Veneers", "href": "/products/recon-veneer" },
-        { "label": "Marine Plywood", "href": "/products/marine-plywood" },
+        { "label": "Natural Veneers", "href": "/products/natural-veneer", "depth": 1 },
+        { "label": "Teak", "href": "/products/teak-veneer", "depth": 2 },
+        { "label": "Non-Teak", "href": "/products/natural-veneer#non-teak", "depth": 2 },
+        { "label": "Hybrid Veneer (Woodlark)", "href": "https://woodlarkveneer.com", "depth": 1 },
+        { "label": "Recon Veneers", "href": "/products/recon-veneer", "depth": 1 },
         { "label": "Commercial Plywood", "href": "/products/commercial-plywood" },
-        { "label": "Block Board", "href": "/products/block-board" },
+        { "label": "Block Boards", "href": "/products/block-board" },
+        { "label": "Billionply Doors" },
+        { "label": "Flush Doors", "href": "/products/flush-door", "depth": 1 },
+        { "label": "Marine Plywood", "href": "/products/marine-plywood" },
         { "label": "Prelam Plywood", "href": "/products/prelam-plywood" },
         { "label": "Flexible Plywood", "href": "/products/flexible-plywood" },
-        { "label": "Flush Doors", "href": "/products/flush-door" },
         { "label": "All products", "href": "/products" }
       ]
     },

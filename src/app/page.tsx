@@ -14,6 +14,7 @@ export default function Page() {
       <JsonLd nodes={[organizationLd("LocalBusiness"), websiteLd(), faqLd(HOME.faqs)]} />
       <Hero {...({
         variant: 'split',
+        compact: true,
         eyebrow: HOME.eyebrow,
         headline: PAGE_COPY['/'].h1,
         answer: HOME.text,

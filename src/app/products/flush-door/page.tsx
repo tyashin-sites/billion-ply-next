@@ -17,7 +17,7 @@ export default function Page() {
     <>
       <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("flush-door")!.name}`, description: PAGE_COPY["/products/flush-door"].description, path: "/products/flush-door", images: [`${SITE_URL}${getProduct("flush-door")!.image}`] }), faqLd(PRODUCT_ANSWERS["flush-door"].faqs)]} />
       <Breadcrumbs items={CRUMBS} />
-      <ProductHero slug="flush-door" title="Flush Doors" eyebrow="Solid core · 10 ft size" />
+      <ProductHero slug="flush-door" title="Flush Doors" eyebrow="Billionply Doors · MR and BWP" />
       <Story {...({
         "variant": "stacked",
         "headline": "What a flush door is",

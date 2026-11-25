@@ -11,7 +11,6 @@ import {
 } from '@/data/products';
 import { catalogues } from '@/data/catalogues';
 import { PAGE_COPY, PRODUCT_ANSWERS } from '@/data/seo-content';
-import { certifications } from '@/data/company';
 import { Hero, SectionHeading } from '@/components/kit';
 import { TrackedLink } from './TrackedLink';
 
@@ -51,7 +50,6 @@ export function ProductSpec({ slug }: { slug: string }) {
   const p = getProduct(slug);
   if (!p) return null;
   const rows = (p.spec ?? []).filter((s) => s.value);
-  const licence = p.standard ? certifications.find((c) => c.standard === p.standard) : undefined;
   return (
     <section className="section">
       <div className="container-x grid gap-12 lg:grid-cols-12">
@@ -88,9 +86,6 @@ export function ProductSpec({ slug }: { slug: string }) {
               <p className="text-muted mt-3 text-[15px]">
                 {STANDARD_TEXT[p.standard]} Billionply {p.name.toLowerCase()} is made to {p.standard}.
               </p>
-              {licence?.licenceNumber ? (
-                <p className="mt-3 text-[15px]">BIS licence: <strong>{licence.licenceNumber}</strong></p>
-              ) : null}
               <Link href="/certifications" className="text-primary mt-4 inline-flex items-center gap-1.5 text-sm font-semibold">
                 Certifications <ArrowUpRight className="h-4 w-4" aria-hidden />
               </Link>

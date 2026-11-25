@@ -4,9 +4,11 @@
  * and FAQs live here so the pages, the FAQPage JSON-LD, /llms.txt and
  * /llms-full.txt all read the same words.
  *
- * FACTS RULE still holds: commercial plywood has no client spec yet, so it
- * carries no IS number, licence, grade, size or borrowed product image.
- * No certification wording beyond IS standards (user to share later). No
+ * Round 5 (requester comments of 25 Nov 2026): grades, thicknesses and
+ * sizes for commercial plywood, block board and flush doors come from the
+ * client's sheet. Certification is written "ISO 9001:2015" only, with no certificate
+ * number, logo or accreditation mark. No BIS licence numbers are shown for now.
+ * Commercial plywood has no IS number and no photo of its own. No
  * foundingDate in schema (1997/1998/2004 is open with the client).
  */
 
@@ -36,10 +38,10 @@ export const PAGE_COPY: Record<string, PageCopy> = {
     h1: 'Decorative veneers in teak and non-teak',
   },
   '/products/natural-veneer': {
-    title: 'Natural Veneers: Oak, Walnut, Ash & More | Billionply',
+    title: 'Natural Veneers in Teak & Non-Teak | Billionply',
     description:
-      'Natural wood veneers from Billionply: oak, walnut, ash, sapele, wenge, sycamore and more. Every sheet has its own grain. Request samples.',
-    h1: 'Natural veneers',
+      'Natural wood veneers in teak and non-teak: oak, walnut, ash, sapele, wenge and more. Every sheet has its own grain. Request samples from Billionply.',
+    h1: 'Natural veneers in teak and non-teak',
   },
   '/products/teak-veneer': {
     title: 'Teak Veneers for Furniture, Walls & Doors | Billionply',
@@ -60,16 +62,16 @@ export const PAGE_COPY: Record<string, PageCopy> = {
     h1: 'Marine plywood (IS 710)',
   },
   '/products/commercial-plywood': {
-    title: 'Commercial Plywood for Interiors | Billionply',
+    title: 'Commercial Plywood: MR & BWP, 6-25 mm | Billionply',
     description:
-      'Commercial plywood for furniture, wardrobes, partitions and panelling in dry interiors. See how it differs from marine plywood, and ask for specs.',
-    h1: 'Commercial plywood',
+      'Billionply commercial plywood in MR and BWP grades: 6, 8, 12, 16, 18 and 25 mm, in sizes from 8 x 4 ft to 10 x 4 ft. For furniture and interiors.',
+    h1: 'Commercial plywood in MR and BWP grades',
   },
   '/products/block-board': {
-    title: 'Block Board (IS 1659) for Furniture & Doors | Billionply',
+    title: 'Block Board: MR & BWP, 16-25 mm | Billionply',
     description:
-      'Billionply block board to IS 1659: strong, moisture-resistant and dimensionally stable for furniture, doors and partitions. 10 ft sizes available.',
-    h1: 'Block board (IS 1659)',
+      'Billionply block boards in MR and BWP grades: 16, 19, 22 and 25 mm, from 8 x 4 ft to 10 x 4 ft. For furniture, doors, partitions and panelling.',
+    h1: 'Block boards in MR and BWP grades',
   },
   '/products/prelam-plywood': {
     title: 'Prelam Plywood for Modular Interiors | Billionply',
@@ -84,10 +86,10 @@ export const PAGE_COPY: Record<string, PageCopy> = {
     h1: 'Flexible plywood',
   },
   '/products/flush-door': {
-    title: 'Flush Doors: Solid Core, 10 ft Size | Billionply',
+    title: 'Flush Doors: MR & BWP, 30-35 mm | Billionply Doors',
     description:
-      'Billionply solid-core flush doors resist warping, cracking and swelling. Smooth face, ready for paint or polish. Available in a 10 ft size.',
-    h1: 'Solid-core flush doors',
+      'Billionply Doors: solid-core flush doors in MR and BWP grades, in 30, 32 and 35 mm. Smooth face ready for paint or polish, up to 10 ft.',
+    h1: 'Billionply Doors: solid-core flush doors',
   },
   '/compare': {
     title: 'Compare Veneer, Plywood, Block Board & Doors | Billionply',
@@ -126,10 +128,10 @@ export const PAGE_COPY: Record<string, PageCopy> = {
     h1: 'Request veneer and plywood samples',
   },
   '/certifications': {
-    title: 'IS Standards for Veneer & Plywood | Billionply',
+    title: 'Standards & Certifications | Billionply',
     description:
-      'See the Indian Standards behind Billionply products: IS 1328 decorative veneer, IS 710 marine plywood and IS 1659 block board.',
-    h1: 'Indian Standards and quality',
+      'Billionply is ISO 9001:2015 certified. See the Indian Standards behind our range: IS 1328 veneer, IS 710 marine plywood and IS 1659 block board.',
+    h1: 'Standards and certifications',
   },
   '/about': {
     title: 'About Billionply: Plywood & Veneer Since 1997',
@@ -168,7 +170,7 @@ export const COMPANY_ONE_LINE =
   'Billionply makes decorative veneers (teak and non-teak), recon veneers, marine and commercial plywood, block board, prelam and flexible plywood, and flush doors in Bahadurgarh, Haryana, India.';
 
 export const COMPANY_SHORT =
-  'Billionply is a plywood, veneer and door brand of Jai Shiv Plywood Pvt. Ltd., based in Bahadurgarh, Haryana, India. Its range covers decorative veneers (natural, teak, non-teak and recon), marine plywood made to IS 710, commercial plywood, block board made to IS 1659, prelam plywood, flexible plywood and flush doors. Decorative veneer is made to IS 1328. The company has been in the industry since 1997 and works with 1000+ dealers across India.';
+  'Billionply is a plywood, veneer and door brand of Jai Shiv Plywood Pvt. Ltd., based in Bahadurgarh, Haryana, India. Its range covers decorative veneers (natural, teak, non-teak and recon), marine plywood made to IS 710, commercial plywood in MR and BWP grades (6 to 25 mm), block board made to IS 1659 (16 to 25 mm), prelam plywood, flexible plywood and flush doors (30 to 35 mm). Decorative veneer is made to IS 1328. The company is ISO 9001:2015 certified, has been in the industry since 1997, and works with 1000+ dealers across India.';
 
 /** The user's target keywords, for Organization `knowsAbout`. */
 export const KNOWS_ABOUT = [
@@ -190,11 +192,13 @@ export interface Faq {
   a: string;
 }
 
-export type Section =
+/** `id` gives the section an anchor (e.g. /products/natural-veneer#non-teak). */
+export type Section = { id?: string } & (
   | { kind: 'table'; heading: string; columns: string[]; rows: string[][]; note?: string }
-  | { kind: 'list'; heading: string; items: { label?: string; text: string }[]; note?: string }
+  | { kind: 'list'; heading: string; items: { label?: string; text: string; href?: string }[]; note?: string }
   | { kind: 'steps'; heading: string; items: string[] }
-  | { kind: 'text'; heading: string; text: string };
+  | { kind: 'text'; heading: string; text: string; lead?: string }
+);
 
 export interface ProductAnswer {
   shortAnswer: string;
@@ -202,14 +206,28 @@ export interface ProductAnswer {
   faqs: Faq[];
 }
 
+/** Client sheet (25 Nov 2026): one size range for all three board lines. */
+export const SHEET_SIZES = '8 x 4 ft to 10 x 4 ft';
+
+/** MR / BWP thickness table from the client sheet. */
+function gradeTable(thicknesses: number[], item: string): Section {
+  return {
+    kind: 'table',
+    heading: 'Grades, thickness and sizes',
+    columns: ['Thickness', 'MR', 'BWP', 'Sizes'],
+    rows: thicknesses.map((t) => [`${t} mm`, `${t}mm ${item} MR`, `${t}mm ${item} BWP`, SHEET_SIZES]),
+  };
+}
+
 const MARINE_VS_COMMERCIAL: Section = {
   kind: 'table',
   heading: 'Marine plywood or commercial plywood?',
-  columns: ['', 'Marine plywood', 'Commercial plywood'],
+  columns: ['', 'Marine plywood', 'Commercial plywood MR', 'Commercial plywood BWP'],
   rows: [
-    ['Use it in', 'Kitchens, bathrooms, coastal areas and boats', 'Dry interiors'],
-    ['Typical jobs', 'Kitchen cabinets, vanity units, tall doors', 'Wardrobes, furniture, partitions, panelling'],
-    ['Choose it when', 'Water or constant moisture is likely', 'The area stays dry'],
+    ['Grade', 'IS 710, BWP resin', 'Moisture-resistant', 'Boiling water-proof'],
+    ['Use it in', 'Kitchens, bathrooms, coastal areas and boats', 'Dry interiors', 'Interiors where moisture is likely'],
+    ['Choose it when', 'The specification asks for marine plywood to IS 710', 'The area stays dry', 'You want more water resistance than MR'],
+    ['Thickness', 'Ask us', '6, 8, 12, 16, 18, 25 mm', '6, 8, 12, 16, 18, 25 mm'],
   ],
 };
 
@@ -260,17 +278,26 @@ export const PRODUCT_ANSWERS: Record<string, ProductAnswer> = {
   },
   'natural-veneer': {
     shortAnswer:
-      'Natural veneer is a thin leaf of real timber, sliced from a log and used as a decorative surface. Because it comes from one tree, every sheet has its own grain. Billionply offers natural veneers in teak and non-teak woods.',
+      'Natural veneer is a thin leaf of real timber, sliced from a log and used as a decorative surface. Every sheet has its own grain. Billionply natural veneers come in both teak and non-teak woods.',
     sections: [
       {
+        id: 'teak',
         kind: 'list',
-        heading: 'Woods in the natural range',
+        heading: 'Teak and non-teak natural veneers',
+        items: [
+          { label: 'Teak', text: 'warm golden-brown natural teak. See Teak veneers.', href: '/products/teak-veneer' },
+          { label: 'Non-teak', text: 'the woods below.' },
+        ],
+      },
+      {
+        id: 'non-teak',
+        kind: 'list',
+        heading: 'Non-teak woods',
         items: [
           { label: 'Light', text: 'white ash, white oak, sycamore, anegre, knotty pine' },
           { label: 'Medium', text: 'cherry, red oak, red elm, steamed beech, antique oak, lacewood' },
           { label: 'Dark', text: 'American walnut, sapele, santos, sucupira, tineo, wenge, ebony, ziricote' },
           { label: 'Figured', text: 'mappa burl, sapele pommele, flake oak' },
-          { label: 'Teak', text: 'see Teak veneers' },
         ],
         note: 'The same wood can look different depending on the cut. Crown cut shows arched, cathedral-like grain. Quarter cut shows straighter, more even lines.',
       },
@@ -288,7 +315,7 @@ export const PRODUCT_ANSWERS: Record<string, ProductAnswer> = {
   },
   'teak-veneer': {
     shortAnswer:
-      'Teak veneer is a thin layer of teak wood used to give furniture, walls and doors the look of teak. Billionply teak veneer is part of its decorative veneer range, made to IS 1328.',
+      'Teak veneer is a thin layer of teak wood used to give furniture, walls and doors the look of teak. At Billionply, teak veneer belongs to the natural veneer family and is part of the decorative veneer range, made to IS 1328.',
     sections: [
       {
         kind: 'table',
@@ -343,38 +370,55 @@ export const PRODUCT_ANSWERS: Record<string, ProductAnswer> = {
   },
   'commercial-plywood': {
     shortAnswer:
-      'Commercial plywood is plywood for dry interior work, such as wardrobes, furniture, partitions and panelling. In India the term usually refers to moisture-resistant (MR) grade plywood. It is not meant for areas with constant water.',
+      'Commercial plywood is a multi-purpose plywood for furniture and interiors. Billionply commercial plywood comes in two grades, MR (moisture-resistant) and BWP (boiling water-proof), in six thicknesses from 6 mm to 25 mm, and in sizes from 8 ft x 4 ft to 10 ft x 4 ft.',
     sections: [
+      {
+        kind: 'table',
+        heading: 'MR and BWP commercial plywood',
+        columns: ['', 'MR grade', 'BWP grade'],
+        rows: [
+          ['Stands for', 'Moisture-resistant', 'Boiling water-proof'],
+          ['Best for', 'Dry interiors such as bedrooms, living rooms and offices', 'Interiors where moisture is likely'],
+          ['Typical jobs', 'Wardrobes, beds, partitions, panelling', 'Cabinets and furniture that need more water resistance'],
+        ],
+      },
+      { ...gradeTable([6, 8, 12, 16, 18, 25], 'Plywood'), heading: 'Thickness and sizes' },
+      {
+        kind: 'list',
+        heading: 'Which thickness should you use?',
+        items: [
+          { label: '6 and 8 mm', text: 'cabinet backs, drawer bottoms and panelling' },
+          { label: '12 mm', text: 'partitions, panelling and lighter furniture parts' },
+          { label: '16 and 18 mm', text: 'wardrobes, cabinets, beds and shelves' },
+          { label: '25 mm', text: 'table tops and heavy-duty furniture' },
+        ],
+        note: 'Common practice, as a guide.',
+      },
       {
         kind: 'text',
         heading: 'Where commercial plywood is used',
         text: 'Wardrobes and shelves, beds and tables, partitions, wall panelling, office furniture, and as a base for decorative veneer.',
       },
-      {
-        kind: 'steps',
-        heading: 'How to choose',
-        items: [
-          'Is the area dry? Commercial plywood suits bedrooms, living rooms and offices.',
-          'Will it meet water? Choose marine plywood for kitchens, bathrooms and coastal areas.',
-          'Is it a long shutter or shelf? Consider block board.',
-          'Do you want a ready finish? Consider prelam plywood.',
-        ],
-      },
       MARINE_VS_COMMERCIAL,
     ],
     faqs: [
-      { q: 'What is commercial plywood?', a: 'Plywood for dry interior work such as furniture, wardrobes and partitions.' },
-      { q: 'Can commercial plywood be used in a kitchen?', a: 'Choose marine plywood for areas near water. Commercial plywood suits areas that stay dry.' },
+      { q: 'What is commercial plywood?', a: 'A multi-purpose plywood for furniture, partitions and interiors. Billionply makes it in MR and BWP grades.' },
+      { q: 'What is the difference between MR and BWP plywood?', a: 'MR means moisture-resistant and suits dry interiors. BWP means boiling water-proof and suits places where moisture is likely.' },
+      { q: 'What thicknesses does Billionply commercial plywood come in?', a: '6, 8, 12, 16, 18 and 25 mm, in both MR and BWP grades.' },
+      { q: 'What sizes are available?', a: 'From 8 ft x 4 ft to 10 ft x 4 ft.' },
+      { q: 'Is BWP commercial plywood the same as marine plywood?', a: 'Not necessarily. Marine plywood is made to IS 710. If your project asks for IS 710, choose Billionply marine plywood.' },
+      { q: 'Which thickness is best for a wardrobe?', a: '16 mm or 18 mm is commonly used for wardrobe bodies and shutters, and 6 mm or 8 mm for backs.' },
       { q: 'Can decorative veneer be applied on commercial plywood?', a: 'Yes. Plywood is commonly used as a base for decorative veneer.' },
     ],
   },
   'block-board': {
     shortAnswer:
-      'Block board is a board used for furniture, doors, partitions and panelling, where strength and stability matter over longer lengths. Billionply block board is made to IS 1659, is moisture-resistant and dimensionally stable, and comes in 10 ft sizes.',
-    sections: [],
+      'Block board is a board used for furniture, doors, partitions and panelling, where strength and stability matter over longer lengths. Billionply block board is made to IS 1659 and comes in MR and BWP grades, in 16, 19, 22 and 25 mm, with sizes from 8 ft x 4 ft to 10 ft x 4 ft.',
+    sections: [gradeTable([16, 19, 22, 25], 'Blockboards')],
     faqs: [
       { q: 'What is block board used for?', a: 'Furniture, doors, partitions and panelling.' },
       { q: 'Which Indian Standard applies to block board?', a: 'IS 1659 is the Indian Standard for block boards.' },
+      { q: 'What thicknesses does Billionply block board come in?', a: '16, 19, 22 and 25 mm, in MR and BWP grades.' },
       { q: 'Does block board come in 10 ft?', a: 'Yes. Billionply offers 10 ft sizes, which means fewer joints on long runs.' },
     ],
   },
@@ -399,8 +443,9 @@ export const PRODUCT_ANSWERS: Record<string, ProductAnswer> = {
   },
   'flush-door': {
     shortAnswer:
-      'A flush door is a door with a flat, smooth face on both sides. Billionply flush doors have a solid core for strength and sound insulation, resist warping, cracking and swelling, and are ready for paint or polish. A 10 ft size is available.',
+      'A flush door is a door with a flat, smooth face on both sides. Billionply flush doors have a solid core for strength and sound insulation, resist warping, cracking and swelling, and are ready for paint or polish. They come in MR and BWP grades, in 30, 32 and 35 mm, with sizes from 8 ft x 4 ft to 10 ft x 4 ft.',
     sections: [
+      gradeTable([30, 32, 35], 'Flushdoor'),
       {
         kind: 'text',
         heading: 'Where flush doors are used',
@@ -411,16 +456,16 @@ export const PRODUCT_ANSWERS: Record<string, ProductAnswer> = {
       { q: 'What is a flush door?', a: 'A door with a flat, smooth surface and no raised panels.' },
       { q: 'Are Billionply flush doors solid core?', a: 'Yes. The solid core gives sound insulation and a sturdy feel.' },
       { q: 'Can a flush door be painted, polished or veneered?', a: 'Billionply flush doors have a smooth face that is ready for paint or polish. Decorative veneer is also used as a face for doors.' },
-      { q: 'What sizes are available?', a: 'Billionply flush doors include a 10 ft size. Ask our team for other sizes.' },
+      { q: 'What sizes are available?', a: 'From 8 ft x 4 ft to 10 ft x 4 ft, in 30, 32 and 35 mm.' },
     ],
   },
 };
 
 /**
  * The four pages added for the target keywords. Not in `products` (which
- * feeds the comparison table): commercial plywood stays out of /compare
- * until the client sends data, and the three veneers are ranges of
- * Decorative Veneer.
+ * feeds the cards and "Often specified with"); commercial plywood gets its
+ * own /compare column from `COMMERCIAL_COMPARE`. The three veneers are
+ * ranges of Decorative Veneer.
  */
 export interface RangePage {
   slug: string;
@@ -428,6 +473,14 @@ export interface RangePage {
   /** Existing photo of THIS product only; none for commercial plywood. */
   image: string | null;
   imageAlt: string | null;
+  /**
+   * A neutral photo for the page hero when the product has none of its own
+   * (never captioned or described as this product, not used in Product
+   * schema or on cards).
+   */
+  heroFallback?: { src: string; alt: string };
+  eyebrow?: string;
+  intro?: string;
   cardLine: string;
   /** Parent for the breadcrumb trail. */
   parent?: { name: string; path: string };
@@ -466,9 +519,25 @@ export const RANGE_PAGES: RangePage[] = [
     name: 'Commercial Plywood',
     image: null,
     imageAlt: null,
-    cardLine: 'Plywood for wardrobes, furniture and partitions in dry interiors.',
+    heroFallback: { src: '/images/factory/factory-3.jpg', alt: 'Rows of plywood stock in the Billionply warehouse' },
+    eyebrow: 'New in the Billionply range',
+    intro:
+      'Commercial plywood is the board behind wardrobes, beds, partitions and panelling. Choose MR for dry rooms and BWP where moisture is likely, then pick the thickness for the job.',
+    cardLine: 'MR and BWP grades, 6 to 25 mm, for furniture and interiors.',
   },
 ];
+
+/** Commercial plywood's /compare column (client sheet; no IS number given). */
+export const COMMERCIAL_COMPARE = {
+  slug: 'commercial-plywood',
+  short: 'Commercial Plywood',
+  grades: 'MR, BWP',
+  thickness: '6, 8, 12, 16, 18, 25 mm',
+  sizes: SHEET_SIZES,
+  uses: 'Furniture, wardrobes, partitions, panelling',
+  water: 'MR: moisture-resistant. BWP: boiling water-proof',
+  standard: null,
+};
 
 export function getRangePage(slug: string): RangePage | undefined {
   return RANGE_PAGES.find((r) => r.slug === slug);
@@ -496,40 +565,83 @@ export const HOME = {
   rangeHeading: 'One range for surfaces, boards and doors',
   expertiseHeading: 'Expertise in every layer',
   expertise:
-    'Billionply brings together species selection, pressing, sanding and finishing. 4 Quad Press technology adds strength, Italian sanders give a smooth surface, and products meet E1 grade with termite and borer protection. Behind it is a family business that has worked with plywood and veneer since 1997, now in its third generation.',
+    'Billionply brings together species selection, pressing, sanding and finishing. 4 Quad Press technology adds strength, Italian sanders give a smooth surface, and products meet E1 grade with termite and borer protection. The company is ISO 9001:2015 certified. Behind it is a family business that has worked with plywood and veneer since 1997, now in its third generation.',
   faqs: [
     { q: 'What products does Billionply make?', a: 'Decorative veneers (natural, teak, non-teak and recon), marine plywood, commercial plywood, block board, prelam plywood, flexible plywood and flush doors.' },
     { q: 'What is the difference between teak and non-teak veneer?', a: 'Teak veneer is sliced from teak and has warm golden-brown tones. Non-teak veneer is sliced from other woods, such as oak, walnut, ash, sapele or wenge, and gives a wider choice of colour and grain.' },
     { q: 'Which plywood is best for a kitchen or bathroom?', a: 'Marine plywood. Billionply marine plywood is bonded with boiling water-proof (BWP) resin and made to IS 710, so it suits kitchens, bathrooms and coastal areas.' },
-    { q: 'What is the difference between marine and commercial plywood?', a: 'Marine plywood is made for places with water and constant moisture. Commercial plywood is for dry interior work such as wardrobes, furniture and partitions.' },
+    { q: 'What is the difference between marine and commercial plywood?', a: 'Billionply marine plywood is made to IS 710 for places with water and constant moisture. Commercial plywood is the everyday choice for furniture and interiors, and comes in MR (moisture-resistant) and BWP (boiling water-proof) grades.' },
     { q: 'Should I choose natural veneer or recon veneer?', a: 'Choose natural veneer when you want a grain that is different on every sheet. Choose recon veneer when many sheets need to match.' },
     { q: 'Where can I buy Billionply products in India?', a: "Through Billionply's network of 1000+ dealers. Use Find a dealer, or message us on WhatsApp and we will connect you with one." },
   ] as Faq[],
 };
 
+export interface RangeGroup {
+  title: string;
+  text: string;
+  slugs: string[];
+  /** Show the Woodlark hybrid veneer card in this group. */
+  woodlark?: boolean;
+}
+
 /** Home range groups, in marketing's order. */
-export const RANGE_GROUPS: { title: string; text: string; slugs: string[] }[] = [
+export const RANGE_GROUPS: RangeGroup[] = [
   {
     title: 'Veneers for the surface',
-    text: 'Decorative veneers to IS 1328, in teak and non-teak woods. Choose natural veneer for one-of-a-kind grain or recon veneer for a grain that repeats across a large wall.',
+    text: 'Decorative veneers to IS 1328, with natural veneers in teak and non-teak woods. Choose natural veneer for one-of-a-kind grain or recon veneer for a grain that repeats across a large wall.',
     slugs: ['decorative-veneer', 'natural-veneer', 'teak-veneer', 'recon-veneer'],
   },
   {
     title: 'Plywood and boards for the structure',
-    text: 'Marine plywood for wet areas, commercial plywood for dry interiors, block board for long panels, prelam for a ready finish, and flexible plywood for curves.',
+    text: 'Marine plywood for wet areas, commercial plywood in MR and BWP grades from 6 to 25 mm, block board for long panels, prelam for a ready finish, and flexible plywood for curves.',
     slugs: ['marine-plywood', 'commercial-plywood', 'block-board', 'prelam-plywood', 'flexible-plywood'],
   },
   {
-    title: 'Flush doors',
-    text: 'Solid-core doors with a smooth face, ready for paint or polish, including a 10 ft size.',
+    title: 'Billionply Doors',
+    text: 'Solid-core flush doors in MR and BWP grades, with a smooth face ready for paint or polish, up to 10 ft.',
     slugs: ['flush-door'],
+  },
+];
+
+/**
+ * /products follows the client's product hierarchy (sheet of 25 Nov 2026).
+ * Marine, prelam and flexible plywood are not in that sheet; the user
+ * confirmed they stay, so they close the page as "More plywood".
+ */
+export const PRODUCT_HIERARCHY: RangeGroup[] = [
+  {
+    title: 'Decorative Veneer',
+    text: 'Natural Veneer in teak and non-teak woods, Teak Veneer, Recon Veneer, and Hybrid Veneer by Woodlark.',
+    slugs: ['decorative-veneer', 'natural-veneer', 'teak-veneer', 'recon-veneer'],
+    woodlark: true,
+  },
+  {
+    title: 'Commercial Plywood',
+    text: 'MR and BWP grades, 6, 8, 12, 16, 18 and 25 mm, from 8 x 4 ft to 10 x 4 ft.',
+    slugs: ['commercial-plywood'],
+  },
+  {
+    title: 'Block Boards',
+    text: 'MR and BWP grades, 16, 19, 22 and 25 mm, from 8 x 4 ft to 10 x 4 ft.',
+    slugs: ['block-board'],
+  },
+  {
+    title: 'Billionply Doors',
+    text: 'Flush doors in MR and BWP grades, 30, 32 and 35 mm, from 8 x 4 ft to 10 x 4 ft.',
+    slugs: ['flush-door'],
+  },
+  {
+    title: 'More plywood',
+    text: 'Marine plywood to IS 710 for wet areas, prelam plywood for a ready finish, and flexible plywood for curves.',
+    slugs: ['marine-plywood', 'prelam-plywood', 'flexible-plywood'],
   },
 ];
 
 /** Product guide: direct answers (section 4). */
 export const GUIDE_ANSWERS: { where: string; use: string; links: string[] }[] = [
   { where: 'Kitchen and bathroom', use: 'Marine plywood', links: ['marine-plywood'] },
-  { where: 'Wardrobe or bedroom furniture', use: 'Commercial plywood or block board', links: ['commercial-plywood', 'block-board'] },
+  { where: 'Wardrobe or bedroom furniture', use: 'Commercial plywood (MR) or block board', links: ['commercial-plywood', 'block-board'] },
+  { where: 'Furniture where moisture is likely', use: 'Commercial plywood (BWP)', links: ['commercial-plywood'] },
   { where: 'Long shutters and shelves', use: 'Block board', links: ['block-board'] },
   { where: 'Modular cabinets with a ready finish', use: 'Prelam plywood', links: ['prelam-plywood'] },
   { where: 'Curved walls and furniture', use: 'Flexible plywood', links: ['flexible-plywood'] },
@@ -537,6 +649,10 @@ export const GUIDE_ANSWERS: { where: string; use: string; links: string[] }[] = 
   { where: 'Large wall with matching grain', use: 'Recon veneer', links: ['recon-veneer'] },
   { where: 'Interior doors', use: 'Flush doors', links: ['flush-door'] },
 ];
+
+/** Certifications page opening (section 6). Names only, no numbers. */
+export const CERTIFICATIONS_OPENING =
+  'Billionply is ISO 9001:2015 certified, and makes products to Indian Standards: IS 1328 for decorative veneer, IS 710 for marine plywood and IS 1659 for block board.';
 
 /** About page opening (section 5). */
 export const ABOUT_OPENING =

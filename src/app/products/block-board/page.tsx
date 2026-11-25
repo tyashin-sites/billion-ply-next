@@ -17,7 +17,7 @@ export default function Page() {
     <>
       <JsonLd nodes={[organizationLd("Organization"), websiteLd(), breadcrumbLd(CRUMBS), productLd({ name: `Billionply ${getProduct("block-board")!.name}`, description: PAGE_COPY["/products/block-board"].description, path: "/products/block-board", images: [`${SITE_URL}${getProduct("block-board")!.image}`] }), faqLd(PRODUCT_ANSWERS["block-board"].faqs)]} />
       <Breadcrumbs items={CRUMBS} />
-      <ProductHero slug="block-board" title="Block Board" eyebrow="IS 1659 · 10 ft sizes" />
+      <ProductHero slug="block-board" title="Block Board" eyebrow="IS 1659 · MR and BWP" />
       <Story {...({
         "variant": "stacked",
         "headline": "What block board is",

@@ -19,7 +19,7 @@ export default function Page() {
         "blocks": [
           {
             "paragraphs": [
-              "Water resistance, typical uses, IS standard and sizes for the whole range. Where a value is not published yet, ask us and we will confirm it."
+              "Grades, thickness, sizes, typical uses, water resistance and IS standard for the whole range. Where a value is not published yet, ask us and we will confirm it."
             ]
           }
         ],
