@@ -2,6 +2,7 @@ import { caseStudies, certifications, events, factoryGallery, leadership, timeli
 import { manufacturing, products } from '@/data/products';
 import Link from 'next/link';
 import { SectionHeading } from '@/components/kit';
+import { EventLightboxGallery } from './EventLightboxGallery';
 
 /** About: the legacy timeline. The rule draws on scroll (kit data-fx="draw"). */
 export function Timeline() {
@@ -79,7 +80,11 @@ export function EventGallery() {
               <SectionHeading eyebrow="Event" title={e.name} lead={e.summary} />
             </div>
           </section>
-          <PhotoGallery photos={e.photos} />
+          <section className="section pt-0">
+            <div className="container-x">
+              <EventLightboxGallery photos={e.photos} label={e.name} />
+            </div>
+          </section>
         </div>
       ))}
     </>
