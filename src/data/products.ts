@@ -194,10 +194,12 @@ export const products: Product[] = [
       { label: 'Warranty', value: null },
     ],
     compare: {
-      water: null,
+      // A surface, not a board: grades and water resistance do not apply.
+      water: 'Not applicable',
       uses: 'Furniture, walls and doors',
       standard: 'IS 1328',
       sizes: 'Various, up to 10 ft height',
+      grades: 'Not applicable',
     },
     useGroups: ['interiors', 'doors'],
     tenFoot: true,
@@ -242,6 +244,7 @@ export const products: Product[] = [
       uses: 'Kitchens, bathrooms, coastal areas, boats, tall doors',
       standard: 'IS 710',
       sizes: 'Including 10 ft',
+      grades: 'BWP',
     },
     useGroups: ['wet-areas', 'doors', 'heavy-duty'],
     tenFoot: true,

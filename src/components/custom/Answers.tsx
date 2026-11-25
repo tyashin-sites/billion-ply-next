@@ -99,7 +99,7 @@ export function AnswerSections({ slug }: { slug: string }) {
     <section className="section">
       <div className="container-x grid max-w-4xl gap-14">
         {a.sections.map((s) => (
-          <div key={s.heading} id={s.id} className="scroll-mt-28">
+          <div key={s.heading} id={s.id} className="min-w-0 scroll-mt-28">
             <h2 className="tt-2">{s.heading}</h2>
             <SectionBody s={s} />
           </div>

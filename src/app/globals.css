@@ -650,6 +650,15 @@ html:root {
   html[data-style='luxury'] .eyebrow {
     letter-spacing: 0.24em;
   }
+  /* Phones: long eyebrows (home hero) wrap; keep the last word off its own line. */
+  @media (max-width: 639px) {
+    .eyebrow,
+    html[data-style='luxury'] .eyebrow {
+      letter-spacing: 0.12em;
+      line-height: 1.5;
+      text-wrap: balance;
+    }
+  }
   html[data-style='luxury'] .reveal {
     animation-duration: 1.1s;
   }
