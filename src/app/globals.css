@@ -779,3 +779,105 @@ html:root {
 .hero-compact .hero-facts {
   margin-top: 1.25rem;
 }
+
+/* Events: justified photo rows (each row full width, one height per row,
+   nothing cropped) and the photo lightbox. */
+.event-rows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.event-rows > li {
+  min-width: 0;
+}
+.event-thumb {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  cursor: zoom-in;
+}
+.event-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.event-thumb:hover img,
+.event-thumb:focus-visible img {
+  transform: scale(1.03);
+}
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(10 10 10 / 0.94);
+  color: #fff;
+  padding: 3.5rem 1rem 1rem;
+  touch-action: pan-y;
+  animation: lightbox-in 0.2s ease-out;
+}
+@keyframes lightbox-in {
+  from { opacity: 0; }
+}
+.lightbox-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+.lightbox-figure img {
+  max-width: min(100%, 1600px);
+  max-height: calc(100dvh - 8rem);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.25rem;
+}
+.lightbox-figure figcaption {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: rgb(255 255 255 / 0.8);
+}
+.lightbox-count {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.lightbox-btn {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+  color: #fff;
+  transition: background 0.2s;
+}
+.lightbox-btn:hover,
+.lightbox-btn:focus-visible {
+  background: rgb(255 255 255 / 0.25);
+}
+.lightbox-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+.lightbox-close { top: 0.75rem; right: 0.75rem; }
+.lightbox-prev { left: 0.75rem; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 0.75rem; top: 50%; transform: translateY(-50%); }
+@media (max-width: 767px) {
+  .lightbox-prev, .lightbox-next { top: auto; bottom: 0.75rem; transform: none; }
+  .lightbox { padding-bottom: 4.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox { animation: none; }
+  .event-thumb img { transition: none; }
+}

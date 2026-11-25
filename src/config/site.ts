@@ -69,6 +69,10 @@ export const siteConfig: SiteConfig = {
     {
       "label": "Projects",
       "href": "/projects"
+    },
+    {
+      "label": "Events",
+      "href": "/events"
     }
   ],
   "legalNav": [

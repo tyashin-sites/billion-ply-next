@@ -100,19 +100,48 @@ export const caseStudies: {
   images: string[];
 }[] = [];
 
-export const events = [
+/** One photo in an event gallery. width/height are the file's real pixels. */
+export type EventPhoto = { src: string; alt: string; width: number; height: number };
+
+/**
+ * Exhibitions, newest first. To add an event, add an entry here with its
+ * photos in /public/images/events/; the Events page gives each its own
+ * section. Alt text says what each photo shows and never names people.
+ */
+export const events: { slug: string; name: string; summary: string; photos: EventPhoto[] }[] = [
   {
     slug: 'matecia-2025',
     name: 'Matecia 2025',
     summary: 'The Billionply stand and team at Matecia 2025.',
-    photos: [
-      '2917', '2824', '3385', '2898', '2828', '3419', '3627', '3662',
-      '3702', '3709', '2924', '2983', '3010', '2637', '2861', '3023',
-    ].map((n) => ({
-      src: `/images/events/matecia-2025-${n}.jpg`,
-      alt: 'Billionply at Matecia 2025',
-      tall: ['2637', '2861', '3023'].includes(n),
-    })),
+    // All 16 photos from billionply.com/event-photos, in that page's order.
+    photos: (
+      [
+        ['2917', 'Four members of the Billionply team under the lit Billionply sign at the stand'],
+        ['2824', 'The Billionply reception counter, with the team greeting visitors'],
+        ['3385', 'The outside of the Billionply stand in the exhibition hall, with visitors at the entrance'],
+        ['2898', 'Visitors walking through the Billionply stand past veneer roll displays'],
+        ['2828', 'A busy Billionply stand, with visitors at the Hybrid Collection wall and the Veneer Lounge'],
+        ['3419', 'Two people at the Billionply stand, in front of the green wall and lit Billionply sign'],
+        ['3627', 'Visitors looking through veneer sample books at a counter'],
+        ['3662', 'The Billionply team in a seated discussion with visitors at the stand'],
+        ['3702', 'Five people at the Billionply stand, under the lit sign and the round arch'],
+        ['3709', 'The Billionply team in matching black shirts, lined up at the stand'],
+        ['2924', 'Three Billionply staff in green uniforms in front of veneer sheets'],
+        ['2983', 'Five Billionply staff in green uniforms in front of veneer panels'],
+        ['3010', 'Visitors seated around a table with veneer samples at the Billionply stand'],
+        ['2637', 'A Billionply team member standing inside the lit round arch at the stand'],
+        ['2861', 'Three people standing by a display of veneer rolls at the Billionply stand'],
+        ['3023', 'Four people under the Billionply sign and arch at the stand'],
+      ] as const
+    ).map(([n, alt]) => {
+      const portrait = ['2637', '2861', '3023'].includes(n);
+      return {
+        src: `/images/events/matecia-2025-${n}.jpg`,
+        alt,
+        width: portrait ? 898 : 1600,
+        height: portrait ? 1600 : 898,
+      };
+    }),
   },
 ];
 

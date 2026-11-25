@@ -19,7 +19,7 @@ export default function Page() {
         "blocks": [
           {
             "paragraphs": [
-              "The Billionply stand and team at Matecia 2025."
+              "See the Billionply team, stand and products at industry exhibitions."
             ]
           }
         ],
